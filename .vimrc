@@ -67,7 +67,7 @@ set expandtab
 
 " Remaps "
 "
-" ,/ command to turn off search highlightingj
+" ,, command to turn off search highlighting
 nmap <silent> ,, :nohlsearch<CR>
 " gV to highlight last inserted text
 nnoremap gV `[v`]`

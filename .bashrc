@@ -117,7 +117,7 @@ if ! shopt -oq posix; then
   fi
 fi
 
-# Easy Launcher position controls
+# Easy Ubuntu Launcher position controls
 function setlauncherleft {
 	gsettings set com.canonical.Unity.Launcher launcher-position Left
 }
@@ -132,10 +132,7 @@ export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
 . /usr/local/bin/virtualenvwrapper.sh
 
 # Automatically 'ls -F' after every CD
-# This next line may cause problems
 [ -z "$PS1" ] && return
 function cd {
 	builtin cd "$@" && ls -F
 }
-# Issue a 'ls -F' on shell start
-#ls -F
