@@ -139,6 +139,7 @@ let g:jsx_ext_required = 0
 autocmd Filetype html       setlocal ts=2 sts=2 sw=2
 autocmd Filetype ruby       setlocal ts=2 sts=2 sw=2
 autocmd Filetype javascript setlocal ts=2 sts=2 sw=2
+autocmd FileType python     setlocal ts=4 sts=4 sw=4 tw=0
 
 " Custom toggling commands
 command Synt SyntasticToggleMode
