@@ -21,6 +21,8 @@ Plugin 'vim-scripts/JavaScript-Indent'  " Proper indentation for .js
 Plugin 'Yggdroot/indentLine'            " Visual ASCII lines to show indentation
 Plugin 'Valloric/YouCompleteMe'         " Code completion
 Plugin 'tpope/vim-fugitive'             " In-vim Git wrapper
+Plugin 'airblade/vim-gitgutter'         " Git diff in the gutter
+Plugin 'scrooloose/nerdtree'            " Tree explorer
 " -----  END PLUGINS  -----
 
 " All of your Plugins must be added before the following line
@@ -73,6 +75,25 @@ nmap <silent> ,, :nohlsearch<CR>
 nnoremap gV `[v`]`
 " Key combo to use <Space> to toggle folding
 nnoremap <Space> za
+" Pres Enter to insert newline below current. Shift-Enter for above
+nmap <S-ENTER> O<Esc>j
+nmap <CR> o<Esc>k
+" Allows the user to select where they want to go in their previous jumps
+function! GotoJump()
+  jumps
+  let j = input("Please select your jump: ")
+  if j != ''
+    let pattern = '\v\c^\+'
+    if j =~ pattern
+      let j = substitute(j, pattern, '', 'g')
+      execute "normal " . j . "\<c-i>"
+    else
+      execute "normal " . j . "\<c-o>"
+    endif
+  endif
+endfunction
+" Shortcut for GotoJump: \f
+nmap <Leader>f :call GotoJump()<CR>
 
 
 " Folding
