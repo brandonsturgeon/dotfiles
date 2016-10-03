@@ -143,3 +143,6 @@ autocmd Filetype javascript setlocal ts=2 sts=2 sw=2
 " Custom toggling commands
 command Synt SyntasticToggleMode
 command Lines IndentLinesToggle
+
+" NERDTree configuration
+let NERDTreeIgnore=['\.rbc$', '\.pyc$', '\~$']
