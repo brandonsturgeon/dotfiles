@@ -78,6 +78,9 @@ nnoremap <Space> za
 " Pres Enter to insert newline below current. Shift-Enter for above
 nmap <S-ENTER> O<Esc>j
 nmap <CR> o<Esc>k
+" Open nerdtree with ,t
+map ,t :NERDTreeToggle<CR>
+
 " Allows the user to select where they want to go in their previous jumps
 function! GotoJump()
   jumps
