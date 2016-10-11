@@ -4,3 +4,4 @@
 !.gitignore
 !.vimrc
 !.bashrc
+!.tmux.conf
