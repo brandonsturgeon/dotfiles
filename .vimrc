@@ -14,7 +14,7 @@ Plugin 'mxw/vim-jsx'                    " Vim JSX support
 Plugin 'pangloss/vim-javascript'        " vim-javascript is required for synastic/vim-jsx to work
 Plugin 'scrooloose/syntastic'           " Syntastic
 Plugin 'Raimondi/delimitMate'           " DelimitMate for auto bracket/quote closing
-"Plugin 'klen/python-mode'               " Python Mode for easy vim handling
+"Plugin 'klen/python-mode'              " Python Mode for easy vim handling
 Plugin 'slim-template/vim-slim'         " .slim syntax highlighting
 Plugin 'lukaszb/vim-web-indent'         " Proper indentation for .html .js .css
 Plugin 'vim-scripts/JavaScript-Indent'  " Proper indentation for .js
@@ -23,6 +23,16 @@ Plugin 'Valloric/YouCompleteMe'         " Code completion
 Plugin 'tpope/vim-fugitive'             " In-vim Git wrapper
 Plugin 'airblade/vim-gitgutter'         " Git diff in the gutter
 Plugin 'scrooloose/nerdtree'            " Tree explorer
+Plugin 'Xuyuanp/nerdtree-git-plugin'    " Git status in NerdTree
+Plugin 'dhruvasagar/vim-table-mode'     " Easy creation of tables
+Plugin 'godlygeek/tabular'              " Lines up text using :Tabularize /=
+Plugin 'AndrewRadev/splitjoin.vim'      " Switches between single-line and multi-line statements with gS and gJ
+Plugin 'EinfachToll/DidYouMean'         " Vim plugin which asks for the right file to open
+Plugin 'Valloric/MatchTagAlways'        " Always highlights the tags that enclose your cursor
+Plugin 'kien/rainbow_parentheses.vim'   " Maybe makes some rainbow parenthesis?
+Plugin 'henrik/vim-indexed-search'      " Shows match information at bottom line when searching
+Plugin 'jlanzarotta/bufexplorer'        " Explore vim buffer with 'be' 'bt' 'bs' and 'bv'
+Plugin 'tpope/vim-markdown'             " Forces Markdown highlighting
 " -----  END PLUGINS  -----
 
 " All of your Plugins must be added before the following line
@@ -76,8 +86,8 @@ nnoremap gV `[v`]`
 " Key combo to use <Space> to toggle folding
 nnoremap <Space> za
 " Pres Enter to insert newline below current. Shift-Enter for above
-nmap <S-ENTER> O<Esc>j
-nmap <CR> o<Esc>k
+nnoremap <CR> o<Esc>k
+nnoremap <S-CR> O<Esc>j
 " Open nerdtree with ,t
 map ,t :NERDTreeToggle<CR>
 
@@ -147,3 +157,9 @@ command Lines IndentLinesToggle
 
 " NERDTree configuration
 let NERDTreeIgnore=['\.rbc$', '\.pyc$', '\~$']
+
+" Rainbow Parentheses configuration
+au VimEnter * RainbowParenthesesToggle
+au Syntax * RainbowParenthesesLoadRound
+au Syntax * RainbowParenthesesLoadSquare
+au Syntax * RainbowParenthesesLoadBraces
