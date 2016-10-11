@@ -133,6 +133,9 @@ function rec {
 # VI Mode in terminal
 set -o vi
 
+# Cls for clear
+alias cls='clear'
+
 export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
 
 # Load Virtualenvwrapper commands
