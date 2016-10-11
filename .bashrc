@@ -125,6 +125,11 @@ function setlauncherbot {
 	gsettings set com.canonical.Unity.Launcher launcher-position Bottom
 }
 
+# Easily record with asciinema
+function rec {
+    asciinema rec;
+}
+
 
 export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
 
