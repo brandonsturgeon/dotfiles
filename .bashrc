@@ -130,6 +130,8 @@ function rec {
     asciinema rec;
 }
 
+# VI Mode in terminal
+set -o vi
 
 export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
 
