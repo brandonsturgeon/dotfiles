@@ -8,6 +8,13 @@ case $- in
       *) return;;
 esac
 
+# 256 color
+if [ -e /usr/share/terminfo/x/xterm-256color ]; then
+        export TERM='xterm-256color'
+else
+        export TERM='xterm-color'
+fi
+
 # don't put duplicate lines or lines starting with space in the history.
 # See bash(1) for more options
 HISTCONTROL=ignoreboth
@@ -129,9 +136,6 @@ function setlauncherbot {
 function rec {
     asciinema rec;
 }
-
-# VI Mode in terminal
-set -o vi
 
 # Cls for clear
 alias cls='clear'
