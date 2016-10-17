@@ -140,6 +140,12 @@ function rec {
 # Cls for clear
 alias cls='clear'
 
+# Tree
+function tree {
+    ls -R | grep ":$" | sed -e 's/:$//' -e 's/[^-][^\/]*\//--/g' -e 's/^/   /' -e 's/-/|/'
+}
+
+
 export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
 
 # Load Virtualenvwrapper commands
