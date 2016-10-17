@@ -33,6 +33,8 @@ Plugin 'kien/rainbow_parentheses.vim'   " Maybe makes some rainbow parenthesis?
 Plugin 'henrik/vim-indexed-search'      " Shows match information at bottom line when searching
 Plugin 'jlanzarotta/bufexplorer'        " Explore vim buffer with 'be' 'bt' 'bs' and 'bv'
 Plugin 'tpope/vim-markdown'             " Forces Markdown highlighting
+Plugin 'mhinz/vim-startify'             " Vim start screen
+Plugin 'lfilho/cosco.vim'               " Semicolon insertion bliss
 " -----  END PLUGINS  -----
 
 " All of your Plugins must be added before the following line
@@ -164,3 +166,7 @@ au VimEnter * RainbowParenthesesToggle
 au Syntax * RainbowParenthesesLoadRound
 au Syntax * RainbowParenthesesLoadSquare
 au Syntax * RainbowParenthesesLoadBraces
+
+" Cosco configuration
+autocmd FileType javascript,css nmap <silent> ; <Plug>(cosco-commaOrSemiColon)
+
