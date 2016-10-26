@@ -19,6 +19,9 @@ fi
 # See bash(1) for more options
 HISTCONTROL=ignoreboth
 
+# set default editor to vim
+export EDITOR='vim'
+
 # append to the history file, don't overwrite it
 shopt -s histappend
 
@@ -145,7 +148,6 @@ function tree {
     ls -R | grep ":$" | sed -e 's/:$//' -e 's/[^-][^\/]*\//--/g' -e 's/^/   /' -e 's/-/|/'
 }
 
-
 export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
 
 # Load Virtualenvwrapper commands
@@ -156,3 +158,5 @@ export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
 function cd {
 	builtin cd "$@" && ls -F
 }
+
+export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
