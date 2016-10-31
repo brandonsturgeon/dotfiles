@@ -148,6 +148,16 @@ function tree {
     ls -R | grep ":$" | sed -e 's/:$//' -e 's/[^-][^\/]*\//--/g' -e 's/^/   /' -e 's/-/|/'
 }
 
+# In-terminal weather
+function weather {
+    curl -4 wttr.in/Lincoln_Nebraska
+}
+
+# Stat tmuxinator config
+function _stat {
+    tmuxinator start stat
+}
+
 export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
 
 # Load Virtualenvwrapper commands
