@@ -1,0 +1,13 @@
+# ~/.tmuxinator/stat.yml
+
+name: stat
+root: ~/
+
+windows:
+  - stat:
+      layout: 79dd,210x47,0,0{105x47,0,0,55,104x47,106,0[104x23,106,0,56,104x23,106,24{52x23,106,24,57,51x23,159,24,58}]}
+      panes:
+        - htop
+        - multitail /var/log/syslog /var/log/syslog.1
+        - speedometer -r lo -t lo
+        - echo 'test4'

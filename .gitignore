@@ -4,5 +4,5 @@
 !.gitignore
 !.vimrc
 !.bashrc
-!.tmuxinator/
+!.tmuxinator/*
 !.tmux.conf
