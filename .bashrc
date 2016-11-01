@@ -157,6 +157,10 @@ function weather {
 function _stat {
     tmuxinator start stat
 }
+# Project QS tmuxinator config
+function _qs {
+    tmuxinator start qs
+}
 
 export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
 

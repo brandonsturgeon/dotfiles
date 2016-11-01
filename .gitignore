@@ -4,5 +4,7 @@
 !.gitignore
 !.vimrc
 !.bashrc
-!.tmuxinator/*
 !.tmux.conf
+
+# Tmuxinator configs
+!.tmuxinator/stat.yml

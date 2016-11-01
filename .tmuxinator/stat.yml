@@ -10,4 +10,4 @@ windows:
         - htop
         - multitail /var/log/syslog /var/log/syslog.1
         - speedometer -r lo -t lo
-        - echo 'test4'
+        - python ~/_scripts/tech_headlines.py -l 3
