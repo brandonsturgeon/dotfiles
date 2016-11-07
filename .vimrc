@@ -35,6 +35,7 @@ Plugin 'jlanzarotta/bufexplorer'        " Explore vim buffer with 'be' 'bt' 'bs'
 Plugin 'tpope/vim-markdown'             " Forces Markdown highlighting
 Plugin 'mhinz/vim-startify'             " Vim start screen
 Plugin 'lfilho/cosco.vim'               " Semicolon insertion bliss
+Plugin 'tpope/vim-surround'             " Surround with tags, words, quotes using cs*
 " -----  END PLUGINS  -----
 
 " All of your Plugins must be added before the following line
