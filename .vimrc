@@ -88,9 +88,11 @@ nmap <silent> ,, :nohlsearch<CR>
 nnoremap gV `[v`]`
 " Key combo to use <Space> to toggle folding
 nnoremap <Space> za
-" Pres Enter to insert newline below current. Shift-Enter for above
-nnoremap <CR> o<Esc>k
-nnoremap <S-CR> O<Esc>j
+
+" Press Ctrl-j to insert blank line below, Ctrl-k to insert blank line above
+nnoremap <silent><C-j> :set paste<CR>m`o<Esc>k`:set nopaste<CR>
+nnoremap <silent><C-k> :set paste<CR>m`O<Esc>j`:set nopaste<CR>`
+
 " Open nerdtree with ,t
 map ,t :NERDTreeToggle<CR>
 
@@ -155,10 +157,6 @@ autocmd Filetype ruby       setlocal ts=2 sts=2 sw=2
 autocmd Filetype javascript setlocal ts=2 sts=2 sw=2
 autocmd FileType python     setlocal ts=4 sts=4 sw=4 tw=0
 
-" Custom toggling commands
-command Synt SyntasticToggleMode
-command Lines IndentLinesToggle
-
 " NERDTree configuration
 let NERDTreeIgnore=['\.rbc$', '\.pyc$', '\~$']
 
@@ -170,4 +168,3 @@ au Syntax * RainbowParenthesesLoadBraces
 
 " Cosco configuration
 autocmd FileType javascript,css nmap <silent> ; <Plug>(cosco-commaOrSemiColon)
-
