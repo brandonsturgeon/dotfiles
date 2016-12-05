@@ -150,7 +150,7 @@ function tree {
 
 # In-terminal weather
 function weather {
-    curl -4 wttr.in/Lincoln_Nebraska
+    curl -4 wttr.in/68502
 }
 
 # Stat tmuxinator config
