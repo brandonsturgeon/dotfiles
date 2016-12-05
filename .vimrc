@@ -89,9 +89,8 @@ nnoremap gV `[v`]`
 " Key combo to use <Space> to toggle folding
 nnoremap <Space> za
 
-" Press Ctrl-j to insert blank line below, Ctrl-k to insert blank line above
-nnoremap <silent><C-j> :set paste<CR>m`o<Esc>k`:set nopaste<CR>
-nnoremap <silent><C-k> :set paste<CR>m`O<Esc>j`:set nopaste<CR>`
+" Press enter to insert newlilne below current
+nnoremap <silent><CR> o<Esc>k
 
 " Open nerdtree with ,t
 map ,t :NERDTreeToggle<CR>
