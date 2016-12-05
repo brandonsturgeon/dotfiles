@@ -152,10 +152,37 @@ function tree {
 function weather {
     curl -4 wttr.in/68502
 }
+# In-terminal moon
+function moon {
+    curl -4 wttr.in/moon
+}
+
+# Is it up?
+function check {
+    curl -Is https://$1 -L | grep HTTP/
+}
+
+function rainbow {
+    yes "$(seq 231 -1 16)" | while read i; do printf "\x1b[48;5;${i}m\n"; sleep .02; done
+}
 
 # Stat tmuxinator config
 function _stat {
     tmuxinator start stat
+}
+
+function toucan {
+    echo "░░░░░░░░▄▄▄▀▀▀▄▄███▄░░░░░░░░░░░░░░░░░"
+    echo "░░░░░▄▀▀░░░░░░░▐░▀██▌░░░░░░░░░░░░░░░░"
+    echo "░░░▄▀░░░░▄▄███░▌▀▀░▀█░░░░░░░░░░░░░░░░"
+    echo "░░▄█░░▄▀▀▒▒▒▒▒▄▐░░░░█▌░░░░░░░░░░░░░░░"
+    echo "░▐█▀▄▀▄▄▄▄▀▀▀▀▌░░░░░▐█▄░░░░░░░░░░░░░░"
+    echo "░▌▄▄▀▀░░░░░░░░▌░░░░▄███████▄░░░░░░░░░"
+    echo "░░░░░░░░░░░░░▐░░░░▐███████████▄░░░░░░"
+    echo "░░░░░le░░░░░░░▐░░░░▐█████████████▄░░░"
+    echo "░░░░toucan░░░░░░▀▄░░░▐██████████████▄"
+    echo "░░░░░░has░░░░░░░░▀▄▄████████████████▄"
+    echo "░░░░░arrived░░░░░░░░░░░░█▀██████░░░░░"
 }
 # Project QS tmuxinator config
 function _qs {
