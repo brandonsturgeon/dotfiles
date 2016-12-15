@@ -119,7 +119,8 @@ set foldmethod=indent   "fold based on indent
 set foldnestmax=10      "deepest fold is 10 levels
 set nofoldenable        "dont fold by default
 set foldlevel=0         "this is just what i use
-hi Folded ctermbg=242   "Set the folded color to be less harsh
+hi Folded ctermbg=242   "Set the folded bg color to be less harsh
+hi Folded ctermfg=17    "Set the folded fg color to be less harsh
 
 " 256 Color
 set t_Co=256
