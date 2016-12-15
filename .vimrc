@@ -36,23 +36,16 @@ Plugin 'tpope/vim-markdown'             " Forces Markdown highlighting
 Plugin 'mhinz/vim-startify'             " Vim start screen
 Plugin 'lfilho/cosco.vim'               " Semicolon insertion bliss
 Plugin 'tpope/vim-surround'             " Surround with tags, words, quotes using cs*
+Plugin 'kana/vim-altercmd'              " Allows you to alter default Ex commands
 " -----  END PLUGINS  -----
 
-" All of your Plugins must be added before the following line
 call vundle#end()            " required
 filetype plugin indent on    " required
-" To ignore plugin indent changes, instead use:
-"filetype plugin on
-"
-" Brief help
-" :PluginList       - lists configured plugins
-" :PluginInstall    - installs plugins; append `!` to update or just :PluginUpdate
-" :PluginSearch foo - searches for foo; append `!` to refresh local cache
-" :PluginClean      - confirms removal of unused plugins; append `!` to auto-approve removal
-"
-" see :h vundle for more details or wiki for FAQ
-" Put your non-Plugin stuff after this line
+
 " ----- END VUNDLE SETTINGS -----
+
+" Load altercmd
+call altercmd#load()
 
 syntax enable
 
@@ -92,8 +85,12 @@ nnoremap <Space> za
 " Press enter to insert newlilne below current
 nnoremap <silent><CR> o<Esc>k
 
+" Change wa to ww
+AlterCommand ww wa
+
 " Open nerdtree with ,t
 map ,t :NERDTreeToggle<CR>
+
 
 " Allows the user to select where they want to go in their previous jumps
 function! GotoJump()
