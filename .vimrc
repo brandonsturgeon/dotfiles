@@ -109,6 +109,21 @@ endfunction
 " Shortcut for GotoJump: \f
 nmap <Leader>f :call GotoJump()<CR>
 
+" Copy and uncopy commands
+function! DoCopy()
+  set nonumber
+  :IndentLinesDisable
+  :GitGutterDisable
+endfunction
+
+function! DoUncopy()
+  set number
+  :IndentLinesEnable
+  :GitGutterEnable
+endfunction
+
+command! -n=? -complete=dir -bar Copy :call DoCopy()
+command! -n=? -complete=dir -bar Uncopy :call DoUncopy()
 
 " Folding
 " ' Then you can toggle folding with za. You can fold everything with zM and
