@@ -4,6 +4,7 @@
 !.gitignore
 !.vimrc
 !.bashrc
+!.profile
 !.tmux.conf
 
 # Tmuxinator configs
