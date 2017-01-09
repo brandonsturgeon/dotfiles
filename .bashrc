@@ -150,7 +150,7 @@ function tree {
 
 # In-terminal weather
 function weather {
-    curl -4 wttr.in/68502
+    curl -4 wttr.in/${1:-68502}
 }
 # In-terminal moon
 function moon {
