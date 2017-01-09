@@ -9,3 +9,7 @@
 
 # Tmuxinator configs
 !.tmuxinator/stat.yml
+
+# Utility scripts
+!_scripts/
+!_scripts/tech_headlines.py
