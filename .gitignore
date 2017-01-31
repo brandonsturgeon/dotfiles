@@ -14,9 +14,3 @@
 # Utility scripts
 !_scripts/
 !_scripts/tech_headlines.py
-
-# Z
-!_scripts/z/
-!_scripts/z/Makefile
-!_scripts/z/z.1
-!_scripts/z/z.sh
