@@ -1,6 +1,6 @@
 # Required Packages
 
- - [`vim`](https://github.com/vim/vim_)
+ - [`vim`](https://github.com/vim/vim)
  - [`Vundle`](https://github.com/VundleVim/Vundle.vim)
  - [`multitail`](https://github.com/flok99/multitail)
  - [`htop`](http://hisham.hm/htop/)
