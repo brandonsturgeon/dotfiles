@@ -14,3 +14,4 @@
 # Utility scripts
 !_scripts/
 !_scripts/tech_headlines.py
+!_scripts/z/*

@@ -19,8 +19,6 @@ fi
 # See bash(1) for more options
 HISTCONTROL=ignoreboth
 
-# set default editor to vim
-export EDITOR='vim'
 
 # append to the history file, don't overwrite it
 shopt -s histappend
@@ -88,8 +86,6 @@ if [ -x /usr/bin/dircolors ]; then
     test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
 fi
 
-# colored GCC warnings and errors
-export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quote=01'
 
 
 # Alias definitions.
@@ -179,8 +175,6 @@ function _qs {
 
 ## End custom functions ##
 
-export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
-
 # Load Virtualenvwrapper commands
 . /usr/local/bin/virtualenvwrapper.sh
 
@@ -190,4 +184,15 @@ function cd {
 	builtin cd "$@" && ls -F
 }
 
+## Begin environment variables ##
+
+# colored GCC warnings and errors
+export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quote=01'
+export EDITOR='vim' # Default editor to vim
+export REQUESTS_CA_BUNDLE="/home/brandon/Code/certs/ZscalerRootCertificate.crt"
 export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
+
+## End environment variables ##
+
+# Start Z
+. /home/brandon/_scripts/z/z.sh
