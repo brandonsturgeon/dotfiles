@@ -25,6 +25,10 @@
     # Checkout
     co = checkout
 
+    # Commit
+    ci = commit --interactive
+    cm = commit --message
+
     # Diff
     dc = diff --cached
     ds = diff --staged
