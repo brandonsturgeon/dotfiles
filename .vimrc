@@ -35,8 +35,10 @@ Plugin 'jlanzarotta/bufexplorer'        " Explore vim buffer with 'be' 'bt' 'bs'
 Plugin 'tpope/vim-markdown'             " Forces Markdown highlighting
 Plugin 'mhinz/vim-startify'             " Vim start screen
 Plugin 'lfilho/cosco.vim'               " Semicolon insertion bliss
-Plugin 'tpope/vim-surround'             " Surround with tags, words, quotes using cs*
+Plugin 'tpope/vim-surround'             " Surround with tags, words, quotes using [c,y]s[i[w,p]]
 Plugin 'kana/vim-altercmd'              " Allows you to alter default Ex commands
+Plugin 'terryma/vim-multiple-cursors'   " Multiple cursors
+Plugin 'tommcdo/vim-exchange'           " Swap 2 regions of text with cx -- clear with cxc
 " -----  END PLUGINS  -----
 
 call vundle#end()            " required
@@ -79,6 +81,7 @@ set expandtab
 nmap <silent> ,, :nohlsearch<CR>
 " gV to highlight last inserted text
 nnoremap gV `[v`]`
+
 " Key combo to use <Space> to toggle folding
 nnoremap <Space> za
 
