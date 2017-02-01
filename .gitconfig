@@ -1,0 +1,43 @@
+[user]
+	name = Brandon Sturgeon
+	email = sturgeonb4@gmail.com
+[core]
+    editor = vim
+[alias]
+    a = add
+    b = branch
+    c = commit
+    d = diff
+    f = fetch
+    l = log
+    m = merge
+    o = checkout
+    p = pull
+    r = remote
+    s = status
+    w = whatchanged
+
+    # Add
+    aa = add --all
+    ap = add --patch
+    au = add --update
+
+    # Checkout
+    co = checkout
+
+    # Diff
+    dc = diff --cached
+    ds = diff --staged
+    dw = diff --word-diff
+
+    # Alias management
+    alias = "!git config --get-regexp '^alias\\.' | colrm 1 6 | sed 's/ / = /'"
+
+    # Workflow
+    save = stash save
+    pop = stash 
+
+
+
+
+
