@@ -189,10 +189,9 @@ function cd {
 # colored GCC warnings and errors
 export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quote=01'
 export EDITOR='vim' # Default editor to vim
-export REQUESTS_CA_BUNDLE="/home/brandon/Code/certs/ZscalerRootCertificate.crt"
 export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
 
 ## End environment variables ##
 
 # Start Z
-. /home/brandon/_scripts/z/z.sh
+. ~/_scripts/z/z.sh
