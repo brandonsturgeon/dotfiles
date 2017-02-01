@@ -33,7 +33,6 @@ Plugin 'kien/rainbow_parentheses.vim'   " Maybe makes some rainbow parenthesis?
 Plugin 'henrik/vim-indexed-search'      " Shows match information at bottom line when searching
 Plugin 'jlanzarotta/bufexplorer'        " Explore vim buffer with 'be' 'bt' 'bs' and 'bv'
 Plugin 'tpope/vim-markdown'             " Forces Markdown highlighting
-Plugin 'mhinz/vim-startify'             " Vim start screen
 Plugin 'lfilho/cosco.vim'               " Semicolon insertion bliss
 Plugin 'tpope/vim-surround'             " Surround with tags, words, quotes using [c,y]s[i[w,p]]
 Plugin 'kana/vim-altercmd'              " Allows you to alter default Ex commands
