@@ -35,10 +35,10 @@
     dw = diff --word-diff
 
     # Push
-    pl = "!git push origin $(git branch-name)"
+    ps = "!git push origin $(git branch-name)"
 
     # Pull
-    ps = "!git pull origin $(git branch-name)"
+    pl = "!git pull origin $(git branch-name)"
 
     # Alias management
     alias = "!git config --get-regexp '^alias\\.' | colrm 1 6 | sed 's/ / = /'"
