@@ -20,3 +20,6 @@
 
 # IRB config
 !.irbrc
+
+# Vim bundles file
+!.bundles.vim
