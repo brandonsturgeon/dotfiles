@@ -68,6 +68,7 @@ set smarttab   " Insert tabs on the start of a line according to shiftwidth, not
 
 set history=1000    " Remember up to 1000 commands and search history
 set undolevels=1000 " Lots of undo levels
+set spelllang=en_us " Default language is en_us
 
 let mapleader = "," "Setting map leader
 
