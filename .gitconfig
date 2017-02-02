@@ -6,7 +6,6 @@
 [alias]
     a = add
     b = branch
-    c = commit
     d = diff
     f = fetch
     l = log
