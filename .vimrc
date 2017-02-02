@@ -123,6 +123,9 @@ set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%*
 
+" YouCompleteMe
+let g:ycm_autoclose_preview_window_after_completion=1
+
 " This is for having vim-jsx not require a .jsx extension to function properly
 let g:jsx_ext_required = 0
 
