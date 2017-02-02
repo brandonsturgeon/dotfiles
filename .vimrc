@@ -38,6 +38,7 @@ Plugin 'tpope/vim-surround'             " Surround with tags, words, quotes usin
 Plugin 'kana/vim-altercmd'              " Allows you to alter default Ex commands
 Plugin 'terryma/vim-multiple-cursors'   " Multiple cursors
 Plugin 'tommcdo/vim-exchange'           " Swap 2 regions of text with cx -- clear with cxc
+Plugin 'metakirby5/codi.vim'            " Interactive scratchpad. Enable with Codi [filetype]
 " -----  END PLUGINS  -----
 
 call vundle#end()            " required
