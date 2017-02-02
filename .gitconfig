@@ -47,7 +47,6 @@
     save = stash save
     pop = stash 
 
-
-
-
+    # Shell scripting aliases
+    branch-name = rev-parse --abbrev-ref HEAD
 
