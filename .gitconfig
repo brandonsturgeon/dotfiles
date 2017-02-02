@@ -34,8 +34,11 @@
     ds = diff --staged
     dw = diff --word-diff
 
+    # Push
+    pl = "!git push origin $(git branch-name)"
+
     # Pull
-    po = pull origin
+    ps = "!git pull origin $(git branch-name)"
 
     # Alias management
     alias = "!git config --get-regexp '^alias\\.' | colrm 1 6 | sed 's/ / = /'"
