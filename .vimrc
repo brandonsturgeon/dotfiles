@@ -69,6 +69,8 @@ set smarttab   " Insert tabs on the start of a line according to shiftwidth, not
 set history=1000    " Remember up to 1000 commands and search history
 set undolevels=1000 " Lots of undo levels
 
+let mapleader = "," "Setting map leader
+
 " Tabs to spaces
 set tabstop=4
 set shiftwidth=4
@@ -91,8 +93,7 @@ nnoremap <silent><CR> o<Esc>k
 AlterCommand ww wa
 
 " Open nerdtree with ,t
-map ,t :NERDTreeToggle<CR>
-
+nmap <silent> <leader>t :NERDTreeToggle<CR>
 
 " Allows the user to select where they want to go in their previous jumps
 function! GotoJump()
@@ -183,3 +184,6 @@ au Syntax * RainbowParenthesesLoadBraces
 
 " Cosco configuration
 autocmd FileType javascript,css nmap <silent> ; <Plug>(cosco-commaOrSemiColon)
+
+" Toggle spell checking with ,s
+nmap <silent> <leader>s :set spell!<CR>
