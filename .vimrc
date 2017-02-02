@@ -9,7 +9,7 @@ call altercmd#load()
 syntax enable
 
 " Generic sets
-set showcmd    " Shows the latest command entered in the very bottom righ
+set showcmd    " Shows the latest command entered in the very bottom right
 set cursorline " Draws a horizontal highlight on the line the cursor is on
 set hlsearch   " Highlights all isntances of a search
 set incsearch  " Start searching before pressing enter
