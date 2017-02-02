@@ -7,3 +7,7 @@
  - [`tmuxinator`](https://github.com/tmuxinator/tmuxinator)
  - [`speedometer`](https://excess.org/speedometer/)
  - [`Z`](https://github.com/rupa/z)
+
+
+# (incomplete) Installation instructions
+ - `gem install interactive_editor`

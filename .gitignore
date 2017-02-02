@@ -17,3 +17,6 @@
 
 # Git config
 !.gitconfig
+
+# IRB config
+!.irbrc
