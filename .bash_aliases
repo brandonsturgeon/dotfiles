@@ -10,6 +10,8 @@ if [ -x /usr/bin/dircolors ]; then
 fi
 
 alias cls='clear'
+
+# LS aliases
 alias lf='ls -alF'
 alias ll='ls -alS'
 alias la='ls -A'
@@ -22,3 +24,6 @@ alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo
 # .rc aliases
 alias vimrc='vim ~/.vimrc'
 alias bashrc='vim ~/.bashrc'
+
+# Navigate to the git root
+alias gitroot='cd $(git rev-parse --show-cdup)'
