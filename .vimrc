@@ -39,6 +39,7 @@ Plugin 'kana/vim-altercmd'              " Allows you to alter default Ex command
 Plugin 'terryma/vim-multiple-cursors'   " Multiple cursors
 Plugin 'tommcdo/vim-exchange'           " Swap 2 regions of text with cx -- clear with cxc
 Plugin 'metakirby5/codi.vim'            " Interactive scratchpad. Enable with Codi [filetype]
+Plugin 'mtth/scratch.vim'               " Unobtrusive scratchbuffers. Open with gs
 " -----  END PLUGINS  -----
 
 call vundle#end()            " required
@@ -66,6 +67,7 @@ set showmatch  " Show matching parenthesis
 set ignorecase " Ignore case when searching
 set smartcase  " Ignore case if search pattern is all lowercase, case-sensitive otherwise
 set smarttab   " Insert tabs on the start of a line according to shiftwidth, not tabstop
+set hidden     " Used to hide scratchbuffers
 
 set history=1000    " Remember up to 1000 commands and search history
 set undolevels=1000 " Lots of undo levels
