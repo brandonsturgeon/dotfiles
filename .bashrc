@@ -195,3 +195,5 @@ export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
 
 # Start Z
 . ~/_scripts/z/z.sh
+
+alias g="git"
