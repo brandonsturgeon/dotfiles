@@ -27,3 +27,9 @@ alias bashrc='vim ~/.bashrc'
 
 # Navigate to the git root
 alias gitroot='cd $(git rev-parse --show-cdup)'
+
+# Git
+alias g="git"
+
+# Vim
+alias v="vim"
