@@ -19,7 +19,6 @@ fi
 # See bash(1) for more options
 HISTCONTROL=ignoreboth
 
-
 # append to the history file, don't overwrite it
 shopt -s histappend
 
@@ -85,8 +84,6 @@ esac
 if [ -x /usr/bin/dircolors ]; then
     test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
 fi
-
-
 
 # Alias definitions.
 # You may want to put all your additions into a separate file like
@@ -195,3 +192,9 @@ export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
 
 # Start Z
 . ~/_scripts/z/z.sh
+
+function do_request {
+    curl -X POST -F "origin_address=$ORIGIN_ADD" -F "destination_address=$DEST_ADD" localhost:3000/api/v1/directions/ | jq
+}
+
+export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
