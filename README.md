@@ -7,6 +7,7 @@
  - [`tmuxinator`](https://github.com/tmuxinator/tmuxinator)
  - [`speedometer`](https://excess.org/speedometer/)
  - [`Z`](https://github.com/rupa/z)
+ - ['V'](https://github.com/rupa/v)
 
 
 # (incomplete) Installation instructions
