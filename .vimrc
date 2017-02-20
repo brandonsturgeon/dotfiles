@@ -29,6 +29,8 @@ set history=1000    " Remember up to 1000 commands and search history
 set undolevels=1000 " Lots of undo levels
 set spelllang=en_us " Default language is en_us
 
+set laststatus=2 "Enables statusline everywhere"
+
 let mapleader = "," "Setting map leader
 
 " Tabs to spaces
@@ -119,9 +121,11 @@ let g:syntastic_loc_list_height= 5
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 1
 let g:syntastic_javascript_checkers = ['eslint']
+let g:syntastic_ruby_checkers = ['rubocop']
 set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%*
+
 
 " YouCompleteMe
 let g:ycm_autoclose_preview_window_after_completion=1
@@ -147,6 +151,9 @@ au Syntax * RainbowParenthesesLoadBraces
 
 " Cosco configuration
 autocmd FileType javascript,css nmap <silent> ; <Plug>(cosco-commaOrSemiColon)
+
+" AirlineTheme configuration
+let g:airline_theme='hybridline'
 
 " ----- END PLUGIN CONFIGURATION ----- "
 

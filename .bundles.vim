@@ -40,6 +40,8 @@ Plugin 'terryma/vim-multiple-cursors'   " Multiple cursors
 Plugin 'tommcdo/vim-exchange'           " Swap 2 regions of text with cx -- clear with cxc
 Plugin 'metakirby5/codi.vim'            " Interactive scratchpad. Enable with Codi [filetype]
 Plugin 'mtth/scratch.vim'               " Unobtrusive scratchbuffers. Open with gs
+Plugin 'vim-airline/vim-airline'        " Nice statusline
+Plugin 'vim-airline/vim-airline-themes' " Airline themes
 " -----  END PLUGINS  -----
 
 call vundle#end()            " required
