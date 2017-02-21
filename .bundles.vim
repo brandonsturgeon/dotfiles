@@ -43,7 +43,6 @@ Plugin 'mtth/scratch.vim'               " Unobtrusive scratchbuffers. Open with 
 Plugin 'vim-airline/vim-airline'        " Nice statusline
 Plugin 'vim-airline/vim-airline-themes' " Airline themes
 Plugin 'vim-ctrlspace/vim-ctrlspace'    " Vim ctrlspace
-Plugin 'bling/vim-bufferline'           " Displays buffer in statusline
 " -----  END PLUGINS  -----
 
 call vundle#end()            " required

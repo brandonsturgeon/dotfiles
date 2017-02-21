@@ -156,6 +156,14 @@ autocmd FileType javascript,css nmap <silent> ; <Plug>(cosco-commaOrSemiColon)
 
 " AirlineTheme configuration
 let g:airline_theme='hybridline'
+let g:airline#extensions#default#section_truncate_width = {
+    \ 'b': 100,
+    \ 'x': 100,
+    \ 'y': 88,
+    \ 'z': 45,
+    \ 'warning': 80,
+    \ 'error': 80,
+    \ }
 
 " ----- END PLUGIN CONFIGURATION ----- "
 
