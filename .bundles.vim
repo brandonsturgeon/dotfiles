@@ -42,6 +42,8 @@ Plugin 'metakirby5/codi.vim'            " Interactive scratchpad. Enable with Co
 Plugin 'mtth/scratch.vim'               " Unobtrusive scratchbuffers. Open with gs
 Plugin 'vim-airline/vim-airline'        " Nice statusline
 Plugin 'vim-airline/vim-airline-themes' " Airline themes
+Plugin 'vim-ctrlspace/vim-ctrlspace'    " Vim ctrlspace
+Plugin 'bling/vim-bufferline'           " Displays buffer in statusline
 " -----  END PLUGINS  -----
 
 call vundle#end()            " required

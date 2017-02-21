@@ -31,6 +31,8 @@ set spelllang=en_us " Default language is en_us
 
 set laststatus=2 "Enables statusline everywhere"
 
+set showtabline=0 "Turns off tablines
+
 let mapleader = "," "Setting map leader
 
 " Tabs to spaces
