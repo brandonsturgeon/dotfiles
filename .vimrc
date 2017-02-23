@@ -50,8 +50,8 @@ set foldnestmax=10      "deepest fold is 10 levels
 set nofoldenable        "dont fold by default
 
 " Folding
-hi Folded ctermbg=242   "Set the folded bg color to be less harsh
-hi Folded ctermfg=17    "Set the folded fg color to be less harsh
+hi Folded ctermbg=233   "Set the folded bg color to be less harsh
+hi Folded ctermfg=19    "Set the folded fg color to be less harsh
 
 " 256 Color
 set t_Co=256
@@ -157,8 +157,8 @@ autocmd FileType javascript,css nmap <silent> ; <Plug>(cosco-commaOrSemiColon)
 " AirlineTheme configuration
 let g:airline_theme='hybridline'
 let g:airline#extensions#default#section_truncate_width = {
-    \ 'b': 100,
-    \ 'x': 100,
+    \ 'b': 150,
+    \ 'x': 150,
     \ 'y': 88,
     \ 'z': 45,
     \ 'warning': 80,
