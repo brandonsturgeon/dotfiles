@@ -23,3 +23,6 @@
 
 # Vim bundles file
 !.bundles.vim
+
+# ZSH
+!.zshrc
