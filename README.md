@@ -9,6 +9,7 @@
  - [`speedometer`](https://excess.org/speedometer/)
  - [`Z`](https://github.com/rupa/z)
  - [`V`](https://github.com/rupa/v)
+ - [`ZSH`](https://github.com/robbyrussell/oh-my-zsh)
 
 
 # (incomplete) Installation instructions
