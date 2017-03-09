@@ -13,7 +13,7 @@ alias cls='clear'
 
 # LS aliases
 alias lf='ls -alF'
-alias ll='ls -alS'
+alias ll='ls -alh'
 alias la='ls -A'
 alias l='ls -CF'
 
@@ -33,3 +33,6 @@ alias g="git"
 
 # Vim
 alias v="vim"
+
+# DF to always use -h flag
+alias df="df -h"
