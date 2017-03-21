@@ -88,6 +88,9 @@ nmap <silent> <leader>s :set spell!<CR>
 " ready to receive some code.'
 imap <C-c> <CR><Esc>O
 
+" vim-ctrlspace fuzzy search with Ctrl-P
+nnoremap <silent><C-p> :CtrlSpace O<CR>
+
 " ----- END REMAPS ----- "
 
 " ----- BEGIN CUSTOM FUNCTIONS ----- "
@@ -164,6 +167,12 @@ let g:airline#extensions#default#section_truncate_width = {
     \ 'warning': 80,
     \ 'error': 80,
     \ }
+
+" vim-ctrlspace use silver searcher
+if executable("ag")
+  let g:CtrlSpaceGlobCommand = 'ag -l --nocolor -g ""'
+  let g:ctrlspace_glob_command = 'ag -l --nocolor -g ""'
+endif
 
 " ----- END PLUGIN CONFIGURATION ----- "
 
