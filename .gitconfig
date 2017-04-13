@@ -42,6 +42,9 @@
     # Alias management
     alias = "!git config --get-regexp '^alias\\.' | colrm 1 6 | sed 's/ / = /'"
 
+    # List branches sorted by last modified
+    bb = "!git for-each-ref --sort='-authordate' --format='%(authordate)%09%(objectname:short)%09%(refname)' refs/heads | sed -e 's-refs/heads/--'"
+
     # Workflow
     save = stash save
     pop = stash 
