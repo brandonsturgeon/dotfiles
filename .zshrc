@@ -2,7 +2,7 @@
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 # Path to your oh-my-zsh installation.
-  export ZSH=/home/brandon/.oh-my-zsh
+export ZSH=/home/brandon/.oh-my-zsh
 
 # Set name of the theme to load. Optionally, if you set this to "random"
 # it'll load a random theme each time that oh-my-zsh is loaded.
@@ -52,10 +52,10 @@ alias zshrc="vim ~/.zshrc"
 
 # Easy Ubuntu Launcher position controls
 function setlauncherleft {
-	gsettings set com.canonical.Unity.Launcher launcher-position Left
+    gsettings set com.canonical.Unity.Launcher launcher-position Left
 }
 function setlauncherbot {
-	gsettings set com.canonical.Unity.Launcher launcher-position Bottom
+    gsettings set com.canonical.Unity.Launcher launcher-position Bottom
 }
 
 # Easily record with asciinema
@@ -114,22 +114,23 @@ function _qs {
     tmuxinator start qs
 }
 
-## End custom functions ##
-
 # Load Virtualenvwrapper commands
 . /usr/local/bin/virtualenvwrapper.sh
 
 # Automatically 'ls -F' after every CD
 [ -z "$PS1" ] && return
 function cd {
-	builtin cd "$@" && ls -F
+    builtin cd "$@" && ls -F
 }
 
 # Start Z
 . ~/_scripts/z/z.sh
 
 function do_request {
-    curl -X POST -F "origin_address=$ORIGIN_ADD" -F "destination_address=$DEST_ADD" localhost:3000/api/v1/directions/ | jq
+  curl -X POST -F "origin_address=$ORIGIN_ADD" -F "destination_address=$DEST_ADD" localhost:3000/api/v1/directions/ | jq
 }
 
 ## END CUSTOM FUNCTIONS ##
+
+# Set the root certificagte
+. ~/.set_root_cert.sh
