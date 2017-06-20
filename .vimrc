@@ -15,7 +15,6 @@ set hlsearch   " Highlights all isntances of a search
 set incsearch  " Start searching before pressing enter
 set number     " Line numbers
 set wildmenu   " Autocompleting of filenames when you :e
-set lazyredraw " Only redraw when we need it
 set nowrap     " Don't wrap lines
 set autoindent " Always set autoindenting on
 set copyindent " Copy the previous indentation on autoindenting
@@ -91,6 +90,9 @@ imap <C-c> <CR><Esc>O
 " vim-ctrlspace fuzzy search with Ctrl-P
 nnoremap <silent><C-p> :CtrlSpace O<CR>
 
+" Ctrl-m to maximize current split, Ctrl-= to revert
+nnoremap <C-W>m :wincmd _<Bar>wincmd <Bar><CR>
+
 " ----- END REMAPS ----- "
 
 " ----- BEGIN CUSTOM FUNCTIONS ----- "
@@ -131,7 +133,6 @@ set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%*
 
-
 " YouCompleteMe
 let g:ycm_autoclose_preview_window_after_completion=1
 
@@ -153,6 +154,8 @@ au VimEnter * RainbowParenthesesToggle
 au Syntax * RainbowParenthesesLoadRound
 au Syntax * RainbowParenthesesLoadSquare
 au Syntax * RainbowParenthesesLoadBraces
+let g:rbpt_max = 16
+let g:rbpt_loadcmd_toggle = 0
 
 " Cosco configuration
 autocmd FileType javascript,css nmap <silent> ; <Plug>(cosco-commaOrSemiColon)
