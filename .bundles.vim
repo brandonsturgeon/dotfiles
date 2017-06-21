@@ -26,10 +26,9 @@ Plugin 'scrooloose/nerdtree'            " Tree explorer
 Plugin 'Xuyuanp/nerdtree-git-plugin'    " Git status in NerdTree
 Plugin 'dhruvasagar/vim-table-mode'     " Easy creation of tables
 Plugin 'godlygeek/tabular'              " Lines up text using :Tabularize /=
-Plugin 'AndrewRadev/splitjoin.vim'      " Switches between single-line and multi-line statements with gS and gJ
 Plugin 'EinfachToll/DidYouMean'         " Vim plugin which asks for the right file to open
 Plugin 'Valloric/MatchTagAlways'        " Always highlights the tags that enclose your cursor
-Plugin 'kien/rainbow_parentheses.vim'   " Maybe makes some rainbow parenthesis?
+Plugin 'luochen1990/rainbow'            " Maybe makes some rainbow parenthesis?
 Plugin 'henrik/vim-indexed-search'      " Shows match information at bottom line when searching
 Plugin 'jlanzarotta/bufexplorer'        " Explore vim buffer with 'be' 'bt' 'bs' and 'bv'
 Plugin 'tpope/vim-markdown'             " Forces Markdown highlighting
