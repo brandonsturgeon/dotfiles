@@ -16,6 +16,7 @@
 !_scripts/tech_headlines.py
 !_scripts/zaw/
 !_scripts/zaw/*
+!_scripts/zaw/**/*
 
 # Git config
 !.gitconfig
