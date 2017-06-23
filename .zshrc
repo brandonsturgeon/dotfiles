@@ -22,6 +22,8 @@ DISABLE_UNTRACKED_FILES_DIRTY="true"
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(gitfast git-extras rvm ruby rails bundler gem command-not-found npm node pip python zsh-256color zsh-syntax-highlighting)
 
+# Where I keep my scripts
+SCRIPTS_DIR=~/_scripts
 
 # You may need to manually set your language environment
 export LANG=en_US.UTF-8
@@ -34,7 +36,7 @@ HISTSIZE=5000 # session history size
 SAVEHIST=1000 # saved history
 
 # Source zaw / zaw configuration
-source ~/_scripts/zaw/zaw.zsh
+source $SCRIPTS_DIR/zaw/zaw.zsh
 bindkey '^n' zaw-history
 bindkey -M filterselect '^r' down-line-or-history
 bindkey -M filterselect '^s' up-line-or-history
@@ -138,16 +140,14 @@ function cd {
 }
 
 # Start Z
-. ~/_scripts/z/z.sh
+. $SCRIPTS_DIR/z/z.sh
 
 function do_request {
   curl -X POST -F "origin_address=$ORIGIN_ADD" -F "destination_address=$DEST_ADD" localhost:3000/api/v1/directions/ | jq
 }
 
 function update_scripts {
-    git -C ~/_scripts/v pull origin master
-    git -C ~/_scripts/z pull origin master
-    git -C ~/_scripts/zaw pull origin master
+    for dir in v z zaw; do git -C $SCRIPTS_DIR/$dir pull origin master; done
 }
 
 ## END CUSTOM FUNCTIONS ##
