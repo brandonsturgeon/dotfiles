@@ -24,6 +24,8 @@ plugins=(gitfast git-extras rvm ruby rails bundler gem command-not-found npm nod
 
 # Where I keep my scripts
 SCRIPTS_DIR=~/_scripts
+# List of scripts
+SCRIPTS=(v z zaw)
 
 # You may need to manually set your language environment
 export LANG=en_US.UTF-8
@@ -58,7 +60,7 @@ if [ -f ~/.bash_aliases ]; then
 fi
 alias zshrc="vim ~/.zshrc"
 
-
+# Start oh-my-zsh
 source $ZSH/oh-my-zsh.sh
 
 ## END ZSH CONFIGURATION ##
@@ -112,6 +114,11 @@ function _stat {
     tmuxinator start stat
 }
 
+# Project QS tmuxinator config
+function _qs {
+    tmuxinator start qs
+}
+
 function toucan {
     echo "░░░░░░░░▄▄▄▀▀▀▄▄███▄░░░░░░░░░░░░░░░░░"
     echo "░░░░░▄▀▀░░░░░░░▐░▀██▌░░░░░░░░░░░░░░░░"
@@ -124,10 +131,6 @@ function toucan {
     echo "░░░░toucan░░░░░░▀▄░░░▐██████████████▄"
     echo "░░░░░░has░░░░░░░░▀▄▄████████████████▄"
     echo "░░░░░arrived░░░░░░░░░░░░█▀██████░░░░░"
-}
-# Project QS tmuxinator config
-function _qs {
-    tmuxinator start qs
 }
 
 # Load Virtualenvwrapper commands
@@ -146,8 +149,11 @@ function do_request {
   curl -X POST -F "origin_address=$ORIGIN_ADD" -F "destination_address=$DEST_ADD" localhost:3000/api/v1/directions/ | jq
 }
 
+# Update all scripts in script directory
 function update_scripts {
-    for dir in v z zaw; do git -C $SCRIPTS_DIR/$dir pull origin master; done
+    for script in $SCRIPTS; do
+        git -C $SCRIPTS_DIR/$script pull origin master;
+    done
 }
 
 ## END CUSTOM FUNCTIONS ##
