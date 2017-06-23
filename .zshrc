@@ -33,21 +33,34 @@ export EDITOR='vim'
 HISTSIZE=5000 # session history size
 SAVEHIST=1000 # saved history
 
-# Source zaw
+# Source zaw / zaw configuration
 source ~/_scripts/zaw/zaw.zsh
+bindkey '^n' zaw-history
+bindkey -M filterselect '^r' down-line-or-history
+bindkey -M filterselect '^s' up-line-or-history
+bindkey -M filterselect '^e' accept-search
+
+zstyle ':filter-select:highlight' matched fg=green
+zstyle ':filter-select' max-lines -1
+zstyle ':filter-select' case-insensitive yes # enable case-insensitive
+zstyle ':filter-select' extended-search yes # see below
+
+# Fix for zaw
+TRAPWINCH() {
+  zle && { zle reset-prompt; zle -R }
+}
+
+# Alias definitions.
+if [ -f ~/.bash_aliases ]; then
+    . ~/.bash_aliases
+fi
+alias zshrc="vim ~/.zshrc"
+
 
 source $ZSH/oh-my-zsh.sh
 
 ## END ZSH CONFIGURATION ##
 
-# Alias definitions.
-# You may want to put all your additions into a separate file like
-# ~/.bash_aliases, instead of adding them here directly.
-# See /usr/share/doc/bash-doc/examples in the bash-doc package.
-if [ -f ~/.bash_aliases ]; then
-    . ~/.bash_aliases
-fi
-alias zshrc="vim ~/.zshrc"
 
 ## BEGIN CUSTOM FUNCTIONS ##
 
