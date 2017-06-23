@@ -144,6 +144,12 @@ function do_request {
   curl -X POST -F "origin_address=$ORIGIN_ADD" -F "destination_address=$DEST_ADD" localhost:3000/api/v1/directions/ | jq
 }
 
+function update_scripts {
+    git -C ~/_scripts/v pull origin master
+    git -C ~/_scripts/z pull origin master
+    git -C ~/_scripts/zaw pull origin master
+}
+
 ## END CUSTOM FUNCTIONS ##
 
 # Set the root certificagte
