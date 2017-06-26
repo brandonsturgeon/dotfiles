@@ -14,18 +14,26 @@ ENABLE_CORRECTION="true"
 # Uncomment the following line to display red dots whilst waiting for completion.
 COMPLETION_WAITING_DOTS="true"
 
-DISABLE_UNTRACKED_FILES_DIRTY="true"
-
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(gitfast git-extras rvm ruby rails bundler gem command-not-found npm node pip python zsh-256color zsh-syntax-highlighting)
-
-# Where I keep my scripts
-SCRIPTS_DIR=~/_scripts
-# List of scripts
-SCRIPTS=(v z zaw)
+plugins=(
+    gitfast
+    git-extras
+    rvm
+    ruby
+    rails
+    bundler
+    gem
+    command-not-found
+    npm
+    node
+    pip
+    python
+    zsh-256color
+    zsh-syntax-highlighting
+)
 
 # You may need to manually set your language environment
 export LANG=en_US.UTF-8
@@ -36,6 +44,21 @@ export EDITOR='vim'
 # Set history size for reverse search
 HISTSIZE=5000 # session history size
 SAVEHIST=1000 # saved history
+
+
+# Start oh-my-zsh
+source $ZSH/oh-my-zsh.sh
+
+## END ZSH CONFIGURATION ##
+
+
+
+## BEGIN CUSTOM CONFIGURATION ##
+
+# Where I keep my scripts
+SCRIPTS_DIR=~/_scripts
+# List of scripts
+SCRIPTS=(v z zaw)
 
 # Source zaw / zaw configuration
 source $SCRIPTS_DIR/zaw/zaw.zsh
@@ -54,16 +77,35 @@ TRAPWINCH() {
   zle && { zle reset-prompt; zle -R }
 }
 
+
+alias zshrc="vim ~/.zshrc"
+
+# Load Virtualenvwrapper commands
+. /usr/local/bin/virtualenvwrapper.sh
+
+# Set the root certificagte
+if [ -f ~/.set_root_cert ]; then
+    . ~/.set_root_cert.sh
+fi
+
 # Alias definitions.
 if [ -f ~/.bash_aliases ]; then
     . ~/.bash_aliases
 fi
-alias zshrc="vim ~/.zshrc"
 
-# Start oh-my-zsh
-source $ZSH/oh-my-zsh.sh
+# Start Z
+if [ -f $SCRIPTS_DIR/z/z.sh ]; then
+    . $SCRIPTS_DIR/z/z.sh
+fi
 
-## END ZSH CONFIGURATION ##
+# Automatically 'ls -F' after every CD
+[ -z "$PS1" ] && return
+function cd {
+    builtin cd "$@" && ls -F
+}
+
+## END CUSTOM CONFIGURATION
+
 
 
 ## BEGIN CUSTOM FUNCTIONS ##
@@ -133,18 +175,6 @@ function toucan {
     echo "░░░░░arrived░░░░░░░░░░░░█▀██████░░░░░"
 }
 
-# Load Virtualenvwrapper commands
-. /usr/local/bin/virtualenvwrapper.sh
-
-# Automatically 'ls -F' after every CD
-[ -z "$PS1" ] && return
-function cd {
-    builtin cd "$@" && ls -F
-}
-
-# Start Z
-. $SCRIPTS_DIR/z/z.sh
-
 function do_request {
   curl -X POST -F "origin_address=$ORIGIN_ADD" -F "destination_address=$DEST_ADD" localhost:3000/api/v1/directions/ | jq
 }
@@ -157,7 +187,3 @@ function update_scripts {
 }
 
 ## END CUSTOM FUNCTIONS ##
-
-# Set the root certificagte
-. ~/.set_root_cert.sh
-
