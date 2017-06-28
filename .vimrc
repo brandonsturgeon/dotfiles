@@ -90,8 +90,9 @@ imap <C-c> <CR><Esc>O
 " vim-ctrlspace fuzzy search with Ctrl-P
 nnoremap <silent><C-p> :CtrlSpace O<CR>
 
-" Ctrl-m to maximize current split, Ctrl-= to revert
+" Ctrl-w--Ctrl-m to maximize current split, Ctrl-= to revert
 nnoremap <C-W>m :wincmd _<Bar>wincmd <Bar><CR>
+
 
 " ----- END REMAPS ----- "
 
