@@ -55,10 +55,25 @@ source $ZSH/oh-my-zsh.sh
 
 ## BEGIN CUSTOM CONFIGURATION ##
 
+
+# Ensure that yarn uses strict ssl
+yarn config set strict-ssl true > /dev/null 2>&1
+# Set the cafile for yarnpkg
+yarn config set cafile $SSL_CERT_FILE > /dev/null 2>&1
+
 # Where I keep my scripts
 SCRIPTS_DIR=~/_scripts
 # List of scripts
 SCRIPTS=(v z zaw)
+
+# Preferred temp directory
+export TEMP=~/.tmp/
+if [ ! -d ~/.tmp ]; then
+    mkdir ~/.tmp
+fi
+if [ ! -d ~/.tmp/.vim/ ]; then
+    mkdir ~/.tmp/.vim
+fi
 
 # Source zaw / zaw configuration
 source $SCRIPTS_DIR/zaw/zaw.zsh
@@ -81,10 +96,10 @@ TRAPWINCH() {
 alias zshrc="vim ~/.zshrc"
 
 # Load Virtualenvwrapper commands
-. /usr/local/bin/virtualenvwrapper.sh
+# . /usr/local/bin/virtualenvwrapper.sh
 
 # Set the root certificagte
-if [ -f ~/.set_root_cert ]; then
+if [ -f ~/.set_root_cert.sh ]; then
     . ~/.set_root_cert.sh
 fi
 
@@ -186,4 +201,9 @@ function update_scripts {
     done
 }
 
+function jpg_convert {
+    convert $1 -sampling-factor 4:2:0 -strip -interlace JPEG $(python -c "print '$1'.split('.')[0]+'2.jpg'");
+}
+
+# convert $1 -sampling-factor 4:2:0 -strip -interlace JPEG discord2.jpg
 ## END CUSTOM FUNCTIONS ##
