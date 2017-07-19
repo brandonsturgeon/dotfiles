@@ -56,6 +56,10 @@ hi Folded ctermfg=19    "Set the folded fg color to be less harsh
 set t_Co=256
 set foldlevel=0         "this is just what i use
 
+" Set backup directory to $TEMP
+set backupdir=$TEMP/.vim//
+set directory=$TEMP/.vim//
+
 " ----- END BASE CONFIGURATION ----- "
 
 " ----- BEGIN REMAPS ----- "
