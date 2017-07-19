@@ -7,7 +7,6 @@
     a = add
     b = branch
     d = diff
-    f = fetch
     l = log
     m = merge
     o = checkout
@@ -33,11 +32,14 @@
     ds = diff --staged
     dw = diff --word-diff
 
+    # Fetch
+    fa = fetch --all
+
     # Push
     ps = "!git push origin $(git branch-name)"
 
     # Pull
-    pl = "!git pull origin $(git branch-name)"
+    pl = "!git pull --rebase origin $(git branch-name)"
 
     # Alias management
     alias = "!git config --get-regexp '^alias\\.' | colrm 1 6 | sed 's/ / = /'"
