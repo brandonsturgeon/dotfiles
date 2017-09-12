@@ -18,3 +18,5 @@
  - `vim +PluginInstall +qall`
  - `sudo apt install python-pip`
  - `sudo apt install silversearcher-ag`
+ - `mkdir ~/.tmp; mkdir ~/.tmp/.vim;`
+ - `export TEMP=~/.tmp`
