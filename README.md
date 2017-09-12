@@ -16,7 +16,7 @@
  - `gem install interactive_editor`
  - `git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim`
  - `vim +PluginInstall +qall`
- - `sudo apt install python-pip`
+ - `sudo apt install python-pip; pip install --upgrade pip`
  - `sudo apt install silversearcher-ag`
  - `mkdir ~/.tmp; mkdir ~/.tmp/.vim;`
  - `export TEMP=~/.tmp`
