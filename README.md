@@ -20,7 +20,7 @@
  - `sudo apt install silversearcher-ag`
  - `mkdir ~/.tmp; mkdir ~/.tmp/.vim;`
  - `export TEMP=~/.tmp`
- ```
+ - ```
  # YouCompleteMe
  sudo apt-get install build-essential cmake
  sudo apt-get install python-dev python3-dev
