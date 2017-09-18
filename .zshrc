@@ -1,7 +1,18 @@
 ## BEGIN ZSH CONFIGURATION ##
 
+# Detect OS
+OS=`uname`
+IS_MAC=false
+if [[ "$OS" == "Darwin" ]]; then
+    IS_MAC=true
+fi
+
 # Path to your oh-my-zsh installation.
-export ZSH=/home/brandon/.oh-my-zsh
+if [[ "$IS_MAC" == true ]]; then
+    export ZSH=/Users/brandonsturgeon/.oh-my-zsh
+else
+    export ZSH=/home/brandon/.oh-my-zsh
+fi
 
 # Set name of the theme to load. Optionally, if you set this to "random"
 # it'll load a random theme each time that oh-my-zsh is loaded.
@@ -76,11 +87,14 @@ if [ ! -d ~/.tmp/.vim/ ]; then
 fi
 
 # Source zaw / zaw configuration
-source $SCRIPTS_DIR/zaw/zaw.zsh
+# source $SCRIPTS_DIR/zaw/zaw.zsh
 bindkey '^n' zaw-history
-bindkey -M filterselect '^r' down-line-or-history
-bindkey -M filterselect '^s' up-line-or-history
-bindkey -M filterselect '^e' accept-search
+
+if [[ "$IS_MAC" == false ]]; then
+    bindkey -M filterselect '^r' down-line-or-history
+    bindkey -M filterselect '^s' up-line-or-history
+    bindkey -M filterselect '^e' accept-search
+fi
 
 zstyle ':filter-select:highlight' matched fg=green
 zstyle ':filter-select' max-lines -1
@@ -118,6 +132,8 @@ fi
 function cd {
     builtin cd "$@" && ls -F
 }
+
+export PATH=/opt/local/bin:$PATH
 
 ## END CUSTOM CONFIGURATION
 
@@ -205,5 +221,16 @@ function jpg_convert {
     convert $1 -sampling-factor 4:2:0 -strip -interlace JPEG $(python -c "print '$1'.split('.')[0]+'2.jpg'");
 }
 
+function dim_screen {
+    for i in `seq 1 $1`;  osascript $SCRIPTS_DIR/dim-screen.script
+}
+
+function brighten_screen {
+    for i in `seq 1 $1`;  osascript $SCRIPTS_DIR/brighten-screen.script
+}
+
 # convert $1 -sampling-factor 4:2:0 -strip -interlace JPEG discord2.jpg
+
+export PATH="$PATH:$HOME/.rvm/bin"
+
 ## END CUSTOM FUNCTIONS ##
