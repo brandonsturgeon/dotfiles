@@ -35,6 +35,9 @@
     # Fetch
     fa = fetch --all
 
+    # Merge
+    mm = merge master
+
     # Push
     ps = "!git push origin $(git branch-name)"
 
