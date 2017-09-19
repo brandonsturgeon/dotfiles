@@ -59,7 +59,7 @@ source $ZSH/oh-my-zsh.sh
 # Ensure that yarn uses strict ssl
 yarn config set strict-ssl true > /dev/null 2>&1
 # Set the cafile for yarnpkg
-yarn config set cafile $SSL_CERT_FILE > /dev/null 2>&1
+# yarn config set cafile "$SSL_CERT_FILE" > /dev/null 2>&1
 
 # Where I keep my scripts
 SCRIPTS_DIR=~/_scripts
