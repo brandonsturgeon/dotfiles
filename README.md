@@ -14,3 +14,16 @@
 
 # (incomplete) Installation instructions
  - `gem install interactive_editor`
+ - `git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim`
+ - `vim +PluginInstall +qall`
+ - `sudo apt install python-pip; pip install --upgrade pip`
+ - `sudo apt install silversearcher-ag`
+ - `mkdir ~/.tmp; mkdir ~/.tmp/.vim;`
+ - `export TEMP=~/.tmp`
+ ```
+ # YouCompleteMe
+ sudo apt-get install build-essential cmake
+ sudo apt-get install python-dev python3-dev
+ cd ~/.vim/bundle/YouCompleteMe
+./install.py --tern-completer
+```
