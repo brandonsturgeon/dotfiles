@@ -43,6 +43,7 @@ Plugin 'vim-airline/vim-airline'        " Nice statusline
 Plugin 'vim-airline/vim-airline-themes' " Airline themes
 Plugin 'vim-ctrlspace/vim-ctrlspace'    " Vim ctrlspace
 Plugin 'chrisbra/Colorizer'             " Highlight hex colors
+Plugin 'fatih/vim-go'                   " Golang support
 " -----  END PLUGINS  -----
 
 call vundle#end()            " required
