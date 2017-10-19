@@ -27,3 +27,13 @@
  cd ~/.vim/bundle/YouCompleteMe
 ./install.py --tern-completer
 ```
+
+```
+# Python
+sudo apt-get install python-dev
+sudo apt-get install libxml2-dev
+sudo apt-get install libxslt1-de
+sudo pip install bs4
+sudo pip install blessings
+sudo pip install lxml
+```
