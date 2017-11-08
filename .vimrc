@@ -49,16 +49,16 @@ set foldnestmax=10      "deepest fold is 10 levels
 set nofoldenable        "dont fold by default
 
 " Folding
-hi Folded ctermbg=233   "Set the folded bg color to be less harsh
-hi Folded ctermfg=19    "Set the folded fg color to be less harsh
+hi Folded ctermbg=234   "Set the folded bg color to be less harsh
+hi Folded ctermfg=129    "Set the folded fg color to be less harsh
 
 " 256 Color
 set t_Co=256
-set foldlevel=0         "this is just what i use
+set foldlevel=0
 
 " Set backup directory to $TEMP
-set backupdir=$TEMP/.vim//
-set directory=$TEMP/.vim//
+" set backupdir=$TEMP/.vim//
+" set directory=$TEMP/.vim//
 
 " ----- END BASE CONFIGURATION ----- "
 
@@ -140,6 +140,7 @@ set statusline+=%*
 
 " YouCompleteMe
 let g:ycm_autoclose_preview_window_after_completion=1
+highlight Pmenu ctermfg=15 ctermbg=0 guifg=#ffffff guibg=#000000
 
 " This is for having vim-jsx not require a .jsx extension to function properly
 let g:jsx_ext_required = 0
