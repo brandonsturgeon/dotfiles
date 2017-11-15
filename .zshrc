@@ -87,14 +87,16 @@ if [ ! -d ~/.tmp/.vim/ ]; then
 fi
 
 # Source zaw / zaw configuration
-# source $SCRIPTS_DIR/zaw/zaw.zsh
-bindkey '^n' zaw-history
+bindkey '^o' zaw-history
 
-if [[ "$IS_MAC" == false ]]; then
-    bindkey -M filterselect '^r' down-line-or-history
-    bindkey -M filterselect '^s' up-line-or-history
-    bindkey -M filterselect '^e' accept-search
-fi
+# if [[ "$IS_MAC" == false ]]; then
+#     bindkey -M filterselect '^r' down-line-or-history
+#     bindkey -M filterselect '^s' up-line-or-history
+#     bindkey -M filterselect '^e' accept-search
+# fi
+
+zle -N zaw-history
+source $SCRIPTS_DIR/zaw/zaw.zsh
 
 zstyle ':filter-select:highlight' matched fg=green
 zstyle ':filter-select' max-lines -1
@@ -234,3 +236,7 @@ function brighten_screen {
 export PATH="$PATH:$HOME/.rvm/bin"
 
 ## END CUSTOM FUNCTIONS ##
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
