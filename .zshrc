@@ -233,8 +233,6 @@ function brighten_screen {
 
 # convert $1 -sampling-factor 4:2:0 -strip -interlace JPEG discord2.jpg
 
-export PATH="$PATH:$HOME/.rvm/bin"
-
 ## END CUSTOM FUNCTIONS ##
 
 export NVM_DIR="$HOME/.nvm"
