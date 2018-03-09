@@ -13,6 +13,15 @@
 
 
 # (incomplete) Ubuntu Installation instructions
+Follow in order. Sections are listed in order of requirements (eg: some sections require packages installed in previous sections)
+
+---
+
+```
+ # Setting temporary files
+  mkdir ~/.tmp; mkdir ~/.tmp/.vim;
+  export TEMP=~/.tmp;
+```
 
 ```
 # Guake
@@ -65,7 +74,6 @@
   # visit https://github.com/settings/keys, add the new key to profile
 ```
 
-
 ```
  # Getting Dotfiles
   git clone git@github.com:brandonsturgeon/dotfiles.git ~/_dotfiles;
@@ -75,21 +83,33 @@
 ```
 
 ```
+# Tmux
+  sudo apt-get install libevent-dev libncurses-dev pkg-config;
+  autoreconf -fis;
+  git clone https://github.com/tmux/tmux.git ~/.tmp;
+  cd ~/.tmp/tmux
+  sh autogen.sh;
+  ./configure && make;
+  # Below may not be necessary
+  sudo make install;
+```
+
+```
 # Remove LibreOffice
- sudo apt-get remove --purge libreoffice*
- sudo apt-get clean
- sudo apt-get autoremove
+ sudo apt-get remove --purge libreoffice*;
+ sudo apt-get clean;
+ sudo apt-get autoremove;
 ```
 
 ```
 # Installing Yarn
- curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key add -
- echo "deb https://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/sources.list.d/yarn.list
- sudo apt-get update && sudo apt-get install yarn
+ curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key add -;
+ echo "deb https://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/sources.list.d/yarn.list;
+ sudo apt-get update && sudo apt-get install yarn;
 ```
  ```
 # Python
- sudo apt install python-pip; pip install --upgrade pip;
+ sudo apt install python-pip && pip install --upgrade pip;
  sudo -H pip install --upgrade pip;
  sudo apt-get install python-dev python3-dev libxml2-dev libxslt1-dev python-apt python-pycurl python-software-properties;
  sudo apt-get update;
@@ -106,7 +126,34 @@
   sudo shutdown -r 0;
  
  # --enable-shared is required to build vim from source
- rvm install ruby --enable-shared
+ rvm install ruby --enable-shared;
+ gem install bundler
+```
+
+```
+# Node
+ curl -sL https://deb.nodesource.com/setup_8.x | sudo -E bash -;
+ sudo apt-get install -y nodejs;
+```
+
+```
+# Rails
+ sudo apt-get install libgdbm-dev libncurses5-dev automake libtool bison libffi-dev;
+ gpg --keyserver hkp://keys.gnupg.net --recv-keys 409B6B1796C275462A1703113804BB82D39DC0E3 7D2BAF1CF37B13E2069D6956105BD0E739499BDB;
+ gem install rails -v 5.1.4;
+ sudo apt autoremove;
+ rails -v;
+```
+
+```
+# PostgreSQL
+ sudo sh -c "echo 'deb http://apt.postgresql.org/pub/repos/apt/ xenial-pgdg main' > /etc/apt/sources.list.d/pgdg.list";
+ wget --quiet -O - http://apt.postgresql.org/pub/repos/apt/ACCC4CF8.asc | sudo apt-key add -;
+ sudo apt-get update;
+ sudo apt-get install postgresql-common postgresql-9.5 libpq-dev;
+ # Fixes weird permission error when trying to create a new user with postgres
+ chmod og+X /home /home/`whoami`
+ sudo -u postgres createuser brandon -s
 ```
 
 ```
@@ -143,10 +190,6 @@
  # Instaling Vundle
   git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim;
   vim +PluginInstall +qall;
- 
- # Setting temporary files
-  mkdir ~/.tmp; mkdir ~/.tmp/.vim;
-  export TEMP=~/.tmp;
  
  # YouCompleteMe
   sudo apt-get install build-essential cmake;
