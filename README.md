@@ -102,18 +102,13 @@ rm -rf ~/_dotfiles
 ```
 # Ruby
  # RVM
+  sudo apt-get install software-properties-common
+  sudo apt-add-repository -y ppa:rael-gc/rvm
   sudo apt-get update
-  sudo apt-get install -y curl gnupg build-essential
-  sudo gpg --keyserver hkp://keys.gnupg.net --recv-keys 409B6B1796C275462A1703113804BB82D39DC0E3
-  curl -sSL https://get.rvm.io -o ~/._rvm_install
-  # Inspect the downloaded script (jk I know you won't)
-  less ~/._rvm_install
-  cat ~/._rvm_install | sudo bash -s stable
-  sudo usermod -a -G rvm `whoami`
-
+  sudo apt-get install rvm
+  sudo shutdown -r 0
+ 
  rvm install ruby
- rvm --default use ruby
- sudo shutdown -r 0
 ```
 
 ```
