@@ -20,6 +20,32 @@
 # Open Ubuntu Software Manager, search for Guake.
 # Click "launch"
 # Right click on the Guake icon in the launcher, click "Lock to Launcher"
+
+# Fixing alt-tab lose-focus bug (seriously it's really annoying, do this and keep up with this issue: https://github.com/Guake/guake/issues/45)
+ sudo apt-get install compizconfig-settings-manager
+ # Open Ubuntu Software Manager, search for Compiz - click on CompizConfigSettingsManager
+ # Click "launch"
+ # Go to _Ubuntu Unity Plugin_ -> _Switcher tab_ -> Check _Disable Show Desktop in the Switcher_.
+ 
+# Hit F12, click Preferences
+# General
+ # - Main Window Height slider to max
+# Shell
+ # - Check "Run command as a login shell"
+# Scrolling
+ # - Scrollback lines to to 10240
+# Appearance
+ # Built-in schemes to "Solarized Dark Higher Contrast"
+ # Transparency to ~5-10%
+# Quick Open
+ # Enable Quick Open when ctrl-clicking
+ # Editor command line: `vim +%(line_numbers) %(file_path)s`
+# Keyboard Shortcuts
+ # New Tab: `Ctrl+T`
+ # Close Tab: `Ctrl+W`
+ # Go to previous tab: `Ctrl+{`
+ # Go to next tab: `Ctrl+}`
+
 ```
 
 ```
@@ -87,6 +113,7 @@ rm -rf ~/_dotfiles
 
  rvm install ruby
  rvm --default use ruby
+ sudo shutdown -r 0
 ```
 
 ```
