@@ -1,11 +1,9 @@
 # Required Packages
   - [`multitail`](https://github.com/flok99/multitail)
   - [`htop`](http://hisham.hm/htop/)
-  - [`tmuxinator`](https://github.com/tmuxinator/tmuxinator)
   - [`speedometer`](https://excess.org/speedometer/)
   - [`Z`](https://github.com/rupa/z)
   - [`V`](https://github.com/rupa/v)
-  - [`ZSH`](https://github.com/robbyrussell/oh-my-zsh)
 
 
 # (incomplete) Ubuntu Installation instructions
@@ -185,6 +183,9 @@ Follow in order. Sections are listed in order of requirements (eg: some sections
   
   # Verify that vim installed correctly
   vim --version;
+  
+  # Remove the install folder
+  rm -rf ~/vim
   
  # Instaling Vundle
   git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim;
