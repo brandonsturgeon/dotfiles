@@ -1,8 +1,4 @@
 # Required Packages
-
-  - [`vim`](https://github.com/vim/vim)
-  - [`tmux`](https://tmux.github.io/)
-  - [`Vundle`](https://github.com/VundleVim/Vundle.vim)
   - [`multitail`](https://github.com/flok99/multitail)
   - [`htop`](http://hisham.hm/htop/)
   - [`tmuxinator`](https://github.com/tmuxinator/tmuxinator)
@@ -92,6 +88,9 @@ Follow in order. Sections are listed in order of requirements (eg: some sections
   ./configure && make;
   # Below may not be necessary
   sudo make install;
+  
+  # Tmuxinator (https://github.com/tmuxinator/tmuxinator)
+   gem install tmuxinator;
 ```
 
 ```
