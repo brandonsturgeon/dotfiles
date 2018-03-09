@@ -1,9 +1,5 @@
 # Required Packages
-  - [`multitail`](https://github.com/flok99/multitail)
-  - [`htop`](http://hisham.hm/htop/)
   - [`speedometer`](https://excess.org/speedometer/)
-  - [`Z`](https://github.com/rupa/z)
-  - [`V`](https://github.com/rupa/v)
 
 
 # (incomplete) Ubuntu Installation instructions
@@ -200,4 +196,9 @@ Follow in order. Sections are listed in order of requirements (eg: some sections
 ```
 # Silver Searcher
  sudo apt install silversearcher-ag;
+```
+
+```
+# Multitail
+ sudo apt-get install htop
 ```
