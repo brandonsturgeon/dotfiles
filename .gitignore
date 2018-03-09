@@ -15,9 +15,8 @@
 !_scripts/
 !_scripts/tech_headlines.py
 !_scripts/pretty-print.py
-!_scripts/zaw/
-!_scripts/zaw/*
-!_scripts/zaw/**/*
+!_scripts/zaw
+!_scripts/z
 
 # Git config
 !.gitconfig
