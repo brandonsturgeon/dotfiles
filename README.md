@@ -26,7 +26,7 @@ Follow in order. Sections are listed in order of requirements (eg: some sections
  # Click "launch"
  # Go to _Ubuntu Unity Plugin_ -> _Switcher tab_ -> Check _Disable Show Desktop in the Switcher_.
  
-# Hit F12, click Preferences
+# Hit F12, right click inside of the terminal, click Preferences
 # General
  # - Main Window Height slider to max
 # Shell
