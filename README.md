@@ -70,6 +70,8 @@ Follow in order. Sections are listed in order of requirements (eg: some sections
   mv ~/_dotfiles/* ~/;
   mv ~/_dotfiles/.* ~/;
   rm -rf ~/_dotfiles;
+  
+  source ~/.profile ~/.zshrc
 ```
 
 ```
