@@ -1,0 +1,108 @@
+## BEGIN CUSTOM FUNCTIONS ##
+
+# Easy Ubuntu Launcher position controls
+function setlauncherleft {
+    gsettings set com.canonical.Unity.Launcher launcher-position Left
+}
+function setlauncherbot {
+    gsettings set com.canonical.Unity.Launcher launcher-position Bottom
+}
+
+# Easily record with asciinema
+function rec {
+    asciinema rec;
+}
+
+# Tree
+function tree {
+    ls -R | grep ":$" | sed -e 's/:$//' -e 's/[^-][^\/]*\//--/g' -e 's/^/   /' -e 's/-/|/'
+}
+
+# In-terminal weather
+function weather {
+    curl -4 wttr.in/${1:-68502}
+}
+# In-terminal moon
+function moon {
+    curl -4 wttr.in/moon
+}
+
+# Is it up?
+function check {
+    curl -Is https://$1 -L | grep HTTP/
+}
+
+function rainbow {
+    yes "$(seq 231 -1 16)" | while read i; do printf "\x1b[48;5;${i}m\n"; sleep .02; done
+}
+
+function rainboww {
+    local BIGLINE="░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░"
+        yes "$(seq 231 -1 16)" | while read i; do printf "\x1b[48;5;${i}m${BIGLINE}\n"; sleep .02; done
+}
+
+# Stat tmuxinator config
+function _stat {
+    tmuxinator start stat
+}
+
+# Project QS tmuxinator config
+function _qs {
+    tmuxinator start qs
+}
+
+function toucan {
+    echo "░░░░░░░░▄▄▄▀▀▀▄▄███▄░░░░░░░░░░░░░░░░░"
+        echo "░░░░░▄▀▀░░░░░░░▐░▀██▌░░░░░░░░░░░░░░░░"
+        echo "░░░▄▀░░░░▄▄███░▌▀▀░▀█░░░░░░░░░░░░░░░░"
+        echo "░░▄█░░▄▀▀▒▒▒▒▒▄▐░░░░█▌░░░░░░░░░░░░░░░"
+        echo "░▐█▀▄▀▄▄▄▄▀▀▀▀▌░░░░░▐█▄░░░░░░░░░░░░░░"
+        echo "░▌▄▄▀▀░░░░░░░░▌░░░░▄███████▄░░░░░░░░░"
+        echo "░░░░░░░░░░░░░▐░░░░▐███████████▄░░░░░░"
+        echo "░░░░░le░░░░░░░▐░░░░▐█████████████▄░░░"
+        echo "░░░░toucan░░░░░░▀▄░░░▐██████████████▄"
+        echo "░░░░░░has░░░░░░░░▀▄▄████████████████▄"
+        echo "░░░░░arrived░░░░░░░░░░░░█▀██████░░░░░"
+}
+
+function do_request {
+    curl -X POST -F "origin_address=$ORIGIN_ADD" -F "destination_address=$DEST_ADD" localhost:3000/api/v1/directions/ | jq
+}
+
+# Update all scripts in script directory
+function update_scripts {
+    for script in $SCRIPTS; do
+        git -C $SCRIPTS_DIR/$script pull origin master;
+    done
+}
+
+# convert $1 -sampling-factor 4:2:0 -strip -interlace JPEG discord2.jpg
+function jpg_convert {
+    convert $1 -sampling-factor 4:2:0 -strip -interlace JPEG $(python -c "print '$1'.split('.')[0]+'2.jpg'");
+}
+
+function dim_screen {
+    for i in `seq 1 $1`;  osascript $SCRIPTS_DIR/dim-screen.script
+}
+
+function brighten_screen {
+    for i in `seq 1 $1`;  osascript $SCRIPTS_DIR/brighten-screen.script
+}
+
+# Uses python's json library to load, then re-dump the json from a file in a formatted style
+function python_pp {
+    python3 -c "import json;
+with open('$1', 'r') as json_file: print(json.dumps(json.load(json_file), indent=4, sort_keys=True))"
+}
+
+# Uses the python_pp command with less wrapped around it
+function pp {
+    python_pp $1 | less -R
+}
+
+# Uses the python_pp command with grep wrapped around it
+function ppgrep {
+    python_pp $1 | grep --color=auto -n -A 3 -B 2 --color=always $2 | less -R
+}
+
+## END CUSTOM FUNCTIONS ##

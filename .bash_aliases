@@ -36,3 +36,6 @@ alias v="vim"
 
 # DF to always use -h flag
 alias df="df -h"
+
+# Edit .zshrc
+alias zshrc="vim ~/.zshrc"
