@@ -134,6 +134,7 @@ let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 1
 let g:syntastic_javascript_checkers = ['eslint']
 let g:syntastic_ruby_checkers = ['rubocop']
+let g:syntastic_javascript_eslint_exe = '$(npm bin)/eslint'
 set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%*
@@ -151,6 +152,7 @@ autocmd Filetype ruby       setlocal ts=2 sts=2 sw=2
 autocmd Filetype javascript setlocal ts=2 sts=2 sw=2
 autocmd FileType python     setlocal ts=4 sts=4 sw=4 tw=0
 autocmd FileType css        setlocal ts=2 sts=2 sw=2
+autocmd FileType yaml       setlocal ts=2 sts=2 sw=2 expandtab
 
 " NERDTree configuration
 let NERDTreeIgnore=['\.rbc$', '\.pyc$', '\~$']
