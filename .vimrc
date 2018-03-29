@@ -28,9 +28,11 @@ set history=1000    " Remember up to 1000 commands and search history
 set undolevels=1000 " Lots of undo levels
 set spelllang=en_us " Default language is en_us
 
-set laststatus=2 "Enables statusline everywhere"
+set laststatus=2 "Enables statusline everywhere
 
 set showtabline=0 "Turns off tablines
+
+set backspace=2 "Make backspace behave normally
 
 let mapleader = "," "Setting map leader
 
@@ -97,6 +99,11 @@ nnoremap <silent><C-p> :CtrlSpace O<CR>
 " Ctrl-w--Ctrl-m to maximize current split, Ctrl-= to revert
 nnoremap <C-W>m :wincmd _<Bar>wincmd <Bar><CR>
 
+" Remedy lazy shift finger
+command W w
+command Q q
+command Wq wq
+command Wqa wqa
 
 " ----- END REMAPS ----- "
 
