@@ -205,6 +205,14 @@ Follow in order. Sections are listed in order of requirements (eg: some sections
 ```
 
 ```
-# Multitail
+# Htop
  sudo apt-get install htop
+```
+
+```
+# Disable CUPS
+systemctl stop cups
+systemctl stop cups-browsed
+systemctl disable cups
+systemctl disable cups-browsed
 ```
