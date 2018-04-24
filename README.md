@@ -211,8 +211,21 @@ Follow in order. Sections are listed in order of requirements (eg: some sections
 
 ```
 # Disable CUPS
-systemctl stop cups
-systemctl stop cups-browsed
-systemctl disable cups
-systemctl disable cups-browsed
+systemctl stop cups;
+systemctl stop cups-browsed;
+systemctl disable cups;
+systemctl disable cups-browsed;
+```
+
+```
+# (For servers) Disable password authentication
+sudo vi /etc/ssh/sshd_config;
+# Update these lines as follows:
+ChallengeResponseAuthentication no
+PasswordAuthentication no
+UsePAM no
+PermitRootLogin no
+
+# Then run this command:
+sudo /etc/init.d/ssh reload;
 ```
