@@ -219,6 +219,7 @@ systemctl disable cups-browsed;
 
 ```
 # (For servers) Disable password authentication
+# NOTE: Ensure you've already added your public key to ~/.ssh/authorized_keys or you'll lock yourself out
 sudo vi /etc/ssh/sshd_config;
 # Update these lines as follows:
 ChallengeResponseAuthentication no
