@@ -218,10 +218,13 @@ systemctl disable cups-browsed;
 ```
 
 ```
-# (For servers) Disable password authentication
+# (For servers) Increase security
+
+# Disable Password Authentication and change SSH port
 # NOTE: Ensure you've already added your public key to ~/.ssh/authorized_keys or you'll lock yourself out
 sudo vi /etc/ssh/sshd_config;
 # Update these lines as follows:
+Port <any random port number here, usually four characters prefixed with 2>
 ChallengeResponseAuthentication no
 PasswordAuthentication no
 UsePAM no
