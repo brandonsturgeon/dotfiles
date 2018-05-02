@@ -95,7 +95,7 @@ Follow in order. Sections are listed in order of requirements (eg: some sections
 
 ```
 # Tmux
-  sudo apt-get install libevent-dev libncurses-dev pkg-config;
+  sudo apt-get install libevent-dev libncurses-dev pkg-config autotools-dev autoconf;
   autoreconf -fis;
   git clone https://github.com/tmux/tmux.git ~/.tmp;
   cd ~/.tmp/tmux
