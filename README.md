@@ -8,6 +8,25 @@ Follow in order. Sections are listed in order of requirements (eg: some sections
 ---
 
 ```
+ # First things first, update packages
+ sudo apt-get update;
+ sudo apt-get upgrade;
+```
+
+```
+ # Update DNS nameservers
+ sudo vi /etc/network/interfaces;
+ 
+ # Update/add this line under your primary network interface (cloudflare's dns with opendns fallback)
+ dns-nameservers 1.1.1.1 1.0.0.1 208.67.222.222 208.67.220.220
+ 
+ # Restart network interfaces if you're local
+ sudo ifconfig <primary network interface> down && sudo ifconfig <primary network interface> up;
+ # Or simply restart the machine if remote
+ sudo shutdown -r 0;
+```
+
+```
  # Setting temporary files
   mkdir ~/.tmp; mkdir ~/.tmp/.vim;
   export TEMP=~/.tmp;
