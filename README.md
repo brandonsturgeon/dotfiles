@@ -85,7 +85,7 @@ Follow in order. Sections are listed in order of requirements (eg: some sections
 
 ```
  # Getting Dotfiles
-  git clone git@github.com:brandonsturgeon/dotfiles.git ~/_dotfiles;
+  git clone --recurse-submodules -j8 git@github.com:brandonsturgeon/dotfiles.git ~/_dotfiles;
   mv ~/_dotfiles/* ~/;
   mv ~/_dotfiles/.* ~/;
   rm -rf ~/_dotfiles;
