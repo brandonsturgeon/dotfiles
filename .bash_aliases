@@ -24,6 +24,7 @@ alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo
 # .rc aliases
 alias vimrc='vim -O ~/.vimrc ~/.bundles.vim'
 alias bashrc='vim ~/.bashrc'
+alias zshrc="vim ~/.zshrc"
 
 # Navigate to the git root
 alias gitroot='cd $(git rev-parse --show-cdup)'
@@ -31,11 +32,8 @@ alias gitroot='cd $(git rev-parse --show-cdup)'
 # Git
 alias g="git"
 
-# Vim
+# Vim 
 alias v="vim"
 
 # DF to always use -h flag
 alias df="df -h"
-
-# Edit .zshrc
-alias zshrc="vim ~/.zshrc"
