@@ -44,6 +44,7 @@ Plugin 'vim-airline/vim-airline-themes' " Airline themes
 Plugin 'vim-ctrlspace/vim-ctrlspace'    " Vim ctrlspace
 Plugin 'chrisbra/Colorizer'             " Highlight hex colors
 Plugin 'matze/vim-move'                 " Move blocks in visual mode with A-k and A-j
+Plugin 'othree/javascript-libraries-syntax.vim' " Highlighting for more JS libraries
 " -----  END PLUGINS  -----
 
 call vundle#end()            " required
