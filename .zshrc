@@ -103,7 +103,7 @@ if [ -f $SCRIPTS_DIR/z/z.sh ]; then
 fi
 
 # Initialize V
-if [ ! -f usr/local/bin/vv ]; then
+if [[ ! -a /usr/local/bin/vv ]]; then
     echo "[.zshrc] V isn't installed. Installing.."
     update_v
 fi
