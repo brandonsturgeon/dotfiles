@@ -46,11 +46,6 @@ function _stat {
     tmuxinator start stat
 }
 
-# Project QS tmuxinator config
-function _qs {
-    tmuxinator start qs
-}
-
 function toucan {
     echo "░░░░░░░░▄▄▄▀▀▀▄▄███▄░░░░░░░░░░░░░░░░░"
         echo "░░░░░▄▀▀░░░░░░░▐░▀██▌░░░░░░░░░░░░░░░░"
@@ -67,6 +62,12 @@ function toucan {
 
 function do_request {
     curl -X POST -F "origin_address=$ORIGIN_ADD" -F "destination_address=$DEST_ADD" localhost:3000/api/v1/directions/ | jq
+}
+
+function update_v {
+    git clone git@github.com:rupa/v.git $SCRIPTS_DIR/v
+    mv $SCRIPTS_DIR/v/v /usr/local/bin/vv
+    rm -rf $SCRIPTS_DIR/v
 }
 
 # Update all scripts in script directory
