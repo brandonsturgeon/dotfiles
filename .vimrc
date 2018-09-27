@@ -9,20 +9,22 @@ call altercmd#load()
 syntax enable
 
 " Generic sets
-set showcmd    " Shows the latest command entered in the very bottom right
-set cursorline " Draws a horizontal highlight on the line the cursor is on
-set hlsearch   " Highlights all isntances of a search
-set incsearch  " Start searching before pressing enter
-set number     " Line numbers
-set wildmenu   " Autocompleting of filenames when you :e
-set nowrap     " Don't wrap lines
-set autoindent " Always set autoindenting on
-set copyindent " Copy the previous indentation on autoindenting
-set showmatch  " Show matching parenthesis
-set ignorecase " Ignore case when searching
-set smartcase  " Ignore case if search pattern is all lowercase, case-sensitive otherwise
-set smarttab   " Insert tabs on the start of a line according to shiftwidth, not tabstop
-set hidden     " Used to hide scratchbuffers
+set showcmd     " Shows the latest command entered in the very bottom right
+set cursorline  " Draws a horizontal highlight on the line the cursor is on
+set hlsearch    " Highlights all instances of a search
+set incsearch   " Start searching before pressing enter
+set number      " Line numbers
+set wildmenu    " Autocompleting of file names when you :e
+set nowrap      " Don't wrap lines
+set autoindent  " Always set autoindenting on
+set copyindent  " Copy the previous indentation on autoindenting
+set showmatch   " Show matching parenthesis
+set ignorecase  " Ignore case when searching
+set smartcase   " Ignore case if search pattern is all lowercase, case-sensitive otherwise
+set smarttab    " Insert tabs on the start of a line according to shiftwidth, not tabstop
+set hidden      " Used to hide scratchbuffers
+set splitbelow  " Sets default horizontal split to appear below
+set splitright  " Sets default vertical split to appear to the right
 
 set history=1000    " Remember up to 1000 commands and search history
 set undolevels=1000 " Lots of undo levels
@@ -46,17 +48,22 @@ set expandtab
 " unfold everything with zR. zm and zr can be used to get those folds just
 " right. Always remember the almighty help file at “help :folding” if you get
 " stuck. '
-set foldmethod=indent   "fold based on indent
-set foldnestmax=10      "deepest fold is 10 levels
-set nofoldenable        "dont fold by default
+set foldmethod=indent   " Fold based on indent
+set foldnestmax=10      " Deepest fold is 10 levels
+set nofoldenable        " Don't fold by default
+set foldlevel=0
 
 " Folding
-hi Folded ctermbg=234   "Set the folded bg color to be less harsh
-hi Folded ctermfg=129    "Set the folded fg color to be less harsh
+hi Folded ctermbg=0   "Set the folded bg color to be less harsh
+hi Folded ctermfg=30  "Set the folded fg color to be less harsh
+" Alternate fg colors: 6, 8, 10, 12, 14, 30
+
+" Spellcheck design
+hi clear SpellBad
+hi SpellBad cterm=underline ctermfg=9
 
 " 256 Color
 set t_Co=256
-set foldlevel=0
 
 " Set backup directory to $TEMP
 " set backupdir=$TEMP/.vim//
@@ -78,9 +85,6 @@ nnoremap <Space> za
 " Press enter to insert newlilne below current
 nnoremap <silent><CR> o<Esc>k
 
-" Change wa to ww
-AlterCommand ww wa
-
 " Open nerdtree with ,t
 nmap <silent> <leader>t :NERDTreeToggle<CR>
 
@@ -96,7 +100,7 @@ imap <C-c> <CR><Esc>O
 " vim-ctrlspace fuzzy search with Ctrl-P
 nnoremap <silent><C-p> :CtrlSpace O<CR>
 
-" Ctrl-w--Ctrl-m to maximize current split, Ctrl-= to revert
+" Ctrl-w m to maximize current split, Ctrl-w = to revert
 nnoremap <C-W>m :wincmd _<Bar>wincmd <Bar><CR>
 
 " Remedy lazy shift finger
@@ -104,6 +108,12 @@ command W w
 command Q q
 command Wq wq
 command Wqa wqa
+
+" Easier split management
+nnoremap <C-J> <C-W><C-J>
+nnoremap <C-K> <C-W><C-K>
+nnoremap <C-L> <C-W><C-L>
+nnoremap <C-H> <C-W><C-H>
 
 " ----- END REMAPS ----- "
 
@@ -121,6 +131,13 @@ function! DoUncopy()
   :IndentLinesEnable
   :GitGutterEnable
 endfunction
+
+" Auto highlight lines that go over 100 characters.
+" Disabled because I can't figure out if I like it.
+"augroup vimrc_autocmds
+"  autocmd BufEnter * highlight OverLength ctermfg=9
+"  autocmd BufEnter * match OverLength /\%>99v.\+/
+"augroup END
 
 command! -n=? -complete=dir -bar Copy :call DoCopy()
 command! -n=? -complete=dir -bar Uncopy :call DoUncopy()
