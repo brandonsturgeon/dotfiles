@@ -9,7 +9,7 @@ fi
 
 # Path to your oh-my-zsh installation.
 if [[ "$IS_MAC" == true ]]; then
-    export ZSH=/Users/brandonsturgeon/.oh-my-zsh
+    export ZSH=/Users/bsturgeon/.oh-my-zsh
 else
     export ZSH=/home/brandon/.oh-my-zsh
 fi
@@ -67,13 +67,11 @@ source $ZSH/oh-my-zsh.sh
 
 # Ensure that yarn uses strict ssl
 yarn config set strict-ssl true > /dev/null 2>&1
-# Set the cafile for yarnpkg
-# yarn config set cafile "$SSL_CERT_FILE" > /dev/null 2>&1
 
 # Where I keep my scripts
 SCRIPTS_DIR=~/_scripts
 # List of scripts
-SCRIPTS=(v z zaw)
+SCRIPTS=(z)
 
 # Preferred temp directory
 export TEMP=~/.tmp/
@@ -84,35 +82,10 @@ if [ ! -d ~/.tmp/.vim/ ]; then
     mkdir ~/.tmp/.vim
 fi
 
-# Source zaw / zaw configuration
-bindkey '^o' zaw-history
-
-# if [[ "$IS_MAC" == false ]]; then
-#     bindkey -M filterselect '^r' down-line-or-history
-#     bindkey -M filterselect '^s' up-line-or-history
-#     bindkey -M filterselect '^e' accept-search
-# fi
-
-zle -N zaw-history
-source $SCRIPTS_DIR/zaw/zaw.zsh
-
 zstyle ':filter-select:highlight' matched fg=green
 zstyle ':filter-select' max-lines -1
 zstyle ':filter-select' case-insensitive yes # enable case-insensitive
 zstyle ':filter-select' extended-search yes # see below
-
-# Fix for zaw
-TRAPWINCH() {
-  zle && { zle reset-prompt; zle -R }
-}
-
-# Load Virtualenvwrapper commands
-# . /usr/local/bin/virtualenvwrapper.sh
-
-# Set the root certificate
-if [ -f ~/.set_root_cert.sh ]; then
-    . ~/.set_root_cert.sh
-fi
 
 # Alias definitions
 if [ -f ~/.bash_aliases ]; then
@@ -127,6 +100,12 @@ fi
 # Start Z
 if [ -f $SCRIPTS_DIR/z/z.sh ]; then
     . $SCRIPTS_DIR/z/z.sh
+fi
+
+# Initialize V
+if [ ! -f usr/local/bin/vv ]; then
+    echo "[.zshrc] V isn't installed. Installing.."
+    update_v
 fi
 
 # Automatically 'ls -F' after every CD
