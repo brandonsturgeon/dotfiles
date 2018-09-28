@@ -3,9 +3,6 @@
 " Load Vundle stuff
 source ~/.bundles.vim
 
-" Load altercmd
-call altercmd#load()
-
 syntax enable
 
 " Generic sets

@@ -34,7 +34,6 @@ Plugin 'jlanzarotta/bufexplorer'        " Explore vim buffer with 'be' 'bt' 'bs'
 Plugin 'tpope/vim-markdown'             " Forces Markdown highlighting
 Plugin 'lfilho/cosco.vim'               " Semicolon insertion bliss
 Plugin 'tpope/vim-surround'             " Surround with tags, words, quotes using [c,y]s[i[w,p]]
-Plugin 'kana/vim-altercmd'              " Allows you to alter default Ex commands
 Plugin 'terryma/vim-multiple-cursors'   " Multiple cursors
 Plugin 'tommcdo/vim-exchange'           " Swap 2 regions of text with cx -- clear with cxc
 Plugin 'metakirby5/codi.vim'            " Interactive scratchpad. Enable with Codi [filetype]
@@ -45,6 +44,7 @@ Plugin 'vim-ctrlspace/vim-ctrlspace'    " Vim ctrlspace
 Plugin 'chrisbra/Colorizer'             " Highlight hex colors
 Plugin 'matze/vim-move'                 " Move blocks in visual mode with A-k and A-j
 Plugin 'mbbill/undotree'                " UndoTree
+Plugin 'tpope/vim-endwise'              " Automatic adding of ends in various languages
 Plugin 'othree/javascript-libraries-syntax.vim' " Highlighting for more JS libraries
 " -----  END PLUGINS  -----
 
