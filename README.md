@@ -271,3 +271,9 @@ sudo docker run hello-world;
 sudo curl -L https://github.com/docker/compose/releases/download/1.21.0/docker-compose-$(uname -s)-$(uname -m) -o /usr/local/bin/docker-compose;
 sudo chmod +x /usr/local/bin/docker-compose;
 ```
+
+```
+# Fonts
+Preferred font is FuraCode NF Retina (non-mono), size 18, AA, roughly 80-90% horizontal character spacing
+https://github.com/ryanoasis/nerd-fonts/blob/master/patched-fonts/FiraCode/Retina/complete/Fura%20Code%20Retina%20Nerd%20Font%20Complete.otf
+```
