@@ -26,8 +26,8 @@ set hidden      " Used to hide scratchbuffers
 set splitbelow  " Sets default horizontal split to appear below
 set splitright  " Sets default vertical split to appear to the right
 
-set history=1000    " Remember up to 1000 commands and search history
-set undolevels=1000 " Lots of undo levels
+set history=2000    " Remember up to 2000 commands and search history
+set undolevels=2000 " Lots of undo levels
 set spelllang=en_us " Default language is en_us
 
 set laststatus=2 "Enables statusline everywhere
@@ -66,15 +66,19 @@ hi SpellBad cterm=underline ctermfg=9
 set t_Co=256
 
 " Set backup directory to $TEMP
-" set backupdir=$TEMP/.vim//
-" set directory=$TEMP/.vim//
+set backupdir=$TEMP/.vim//
+set directory=$TEMP/.vim//
+if has("persistent_undo")
+    set undodir=$TEMP/.vim/.undodir/
+    set undofile
+endif
 
 " ----- END BASE CONFIGURATION ----- "
 
 " ----- BEGIN REMAPS ----- "
 
-" ,, command to turn off search highlighting
-nmap <silent> ,, :nohlsearch<CR>
+" <leader><leader> command to turn off search highlighting
+nmap <silent> <leader><leader> :nohlsearch<CR>
 
 " gV to highlight last inserted text
 nnoremap gV `[v`]`
@@ -85,11 +89,14 @@ nnoremap <Space> za
 " Press enter to insert newlilne below current
 nnoremap <silent><CR> o<Esc>k
 
-" Open nerdtree with ,t
+" Open nerdtree with <leader>t
 nmap <silent> <leader>t :NERDTreeToggle<CR>
 
-" Toggle spell checking with ,s
+" Toggle spell checking with <leader>s
 nmap <silent> <leader>s :set spell!<CR>
+
+" Open UndoTree with U
+nnoremap U :UndotreeToggle<CR>
 
 " Key combo to:
 " 'So if I type {, delimitMate will insert } after my cursor, then I can

@@ -62,8 +62,8 @@ source $ZSH/oh-my-zsh.sh
 
 ## END ZSH CONFIGURATION ##
 
-## BEGIN CUSTOM CONFIGURATION ##
 
+## BEGIN CUSTOM CONFIGURATION ##
 
 # Ensure that yarn uses strict ssl
 yarn config set strict-ssl true > /dev/null 2>&1
@@ -78,8 +78,13 @@ export TEMP=~/.tmp/
 if [ ! -d ~/.tmp ]; then
     mkdir ~/.tmp
 fi
+
+# Vim temp directories
 if [ ! -d ~/.tmp/.vim/ ]; then
     mkdir ~/.tmp/.vim
+fi
+if [ ! -d ~/.tmp/.vim/.undodir ]; then
+    mkdir ~/.tmp/.vim/.undodir
 fi
 
 zstyle ':filter-select:highlight' matched fg=green
