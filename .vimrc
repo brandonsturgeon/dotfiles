@@ -173,6 +173,7 @@ set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%*
 hi SyntasticErrorLine ctermfg=red
 hi SyntasticErrorSign ctermbg=none ctermfg=red
+hi SyntasticWarningSign ctermbg=none ctermfg=yellow
 
 " Sets sign colors for use in other applications
 hi DiffAdd           cterm=bold ctermbg=none ctermfg=119
