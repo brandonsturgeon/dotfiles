@@ -1,20 +1,17 @@
-# Required Packages
-  - [`speedometer`](https://excess.org/speedometer/)
-
-
 # (incomplete) Ubuntu Installation instructions
 Follow in order. Sections are listed in order of requirements (eg: some sections require packages installed in previous sections)
 
 ---
 
+## First things first, update packages
 ```
- # First things first, update packages
  sudo apt-get update;
  sudo apt-get upgrade;
 ```
 
+
+## Update DNS nameservers
 ```
- # Update DNS nameservers
  sudo vi /etc/network/interfaces;
  
  # Update/add this line under your primary network interface (cloudflare's dns with opendns fallback)
@@ -26,14 +23,8 @@ Follow in order. Sections are listed in order of requirements (eg: some sections
  sudo shutdown -r 0;
 ```
 
+## Guake
 ```
- # Setting temporary files
-  mkdir ~/.tmp; mkdir ~/.tmp/.vim;
-  export TEMP=~/.tmp;
-```
-
-```
-# Guake
  sudo apt-get install guake
 # Open Ubuntu Software Manager, search for Guake.
 # Click "launch"
@@ -66,16 +57,16 @@ Follow in order. Sections are listed in order of requirements (eg: some sections
 
 ```
 
+## ZSH
 ```
-# ZSH
  sudo apt-get install zsh;
  wget https://github.com/robbyrussell/oh-my-zsh/raw/master/tools/install.sh -O - | zsh;
  chsh -s `which zsh`;
  sudo shutdown -r 0;
 ```
 
+## Git
 ```
-# Git
   ssh-keygen -t rsa -b 4096 -C "sturgeonb4@gmail.com";
   # Default location, no password
   cat ~/.ssh/id_rsa.pub;
@@ -83,8 +74,8 @@ Follow in order. Sections are listed in order of requirements (eg: some sections
   # visit https://github.com/settings/keys, add the new key to profile
 ```
 
+## Getting Dotfiles
 ```
- # Getting Dotfiles
   git clone --recurse-submodules -j8 git@github.com:brandonsturgeon/dotfiles.git ~/_dotfiles;
   mv ~/_dotfiles/* ~/;
   mv ~/_dotfiles/.* ~/;
@@ -93,8 +84,8 @@ Follow in order. Sections are listed in order of requirements (eg: some sections
   source ~/.profile ~/.zshrc
 ```
 
+## Tmux
 ```
-# Tmux
   sudo apt-get install libevent-dev libncurses-dev pkg-config autotools-dev autoconf;
   autoreconf -fis;
   git clone https://github.com/tmux/tmux.git ~/.tmp;
@@ -108,21 +99,22 @@ Follow in order. Sections are listed in order of requirements (eg: some sections
    gem install tmuxinator;
 ```
 
+## Remove LibreOffice
 ```
-# Remove LibreOffice
  sudo apt-get remove --purge libreoffice*;
  sudo apt-get clean;
  sudo apt-get autoremove;
 ```
 
+## Installing Yarn
 ```
-# Installing Yarn
  curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key add -;
  echo "deb https://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/sources.list.d/yarn.list;
  sudo apt-get update && sudo apt-get install yarn;
 ```
- ```
-# Python
+
+## Python
+```
  sudo apt install python-pip && pip install --upgrade pip;
  sudo -H pip install --upgrade pip;
  sudo apt-get install python-dev python3-dev libxml2-dev libxslt1-dev python-apt python-pycurl python-software-properties;
@@ -130,8 +122,8 @@ Follow in order. Sections are listed in order of requirements (eg: some sections
  sudo -H pip install bs4 blessings lxml;
 ```
 
+## Ruby
 ```
-# Ruby
  # RVM
   sudo apt-get install ruby-dev software-properties-common;
   sudo apt-add-repository -y ppa:rael-gc/rvm;
@@ -144,8 +136,8 @@ Follow in order. Sections are listed in order of requirements (eg: some sections
  gem install bundler
 ```
 
+## Node
 ```
-# Node
  # NVM
   curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.8/install.sh | bash;
   export NVM_DIR="$HOME/.nvm";
@@ -154,8 +146,8 @@ Follow in order. Sections are listed in order of requirements (eg: some sections
   nvm use node;
 ```
 
+## Rails
 ```
-# Rails
  sudo apt-get install libgdbm-dev libncurses5-dev automake libtool bison libffi-dev;
  gpg --keyserver hkp://keys.gnupg.net --recv-keys 409B6B1796C275462A1703113804BB82D39DC0E3 7D2BAF1CF37B13E2069D6956105BD0E739499BDB;
  gem install rails -v 5.1.4;
@@ -163,8 +155,8 @@ Follow in order. Sections are listed in order of requirements (eg: some sections
  rails -v;
 ```
 
+## PostgreSQL
 ```
-# PostgreSQL
  sudo sh -c "echo 'deb http://apt.postgresql.org/pub/repos/apt/ xenial-pgdg main' > /etc/apt/sources.list.d/pgdg.list";
  wget --quiet -O - http://apt.postgresql.org/pub/repos/apt/ACCC4CF8.asc | sudo apt-key add -;
  sudo apt-get update;
@@ -174,9 +166,8 @@ Follow in order. Sections are listed in order of requirements (eg: some sections
  sudo -u postgres createuser brandon -s
 ```
 
+## Vim
 ```
-# Vim
-
  # Building Vim from source
   sudo apt-get install libncurses5-dev libgnome2-dev libgnomeui-dev libgtk2.0-dev libatk1.0-dev libbonoboui2-dev libcairo2-dev libx11-dev libxpm-dev libxt-dev;
   sudo apt-get update;
@@ -218,32 +209,33 @@ Follow in order. Sections are listed in order of requirements (eg: some sections
   ./install.py --tern-completer;
 ```
 
+## Silver Searcher
 ```
-# Silver Searcher
  sudo apt install silversearcher-ag;
 ```
 
+## Htop
 ```
-# Htop
  sudo apt-get install htop
 ```
 
+## Disable CUPS
 ```
-# Disable CUPS
 systemctl stop cups;
 systemctl stop cups-browsed;
 systemctl disable cups;
 systemctl disable cups-browsed;
 ```
 
+## (For servers) Increase security
 ```
-# (For servers) Increase security
 
 # Disable Password Authentication and change SSH port
 # NOTE: Ensure you've already added your public key to ~/.ssh/authorized_keys or you'll lock yourself out
 sudo vi /etc/ssh/sshd_config;
 # Update these lines as follows:
-Port <any random port number here, usually four characters prefixed with 2>
+
+Port <use your best judgement, some port numbers are better than others. usually four characters prefixed with 2>
 ChallengeResponseAuthentication no
 PasswordAuthentication no
 UsePAM no
@@ -253,8 +245,8 @@ PermitRootLogin no
 sudo /etc/init.d/ssh reload;
 ```
 
+## Docker
 ```
-# Docker
 sudo apt-get remove docker docker-engine docker.io;
 sudo apt-get update;
 sudo apt-get install apt-transport-https ca-certificates curl software-properties-common;
@@ -266,14 +258,14 @@ sudo apt-get install docker-ce;
 sudo docker run hello-world;
 ```
 
+## Docker Compose
 ```
-# Docker Compose
 sudo curl -L https://github.com/docker/compose/releases/download/1.21.0/docker-compose-$(uname -s)-$(uname -m) -o /usr/local/bin/docker-compose;
 sudo chmod +x /usr/local/bin/docker-compose;
 ```
 
+## Fonts
 ```
-# Fonts
 Preferred font is FuraCode NF Retina (non-mono), size 18, AA, roughly 80-90% horizontal character spacing
 https://github.com/ryanoasis/nerd-fonts/blob/master/patched-fonts/FiraCode/Retina/complete/Fura%20Code%20Retina%20Nerd%20Font%20Complete.otf
 ```
