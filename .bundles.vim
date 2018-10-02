@@ -21,7 +21,7 @@ Plugin 'vim-scripts/JavaScript-Indent'  " Proper indentation for .js
 Plugin 'Yggdroot/indentLine'            " Visual ASCII lines to show indentation
 Plugin 'Valloric/YouCompleteMe'         " Code completion
 Plugin 'tpope/vim-fugitive'             " In-vim Git wrapper
-Plugin 'airblade/vim-gitgutter'         " Git diff in the gutter
+Plugin 'mhinz/vim-signify'              " Similar to git gutter
 Plugin 'scrooloose/nerdtree'            " Tree explorer
 Plugin 'Xuyuanp/nerdtree-git-plugin'    " Git status in NerdTree
 Plugin 'dhruvasagar/vim-table-mode'     " Easy creation of tables
@@ -45,6 +45,7 @@ Plugin 'chrisbra/Colorizer'             " Highlight hex colors
 Plugin 'matze/vim-move'                 " Move blocks in visual mode with A-k and A-j
 Plugin 'mbbill/undotree'                " UndoTree
 Plugin 'tpope/vim-endwise'              " Automatic adding of ends in various languages
+Plugin 'edkolev/tmuxline.vim'           " Airline for tmux
 
 Plugin 'tiagofumo/vim-nerdtree-syntax-highlight' " NerdTree icon highlighting
 Plugin 'othree/javascript-libraries-syntax.vim'  " Highlighting for more JS libraries

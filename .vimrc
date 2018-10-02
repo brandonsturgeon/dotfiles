@@ -40,7 +40,10 @@ set tabstop=4
 set shiftwidth=4
 set expandtab
 
-" Folding
+" 256 Color
+set t_Co=256
+
+" Folding "
 " ' Then you can toggle folding with za. You can fold everything with zM and
 " unfold everything with zR. zm and zr can be used to get those folds just
 " right. Always remember the almighty help file at “help :folding” if you get
@@ -50,17 +53,17 @@ set foldnestmax=10      " Deepest fold is 10 levels
 set nofoldenable        " Don't fold by default
 set foldlevel=0
 
-" Folding
-hi Folded ctermbg=0   "Set the folded bg color to be less harsh
-hi Folded ctermfg=30  "Set the folded fg color to be less harsh
+" Set the folded fg/bg color to be less harsh
+hi Folded ctermbg=0
+hi Folded ctermfg=30
 " Alternate fg colors: 6, 8, 10, 12, 14, 30
 
-" Spellcheck design
+" Spellcheck design "
 hi clear SpellBad
 hi SpellBad cterm=underline ctermfg=9
 
-" 256 Color
-set t_Co=256
+" Change gutter background "
+hi SignColumn ctermbg=none
 
 "set directory=$TEMP/.vim/
 " Set backup directory to $TEMP
@@ -170,9 +173,22 @@ set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%*
 
+" Signify configuration
+let g:signify_realtime = 1
+
+" Sets sign colors for use in other applications
+hi DiffAdd           cterm=bold ctermbg=none ctermfg=119
+hi DiffDelete        cterm=bold ctermbg=none ctermfg=167
+hi DiffChange        cterm=bold ctermbg=none ctermfg=227
+
+" Sets sign colors for vim gutter specifically
+hi SignifySignAdd    cterm=bold ctermbg=none  ctermfg=119
+hi SignifySignDelete cterm=bold ctermbg=none  ctermfg=167
+hi SignifySignChange cterm=bold ctermbg=none  ctermfg=227
+
 " YouCompleteMe
 let g:ycm_autoclose_preview_window_after_completion=1
-highlight Pmenu ctermfg=15 ctermbg=0 guifg=#ffffff guibg=#000000
+hi Pmenu ctermfg=15 ctermbg=0 guifg=#ffffff guibg=#000000
 
 " This is for having vim-jsx not require a .jsx extension to function properly
 let g:jsx_ext_required = 0
