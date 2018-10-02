@@ -24,18 +24,14 @@ Plugin 'tpope/vim-fugitive'             " In-vim Git wrapper
 Plugin 'mhinz/vim-signify'              " Similar to git gutter
 Plugin 'scrooloose/nerdtree'            " Tree explorer
 Plugin 'Xuyuanp/nerdtree-git-plugin'    " Git status in NerdTree
-Plugin 'dhruvasagar/vim-table-mode'     " Easy creation of tables
-Plugin 'godlygeek/tabular'              " Lines up text using :Tabularize /=
 Plugin 'EinfachToll/DidYouMean'         " Vim plugin which asks for the right file to open
 Plugin 'Valloric/MatchTagAlways'        " Always highlights the tags that enclose your cursor
-Plugin 'luochen1990/rainbow'            " Maybe makes some rainbow parenthesis?
-Plugin 'henrik/vim-indexed-search'      " Shows match information at bottom line when searching
+Plugin 'google/vim-searchindex'         " Shows match information at bottom line when searching
 Plugin 'jlanzarotta/bufexplorer'        " Explore vim buffer with 'be' 'bt' 'bs' and 'bv'
 Plugin 'tpope/vim-markdown'             " Forces Markdown highlighting
 Plugin 'lfilho/cosco.vim'               " Semicolon insertion bliss
 Plugin 'tpope/vim-surround'             " Surround with tags, words, quotes using [c,y]s[i[w,p]]
 Plugin 'terryma/vim-multiple-cursors'   " Multiple cursors
-Plugin 'tommcdo/vim-exchange'           " Swap 2 regions of text with cx -- clear with cxc
 Plugin 'metakirby5/codi.vim'            " Interactive scratchpad. Enable with Codi [filetype]
 Plugin 'mtth/scratch.vim'               " Unobtrusive scratchbuffers. Open with gs
 Plugin 'vim-airline/vim-airline'        " Nice statusline

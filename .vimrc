@@ -46,8 +46,7 @@ set t_Co=256
 " Folding "
 " ' Then you can toggle folding with za. You can fold everything with zM and
 " unfold everything with zR. zm and zr can be used to get those folds just
-" right. Always remember the almighty help file at “help :folding” if you get
-" stuck. '
+" right. Always remember the almighty help file at “help :folding” if you get stuck. '
 set foldmethod=indent   " Fold based on indent
 set foldnestmax=10      " Deepest fold is 10 levels
 set nofoldenable        " Don't fold by default
@@ -133,13 +132,13 @@ nnoremap <C-H> <C-W><C-H>
 function! DoCopy()
   set nonumber
   :IndentLinesDisable
-  :GitGutterDisable
+  :SignifyDisable
 endfunction
 
 function! DoUncopy()
   set number
   :IndentLinesEnable
-  :GitGutterEnable
+  :SignifyEnable
 endfunction
 
 " Auto highlight lines that go over 100 characters.
@@ -168,13 +167,12 @@ let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 1
 let g:syntastic_javascript_checkers = ['eslint']
 let g:syntastic_ruby_checkers = ['rubocop']
-let g:syntastic_javascript_eslint_exe = '$(npm bin)/eslint'
+let g:syntastic_javascript_eslint_exe = '$(npm bin)/eslint -c ~/.eslintrc.json'
 set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%*
-
-" Signify configuration
-let g:signify_realtime = 1
+hi SyntasticErrorLine ctermfg=red
+hi SyntasticErrorSign ctermbg=none ctermfg=red
 
 " Sets sign colors for use in other applications
 hi DiffAdd           cterm=bold ctermbg=none ctermfg=119
