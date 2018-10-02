@@ -32,16 +32,16 @@ COMPLETION_WAITING_DOTS="true"
 plugins=(
     gitfast
     git-extras
-    rvm
-    ruby
-    rails
+    #rvm
+    #ruby
+    #rails
     bundler
-    gem
+    #gem
     command-not-found
     npm
     node
-    pip
-    python
+    #pip
+    #python
     zsh-256color
     zsh-syntax-highlighting
 )
@@ -65,7 +65,7 @@ source $ZSH/oh-my-zsh.sh
 
 ## BEGIN CUSTOM CONFIGURATION ##
 
-# Ensure that yarn uses strict ssl
+# Ensure that yarn uses strict ssl, output goes to /dev/null
 yarn config set strict-ssl true > /dev/null 2>&1
 
 # Where I keep my scripts
@@ -90,10 +90,12 @@ if [ ! -d ~/.tmp/.vim/.backup ]; then
     mkdir ~/.tmp/.vim/.backup
 fi
 
+# Zaw style configuration
 zstyle ':filter-select:highlight' matched fg=green
 zstyle ':filter-select' max-lines -1
 zstyle ':filter-select' case-insensitive yes # enable case-insensitive
 zstyle ':filter-select' extended-search yes # see below
+zstyle ':filter-select' hist-find-no-dups yes # ignore duplicates in history source
 
 # Alias definitions
 if [ -f ~/.bash_aliases ]; then
@@ -109,6 +111,23 @@ fi
 if [ -f $SCRIPTS_DIR/z/z.sh ]; then
     . $SCRIPTS_DIR/z/z.sh
 fi
+
+# Source zaw / zaw configuration
+# ctrl-e for history
+bindkey '^e' zaw-history
+ # if [[ "$IS_MAC" == false ]]; then
+#     bindkey -M filterselect '^r' down-line-or-history
+#     bindkey -M filterselect '^s' up-line-or-history
+#     bindkey -M filterselect '^e' accept-search
+# fi
+zle -N zaw-history
+source $SCRIPTS_DIR/zaw/zaw.zsh
+
+# Fix for zaw
+TRAPWINCH() {
+  zle && { zle reset-prompt; zle -R }
+}
+
 
 # Initialize V
 if [[ ! -a /usr/local/bin/vv ]]; then
@@ -127,6 +146,10 @@ export PATH=/opt/local/bin:$PATH
 ## END CUSTOM CONFIGURATION
 
 
+## BEGIN PATH MODIFICATION
+
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+## END PATH MODIFICATION
