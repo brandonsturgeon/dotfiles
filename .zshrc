@@ -83,8 +83,11 @@ fi
 if [ ! -d ~/.tmp/.vim/ ]; then
     mkdir ~/.tmp/.vim
 fi
-if [ ! -d ~/.tmp/.vim/.undodir ]; then
-    mkdir ~/.tmp/.vim/.undodir
+if [ ! -d ~/.tmp/.vim/.undo ]; then
+    mkdir ~/.tmp/.vim/.undo
+fi
+if [ ! -d ~/.tmp/.vim/.backup ]; then
+    mkdir ~/.tmp/.vim/.backup
 fi
 
 zstyle ':filter-select:highlight' matched fg=green

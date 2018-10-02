@@ -45,7 +45,10 @@ Plugin 'chrisbra/Colorizer'             " Highlight hex colors
 Plugin 'matze/vim-move'                 " Move blocks in visual mode with A-k and A-j
 Plugin 'mbbill/undotree'                " UndoTree
 Plugin 'tpope/vim-endwise'              " Automatic adding of ends in various languages
-Plugin 'othree/javascript-libraries-syntax.vim' " Highlighting for more JS libraries
+
+Plugin 'tiagofumo/vim-nerdtree-syntax-highlight' " NerdTree icon highlighting
+Plugin 'othree/javascript-libraries-syntax.vim'  " Highlighting for more JS libraries
+Plugin 'ryanoasis/vim-devicons'                  " Special devicons for various plugins
 " -----  END PLUGINS  -----
 
 call vundle#end()            " required

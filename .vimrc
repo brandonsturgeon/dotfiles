@@ -62,13 +62,16 @@ hi SpellBad cterm=underline ctermfg=9
 " 256 Color
 set t_Co=256
 
+"set directory=$TEMP/.vim/
 " Set backup directory to $TEMP
-set backupdir=$TEMP/.vim//
-set directory=$TEMP/.vim//
+set backupdir=$TEMP/.vim/.backup//
+set backup
 if has("persistent_undo")
-    set undodir=$TEMP/.vim/.undodir/
+    set undodir=$TEMP/.vim/.undo//
     set undofile
 endif
+
+set guifont=FuraCode_Nerd_Font:h18
 
 " ----- END BASE CONFIGURATION ----- "
 
