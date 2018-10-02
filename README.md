@@ -269,3 +269,14 @@ sudo chmod +x /usr/local/bin/docker-compose;
 Preferred font is FuraCode NF Retina (non-mono), size 18, AA, roughly 80-90% horizontal character spacing
 https://github.com/ryanoasis/nerd-fonts/blob/master/patched-fonts/FiraCode/Retina/complete/Fura%20Code%20Retina%20Nerd%20Font%20Complete.otf
 ```
+
+# (incomplete) OSX Installation instructions
+Follow in order. Sections are listed in order of requirements (eg: some sections require packages installed in previous sections)
+
+---
+
+## Vim
+```
+brew install --with-client-server --with-lua --with-luajit --with-override-system-vi vim
+```
+
