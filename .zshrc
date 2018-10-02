@@ -71,7 +71,7 @@ yarn config set strict-ssl true > /dev/null 2>&1
 # Where I keep my scripts
 SCRIPTS_DIR=~/_scripts
 # List of scripts
-SCRIPTS=(z)
+SCRIPTS=(z zaw)
 
 # Preferred temp directory
 export TEMP=~/.tmp/
