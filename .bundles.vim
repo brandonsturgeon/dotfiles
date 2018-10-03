@@ -37,8 +37,6 @@ Plugin 'mtth/scratch.vim'               " Unobtrusive scratchbuffers. Open with 
 Plugin 'vim-airline/vim-airline'        " Nice statusline
 Plugin 'vim-airline/vim-airline-themes' " Airline themes
 Plugin 'vim-ctrlspace/vim-ctrlspace'    " Vim ctrlspace
-Plugin 'chrisbra/Colorizer'             " Highlight hex colors
-Plugin 'matze/vim-move'                 " Move blocks in visual mode with A-k and A-j
 Plugin 'mbbill/undotree'                " UndoTree
 Plugin 'tpope/vim-endwise'              " Automatic adding of ends in various languages
 Plugin 'edkolev/tmuxline.vim'           " Airline for tmux
