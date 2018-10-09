@@ -27,7 +27,7 @@ alias bashrc='vim ~/.bashrc'
 alias zshrc="vim ~/.zshrc"
 
 # Navigate to the git root
-alias gitroot='cd $(git rev-parse --show-cdup)'
+alias groot='cd $(git rev-parse --show-cdup)'
 
 # Git
 alias g="git"
@@ -37,3 +37,6 @@ alias v="vim"
 
 # DF to always use -h flag
 alias df="df -h"
+
+# Resource ~/.zshrc
+alias zource="source ~/.zshrc"

@@ -184,6 +184,13 @@ hi SignifySignAdd    cterm=bold ctermbg=none  ctermfg=119
 hi SignifySignDelete cterm=bold ctermbg=none  ctermfg=167
 hi SignifySignChange cterm=bold ctermbg=none  ctermfg=227
 
+" Change signify's delete character
+let g:signify_sign_delete            = '-'
+
+" Update on insert mode too
+let g:signify_cursorhold_normal = 1
+let g:signify_cursorhold_insert = 1
+
 " YouCompleteMe
 let g:ycm_autoclose_preview_window_after_completion=1
 hi Pmenu ctermfg=15 ctermbg=0 guifg=#ffffff guibg=#000000
@@ -223,31 +230,6 @@ if executable("ag")
   let g:CtrlSpaceGlobCommand = 'ag -l --nocolor -g ""'
   let g:ctrlspace_glob_command = 'ag -l --nocolor -g ""'
 endif
-
-" Rainbow parentheses enable
-let g:rainbow_active = 1
-let g:rainbow_conf = {
-\	'guifgs': ['royalblue3', 'darkorange3', 'seagreen3', 'firebrick'],
-\	'ctermfgs': ['lightblue', 'lightyellow', 'lightcyan', 'lightmagenta'],
-\	'operators': '_,_',
-\	'parentheses': ['start=/(/ end=/)/ fold', 'start=/\[/ end=/\]/ fold', 'start=/{/ end=/}/ fold'],
-\	'separately': {
-\		'*': {},
-\		'tex': {
-\			'parentheses': ['start=/(/ end=/)/', 'start=/\[/ end=/\]/'],
-\		},
-\		'lisp': {
-\			'guifgs': ['royalblue3', 'darkorange3', 'seagreen3', 'firebrick', 'darkorchid3'],
-\		},
-\		'vim': {
-\			'parentheses': ['start=/(/ end=/)/', 'start=/\[/ end=/\]/', 'start=/{/ end=/}/ fold', 'start=/(/ end=/)/ containedin=vimFuncBody', 'start=/\[/ end=/\]/ containedin=vimFuncBody', 'start=/{/ end=/}/ fold containedin=vimFuncBody'],
-\		},
-\		'html': {
-\			'parentheses': ['start=/\v\<((area|base|br|col|embed|hr|img|input|keygen|link|menuitem|meta|param|source|track|wbr)[ >])@!\z([-_:a-zA-Z0-9]+)(\s+[-_:a-zA-Z0-9]+(\=("[^"]*"|'."'".'[^'."'".']*'."'".'|[^ '."'".'"><=`]*))?)*\>/ end=#</\z1># fold'],
-\		},
-\		'css': 0,
-\	}
-\}
 
 " ----- END PLUGIN CONFIGURATION ----- "
 
