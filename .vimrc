@@ -217,7 +217,8 @@ autocmd FileType javascript,css nmap <silent> ; <Plug>(cosco-commaOrSemiColon)
 " AirlineTheme configuration
 let g:airline_theme='hybridline'
 let g:airline_powerline_fonts = 1
-let g:airline#extensions#syntastic#stl_format_err = "{Err@#%fe}%B{, }%W{Warn@#%fw}"
+let g:airline#extensions#syntastic#stl_format_err = "%E{[%e #%fe]}"
+let g:airline#extensions#syntastic#stl_format_warn = "%W{[%w #%fw]}"
 let g:airline#extensions#default#section_truncate_width = {
     \ 'b': 150,
     \ 'x': 150,
