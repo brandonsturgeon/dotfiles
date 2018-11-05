@@ -40,3 +40,6 @@ alias df="df -h"
 
 # Resource ~/.zshrc
 alias zource="source ~/.zshrc"
+
+# Untar a .
+alias untar="tar -xvzf"
