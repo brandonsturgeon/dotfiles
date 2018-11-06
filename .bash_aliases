@@ -41,5 +41,8 @@ alias df="df -h"
 # Resource ~/.zshrc
 alias zource="source ~/.zshrc"
 
-# Untar a .
+# Untar a .tar.gz
 alias untar="tar -xvzf"
+
+# Shorter AG output
+alias ags="ag -W 125"
