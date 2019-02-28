@@ -19,10 +19,10 @@ fi
 # See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
 ZSH_THEME="philips"
 
-# Uncomment the following line to enable command auto-correction.
+# Command auto-correction.
 ENABLE_CORRECTION="true"
 
-# Uncomment the following line to display red dots whilst waiting for completion.
+# Display red dots whilst waiting for completion.
 COMPLETION_WAITING_DOTS="true"
 
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
@@ -38,18 +38,16 @@ plugins=(
     bundler
     #gem
     command-not-found
-    npm
-    node
+    #npm
+    #node
     #pip
     #python
     zsh-256color
     zsh-syntax-highlighting
+    fancy-ctrl-z
 )
 
-# You may need to manually set your language environment
 export LANG=en_US.UTF-8
-
-# Default editor
 export EDITOR='vim'
 
 # Set history size for reverse search
@@ -80,15 +78,8 @@ if [ ! -d ~/.tmp ]; then
 fi
 
 # Vim temp directories
-if [ ! -d ~/.tmp/.vim/ ]; then
-    mkdir ~/.tmp/.vim
-fi
-if [ ! -d ~/.tmp/.vim/.undo ]; then
-    mkdir ~/.tmp/.vim/.undo
-fi
-if [ ! -d ~/.tmp/.vim/.backup ]; then
-    mkdir ~/.tmp/.vim/.backup
-fi
+mkdir -p ~/.tmp/.vim/.undo
+mkdir -p ~/.tmp/.vim/.backup
 
 # Zaw style configuration
 zstyle ':filter-select:highlight' matched fg=green
@@ -113,9 +104,9 @@ if [ -f $SCRIPTS_DIR/z/z.sh ]; then
 fi
 
 # Source zaw / zaw configuration
-# ctrl-e for history
+# ctrl-e for advanced history
 bindkey '^e' zaw-history
- # if [[ "$IS_MAC" == false ]]; then
+# if [[ "$IS_MAC" == false ]]; then
 #     bindkey -M filterselect '^r' down-line-or-history
 #     bindkey -M filterselect '^s' up-line-or-history
 #     bindkey -M filterselect '^e' accept-search
@@ -127,7 +118,6 @@ source $SCRIPTS_DIR/zaw/zaw.zsh
 TRAPWINCH() {
   zle && { zle reset-prompt; zle -R }
 }
-
 
 # Initialize V
 if [[ ! -a /usr/local/bin/vv ]]; then
@@ -149,7 +139,9 @@ export PATH=/opt/local/bin:$PATH
 ## BEGIN PATH MODIFICATION
 
 export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" --no-use  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
 ## END PATH MODIFICATION
+
+test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
