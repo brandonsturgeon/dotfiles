@@ -9,7 +9,7 @@ fi
 
 # Path to your oh-my-zsh installation.
 if [[ "$IS_MAC" == true ]]; then
-    export ZSH=/Users/bsturgeon/.oh-my-zsh
+    export ZSH=/Users/v-brandon.sturgeon/.oh-my-zsh
 else
     export ZSH=/home/brandon/.oh-my-zsh
 fi
@@ -138,8 +138,6 @@ export PATH=/opt/local/bin:$PATH
 
 ## BEGIN PATH MODIFICATION
 
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" --no-use  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
 ## END PATH MODIFICATION

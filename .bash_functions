@@ -69,7 +69,7 @@ function do_request {
 }
 
 function update_v {
-    git clone git@github.com:rupa/v.git $SCRIPTS_DIR/v
+    git clone https://github.com/rupa/v.git $SCRIPTS_DIR/v
     mv $SCRIPTS_DIR/v/v /usr/local/bin/vv
     rm -rf $SCRIPTS_DIR/v
 }
