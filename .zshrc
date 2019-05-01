@@ -43,7 +43,6 @@ plugins=(
     #pip
     #python
     zsh-256color
-    zsh-syntax-highlighting
     fancy-ctrl-z
 )
 
@@ -142,4 +141,8 @@ export PATH=/opt/local/bin:$PATH
 
 ## END PATH MODIFICATION
 
+export PATH="$HOME/.rbenv/bin:$PATH"
+eval "$(rbenv init -)"
+
+source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
