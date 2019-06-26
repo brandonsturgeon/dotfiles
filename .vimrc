@@ -73,7 +73,13 @@ if has("persistent_undo")
     set undofile
 endif
 
-set guifont=FuraCode_Nerd_Font:h18
+"set guifont=FuraCodeNerdFont:h18
+set guifont=FuraMonoNerdFontComplete-Medium:h18
+
+" Allow color schemes to do bright colors without forcing bold.
+if &t_Co == 8 && $TERM !~# '^linux\|^Eterm'
+  set t_Co=16
+endif
 
 " ----- END BASE CONFIGURATION ----- "
 
