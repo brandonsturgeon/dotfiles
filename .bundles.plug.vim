@@ -16,7 +16,7 @@ augroup END
 
 augroup load_post_read
     autocmd!
-    autocmd BufReadPost * call plug#load('syntastic', 'vim-searchindex', 'bufexplorer', 'vim-airline', 'vim-airline-themes') | autocmd! load_post_read
+    autocmd BufReadPost * call plug#load('syntastic', 'vim-searchindex', 'bufexplorer', 'vim-airline', 'vim-airline-themes', 'tmuxline.vim') | autocmd! load_post_read
     
     " Configs that require Syntastic to be loaded
     hi SyntasticErrorLine ctermfg=red
@@ -33,7 +33,6 @@ Plug 'EinfachToll/DidYouMean'                   " Vim plugin which asks for the 
 Plug 'Valloric/MatchTagAlways'                  " Always highlights the tags that enclose your cursor
 Plug 'tpope/vim-surround'                       " Surround with tags, words, quotes using [c,y]s[i[w,p]]
 Plug 'mtth/scratch.vim'                         " Unobtrusive scratchbuffers. Open with gs
-Plug 'edkolev/tmuxline.vim'                     " Airline for tmux
 Plug 'terryma/vim-multiple-cursors'             " Multiple cursors
 Plug 'ryanoasis/vim-devicons'                   " Special devicons for various plugins
 
@@ -63,6 +62,7 @@ Plug 'google/vim-searchindex',                  { 'on': [] }               " Sho
 Plug 'jlanzarotta/bufexplorer',                 { 'on': [] }               " Explore vim buffer with 'be' 'bt' 'bs' and 'bv'
 Plug 'vim-airline/vim-airline',                 { 'on': [] }               " Nice statusline
 Plug 'vim-airline/vim-airline-themes',          { 'on': [] }               " Airline themes
+Plug 'edkolev/tmuxline.vim',                    { 'on': [] }               " Airline for tmux
 
 " Loaded on InsertEnter
 Plug 'Valloric/YouCompleteMe',                  { 'on': [] }               " Code completion
