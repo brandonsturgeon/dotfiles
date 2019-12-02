@@ -16,7 +16,7 @@ augroup END
 
 augroup load_post_read
     autocmd!
-    autocmd BufReadPost * call plug#load('syntastic', 'vim-searchindex', 'bufexplorer') | autocmd! load_post_read
+    autocmd BufReadPost * call plug#load('syntastic', 'vim-searchindex', 'bufexplorer', 'vim-airline', 'vim-airline-themes') | autocmd! load_post_read
 augroup END
 
 " ----- BEGIN PLUGINS -----
@@ -25,8 +25,6 @@ Plug 'EinfachToll/DidYouMean'                   " Vim plugin which asks for the 
 Plug 'Valloric/MatchTagAlways'                  " Always highlights the tags that enclose your cursor
 Plug 'tpope/vim-surround'                       " Surround with tags, words, quotes using [c,y]s[i[w,p]]
 Plug 'mtth/scratch.vim'                         " Unobtrusive scratchbuffers. Open with gs
-Plug 'vim-airline/vim-airline'                  " Nice statusline
-Plug 'vim-airline/vim-airline-themes'           " Airline themes
 Plug 'edkolev/tmuxline.vim'                     " Airline for tmux
 Plug 'terryma/vim-multiple-cursors'             " Multiple cursors
 Plug 'ryanoasis/vim-devicons'                   " Special devicons for various plugins
@@ -55,6 +53,8 @@ Plug 'mbbill/undotree',                         { 'on': 'UndoTreeToggle' } " Und
 Plug 'scrooloose/syntastic',                    { 'on': [] }               " Syntastic
 Plug 'google/vim-searchindex',                  { 'on': [] }               " Shows match information at bottom line when searching
 Plug 'jlanzarotta/bufexplorer',                 { 'on': [] }               " Explore vim buffer with 'be' 'bt' 'bs' and 'bv'
+Plug 'vim-airline/vim-airline',                 { 'on': [] }               " Nice statusline
+Plug 'vim-airline/vim-airline-themes',          { 'on': [] }               " Airline themes
 
 " Loaded on InsertEnter
 Plug 'Valloric/YouCompleteMe',                  { 'on': [] }               " Code completion
