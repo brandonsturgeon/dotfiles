@@ -27,7 +27,7 @@ Plugin 'Xuyuanp/nerdtree-git-plugin'    " Git status in NerdTree
 Plugin 'EinfachToll/DidYouMean'         " Vim plugin which asks for the right file to open
 Plugin 'Valloric/MatchTagAlways'        " Always highlights the tags that enclose your cursor
 Plugin 'google/vim-searchindex'         " Shows match information at bottom line when searching
-Plugin 'jlanzarotta/bufexplorer'        " Explore vim buffer with 'be' 'bt' 'bs' and 'bv'
+"Plugin 'jlanzarotta/bufexplorer'        " Explore vim buffer with 'be' 'bt' 'bs' and 'bv'
 Plugin 'tpope/vim-markdown'             " Forces Markdown highlighting
 Plugin 'lfilho/cosco.vim'               " Semicolon insertion bliss
 Plugin 'tpope/vim-surround'             " Surround with tags, words, quotes using [c,y]s[i[w,p]]
@@ -40,6 +40,8 @@ Plugin 'vim-ctrlspace/vim-ctrlspace'    " Vim ctrlspace
 Plugin 'mbbill/undotree'                " UndoTree
 Plugin 'tpope/vim-endwise'              " Automatic adding of ends in various languages
 Plugin 'edkolev/tmuxline.vim'           " Airline for tmux
+Plugin 'leafo/moonscript-vim'           " Moonscript Syntax
+
 
 Plugin 'tiagofumo/vim-nerdtree-syntax-highlight' " NerdTree icon highlighting
 Plugin 'othree/javascript-libraries-syntax.vim'  " Highlighting for more JS libraries
