@@ -1,7 +1,10 @@
 " ----- BEGIN BASE CONFIGURATION ----- "
 
-" Load Vundle stuff
-source ~/.bundles.vim
+" Load Vundle
+"source ~/.bundles.vim
+
+" Load Plug
+source ~/.bundles.plug.vim
 
 syntax enable
 
@@ -242,4 +245,3 @@ if executable("ag")
 endif
 
 " ----- END PLUGIN CONFIGURATION ----- "
-
