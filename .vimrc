@@ -117,6 +117,7 @@ nnoremap <silent><C-p> :CtrlSpace O<CR>
 
 " Ctrl-w m to maximize current split, Ctrl-w = to revert
 nnoremap <C-W>m :wincmd _<Bar>wincmd <Bar><CR>
+nnoremap <C-W>- :wincmd _<Bar>wincmd <Bar><CR>
 
 " Remedy lazy shift finger
 command W w
@@ -236,8 +237,8 @@ let g:airline#extensions#default#section_truncate_width = {
 
 " vim-ctrlspace use silver searcher
 if executable("ag")
-  let g:CtrlSpaceGlobCommand = 'ag -l --nocolor -g ""'
-  let g:ctrlspace_glob_command = 'ag -l --nocolor -g ""'
+  let g:CtrlSpaceGlobCommand = 'rg -l --max-depth 50 test --color never ""'
+  let g:ctrlspace_glob_command = 'rg -l --max-depth 50 test --color never ""'
 endif
 
 " ----- END PLUGIN CONFIGURATION ----- "
