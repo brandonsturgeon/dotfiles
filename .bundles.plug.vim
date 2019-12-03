@@ -1,7 +1,7 @@
 " ----- BEGIN PLUG SETTINGS -----
 set nocompatible              " be iMproved, required
 
-call plug#begin('~/.vim/bundle')
+call plug#begin('~/.vim/plugged')
 
 " Load plugins on insert
 augroup load_on_insert
@@ -17,6 +17,14 @@ augroup END
 augroup load_post_read
     autocmd!
     autocmd BufReadPost * call plug#load('syntastic', 'vim-searchindex', 'bufexplorer', 'vim-airline', 'vim-airline-themes') | autocmd! load_post_read
+    
+    " Configs that require Syntastic to be loaded
+    hi SyntasticErrorLine ctermfg=red
+    hi SyntasticErrorSign ctermbg=none ctermfg=red
+    hi SyntasticWarningSign ctermbg=none ctermfg=yellow
+    set statusline+=%#warningmsg#
+    set statusline+=%{SyntasticStatuslineFlag()}
+    set statusline+=%*
 augroup END
 
 " ----- BEGIN PLUGINS -----
