@@ -69,8 +69,8 @@ hi SignColumn ctermbg=none
 
 "set directory=$TEMP/.vim/
 " Set backup directory to $TEMP
-set backupdir=$TEMP/.vim/.backup//
 set backup
+set backupdir=$TEMP/.vim/.backup//
 if has("persistent_undo")
     set undodir=$TEMP/.vim/.undo//
     set undofile
@@ -178,12 +178,6 @@ let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 1
 let g:syntastic_javascript_checkers = ['eslint']
 let g:syntastic_ruby_checkers = ['rubocop']
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
-hi SyntasticErrorLine ctermfg=red
-hi SyntasticErrorSign ctermbg=none ctermfg=red
-hi SyntasticWarningSign ctermbg=none ctermfg=yellow
 
 " Sets sign colors for use in other applications
 hi DiffAdd           cterm=bold ctermbg=none ctermfg=119
