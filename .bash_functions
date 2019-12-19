@@ -33,12 +33,8 @@ function check {
 }
 
 function rainbow {
-    yes "$(seq 231 -1 16)" | while read i; do printf "\x1b[48;5;${i}m\n"; sleep .02; done
-}
-
-function rainboww {
     local BIGLINE="░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░"
-    yes "$(seq 231 -1 16)" | while read i; do printf "\x1b[48;5;${i}m${BIGLINE}\n"; sleep .02; done
+    yes "$(seq 231 -1 16)" | while read i; do printf "\x1b[48;5;${i}m${BIGLINE}\n"; sleep 0; done
 }
 
 # Stat tmuxinator config
@@ -86,13 +82,13 @@ function jpg_convert {
     convert $1 -sampling-factor 4:2:0 -strip -interlace JPEG $(python -c "print '$1'.split('.')[0]+'2.jpg'");
 }
 
-function dim_screen {
-    for i in `seq 1 $1`;  osascript $SCRIPTS_DIR/dim-screen.script
-}
-
-function brighten_screen {
-    for i in `seq 1 $1`;  osascript $SCRIPTS_DIR/brighten-screen.script
-}
+#function dim_screen {
+#    for i in `seq 1 $1`;  osascript $SCRIPTS_DIR/dim-screen.script
+#}
+#
+#function brighten_screen {
+#    for i in `seq 1 $1`;  osascript $SCRIPTS_DIR/brighten-screen.script
+#}
 
 # Uses python's json library to load, then re-dump the json from a file in a formatted style
 function python_pp {
@@ -108,6 +104,10 @@ function pp {
 # Uses the python_pp command with grep wrapped around it
 function ppgrep {
     python_pp $1 | grep --color=auto -n -A 3 -B 2 --color=always $2 | less -R
+}
+
+function f {
+    find . -iname "*$1*"
 }
 
 ## END CUSTOM FUNCTIONS ##
