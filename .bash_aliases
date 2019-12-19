@@ -22,7 +22,7 @@ alias l='ls -CF'
 alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
 
 # .rc aliases
-alias vimrc='vim -O ~/.vimrc ~/.bundles.vim'
+alias vimrc='vim -O ~/.vimrc ~/.bundles.plug.vim'
 alias bashrc='vim ~/.bashrc'
 alias zshrc="vim ~/.zshrc"
 
@@ -46,3 +46,5 @@ alias untar="tar -xvzf"
 
 # Shorter AG output
 alias ags="ag -W 125"
+
+alias rgd="rg -L --max-depth 50"
