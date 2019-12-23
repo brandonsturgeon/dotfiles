@@ -67,7 +67,8 @@ hi SpellBad cterm=underline ctermfg=9
 " Change gutter background "
 hi SignColumn ctermbg=none
 
-"set directory=$TEMP/.vim/
+set directory=$TEMP/.vim/.dir//
+
 " Set backup directory to $TEMP
 set backup
 set backupdir=$TEMP/.vim/.backup//
