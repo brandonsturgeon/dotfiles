@@ -16,15 +16,10 @@ augroup END
 
 augroup load_post_read
     autocmd!
-    autocmd BufReadPost * call plug#load('syntastic', 'vim-searchindex', 'bufexplorer', 'vim-airline', 'vim-airline-themes', 'tmuxline.vim') | autocmd! load_post_read
-    
-    " Configs that require Syntastic to be loaded
-    hi SyntasticErrorLine ctermfg=red
-    hi SyntasticErrorSign ctermbg=none ctermfg=red
-    hi SyntasticWarningSign ctermbg=none ctermfg=yellow
-    set statusline+=%#warningmsg#
-    set statusline+=%{SyntasticStatuslineFlag()}
-    set statusline+=%*
+    autocmd BufReadPost * call plug#load('ale', 'vim-searchindex', 'bufexplorer', 'vim-airline', 'vim-airline-themes', 'tmuxline.vim') | autocmd! load_post_read
+
+    let g:airline#extensions#ale#enabled = 1
+    let g:ale_lint_on_save = 0
 augroup END
 
 " ----- BEGIN PLUGINS -----
@@ -35,6 +30,7 @@ Plug 'tpope/vim-surround'                       " Surround with tags, words, quo
 Plug 'mtth/scratch.vim'                         " Unobtrusive scratchbuffers. Open with gs
 Plug 'terryma/vim-multiple-cursors'             " Multiple cursors
 Plug 'ryanoasis/vim-devicons'                   " Special devicons for various plugins
+Plug 'dense-analysis/ale'                       " Async linting
 
 Plug 'mxw/vim-jsx',                             { 'for': 'javascript' }  " Vim JSX support
 Plug 'pangloss/vim-javascript',                 { 'for': 'javascript' }  " vim-javascript is required for synastic/vim-jsx to work
@@ -57,7 +53,6 @@ Plug 'vim-ctrlspace/vim-ctrlspace',             { 'on': 'CtrlSpace' }      " Vim
 Plug 'mbbill/undotree',                         { 'on': 'UndoTreeToggle' } " UndoTree
 
 " Loaded on BufReadPost
-Plug 'scrooloose/syntastic',                    { 'on': [] }               " Syntastic
 Plug 'google/vim-searchindex',                  { 'on': [] }               " Shows match information at bottom line when searching
 Plug 'jlanzarotta/bufexplorer',                 { 'on': [] }               " Explore vim buffer with 'be' 'bt' 'bs' and 'bv'
 Plug 'vim-airline/vim-airline',                 { 'on': [] }               " Nice statusline

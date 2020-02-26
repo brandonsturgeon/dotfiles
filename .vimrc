@@ -130,11 +130,9 @@ command Wa wa
 command Wq wq
 command Wqa wqa
 
-" Easier split management
-nnoremap <C-J> <C-W><C-J>
-nnoremap <C-K> <C-W><C-K>
-nnoremap <C-L> <C-W><C-L>
-nnoremap <C-H> <C-W><C-H>
+" Next Ale Error
+nmap <silent> <C-k> <Plug>(ale_previous_wrap)
+nmap <silent> <C-j> <Plug>(ale_next_wrap)
 
 " ----- END REMAPS ----- "
 
@@ -170,15 +168,6 @@ command! -n=? -complete=dir -bar Uncopy :call DoUncopy()
 
 " indentLine colors
 let g:indentLine_color_term = 239
-
-" Syntastic config "
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 0
-let g:syntastic_loc_list_height= 5
-let g:syntastic_check_on_open = 1
-let g:syntastic_check_on_wq = 1
-let g:syntastic_javascript_checkers = ['eslint']
-let g:syntastic_ruby_checkers = ['rubocop']
 
 " Sets sign colors for use in other applications
 hi DiffAdd           cterm=bold ctermbg=none ctermfg=119
