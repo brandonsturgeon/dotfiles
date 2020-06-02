@@ -6,7 +6,7 @@ call plug#begin('~/.vim/plugged')
 " Load plugins on insert
 augroup load_on_insert
     autocmd!
-    autocmd InsertEnter * call plug#load('YouCompleteMe', 'delimitMate') | autocmd! load_on_insert
+    autocmd InsertEnter * call plug#load('VimCompletesMe', 'delimitMate') | autocmd! load_on_insert
 augroup END
 
 augroup load_on_write
@@ -31,6 +31,8 @@ Plug 'mtth/scratch.vim'                         " Unobtrusive scratchbuffers. Op
 Plug 'terryma/vim-multiple-cursors'             " Multiple cursors
 Plug 'ryanoasis/vim-devicons'                   " Special devicons for various plugins
 Plug 'dense-analysis/ale'                       " Async linting
+Plug 'ludovicchabant/vim-gutentags'             " Tag stuff for auto complete
+Plug 'universal-ctags/ctags'                    " Tag stuff for auto complete
 
 Plug 'mxw/vim-jsx',                             { 'for': 'javascript' }  " Vim JSX support
 Plug 'pangloss/vim-javascript',                 { 'for': 'javascript' }  " vim-javascript is required for synastic/vim-jsx to work
@@ -60,8 +62,9 @@ Plug 'vim-airline/vim-airline-themes',          { 'on': [] }               " Air
 Plug 'edkolev/tmuxline.vim',                    { 'on': [] }               " Airline for tmux
 
 " Loaded on InsertEnter
-Plug 'Valloric/YouCompleteMe',                  { 'on': [] }               " Code completion
+"Plug 'Valloric/YouCompleteMe',                  { 'on': [] }               " Code completion
 Plug 'Raimondi/delimitMate',                    { 'on': [] }               " DelimitMate for auto bracket/quote closing
+Plug 'ajh17/VimCompletesMe',                    { 'on': [] }               " Code Completion
 
 " Loaded on BufWritePos
 Plug 'tpope/vim-fugitive',                      { 'on': [] }               " In-vim Git wrapper
