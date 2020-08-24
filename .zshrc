@@ -8,11 +8,7 @@ if [[ "$OS" == "Darwin" ]]; then
 fi
 
 # Path to your oh-my-zsh installation.
-if [[ "$IS_MAC" == true ]]; then
-    export ZSH=/Users/v-brandon.sturgeon/.oh-my-zsh
-else
-    export ZSH=/home/brandon/.oh-my-zsh
-fi
+ZSH=$HOME/.oh-my-zsh
 
 # Set name of the theme to load. Optionally, if you set this to "random"
 # it'll load a random theme each time that oh-my-zsh is loaded.
@@ -61,9 +57,6 @@ source $ZSH/oh-my-zsh.sh
 
 
 ## BEGIN CUSTOM CONFIGURATION ##
-
-# Ensure that yarn uses strict ssl, output goes to /dev/null
-yarn config set strict-ssl true > /dev/null 2>&1
 
 # Where I keep my scripts
 SCRIPTS_DIR=~/_scripts
@@ -137,13 +130,22 @@ export PATH=/opt/local/bin:$PATH
 
 ## BEGIN PATH MODIFICATION
 
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+nvm() {
+    # NVM
+    export NVM_DIR="$HOME/.nvm"
+    [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+    [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+    nvm "$@"
+}
 
 ## END PATH MODIFICATION
 
-export PATH="$HOME/.rbenv/bin:$PATH"
-eval "$(rbenv init -)"
+#export PATH="$HOME/.rbenv/bin:$PATH"
+#eval "$(rbenv init -)"
 
 source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
 export PATH="/usr/local/opt/openssl/bin:$PATH"
+export PATH="/usr/local/opt/postgresql@10/bin:$PATH"
+export ASPNETCORE_ENVIRONMENT=development

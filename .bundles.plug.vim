@@ -41,7 +41,6 @@ Plug 'lfilho/cosco.vim',                        { 'for': 'javascript' }  " Semic
 Plug 'othree/javascript-libraries-syntax.vim',  { 'for': 'javascript' }  " Highlighting for more JS libraries
 Plug 'tpope/vim-markdown',                      { 'for': 'markdown' }    " Forces Markdown highlighting
 Plug 'leafo/moonscript-vim',                    { 'for': 'moonscript' }  " Moonscript Syntax
-" Plug 'klen/python-mode',                        { 'for': 'python' }      " Python Mode for easy vim handling
 Plug 'slim-template/vim-slim',                  { 'for': 'slim' }        " .slim syntax highlighting
 
 Plug 'tpope/vim-endwise',                       { 'for': ['ruby', 'lua'] }               " Automatic adding of ends in various languages
@@ -62,7 +61,6 @@ Plug 'vim-airline/vim-airline-themes',          { 'on': [] }               " Air
 Plug 'edkolev/tmuxline.vim',                    { 'on': [] }               " Airline for tmux
 
 " Loaded on InsertEnter
-"Plug 'Valloric/YouCompleteMe',                  { 'on': [] }               " Code completion
 Plug 'Raimondi/delimitMate',                    { 'on': [] }               " DelimitMate for auto bracket/quote closing
 Plug 'ajh17/VimCompletesMe',                    { 'on': [] }               " Code Completion
 

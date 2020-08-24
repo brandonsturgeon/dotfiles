@@ -186,8 +186,6 @@ let g:signify_sign_delete            = '-'
 let g:signify_cursorhold_normal = 1
 let g:signify_cursorhold_insert = 1
 
-" YouCompleteMe
-let g:ycm_autoclose_preview_window_after_completion=1
 hi Pmenu ctermfg=15 ctermbg=0 guifg=#ffffff guibg=#000000
 
 " This is for having vim-jsx not require a .jsx extension to function properly
@@ -223,7 +221,7 @@ let g:airline#extensions#default#section_truncate_width = {
     \ }
 
 " vim-ctrlspace use silver searcher
-if executable("ag")
+if executable("rg")
   let g:CtrlSpaceGlobCommand = 'rg -l --max-depth 50 test --color never ""'
   let g:ctrlspace_glob_command = 'rg -l --max-depth 50 test --color never ""'
 endif
