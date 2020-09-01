@@ -226,4 +226,7 @@ if executable("rg")
   let g:ctrlspace_glob_command = 'rg -l --max-depth 50 test --color never ""'
 endif
 
+" Make gutentags use the .git dir for the tags file
+let g:gutentags_ctags_tagfile = '.git/tags'
+
 " ----- END PLUGIN CONFIGURATION ----- "
