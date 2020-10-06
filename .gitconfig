@@ -3,6 +3,7 @@
     email = sturgeonb4@gmail.com
 [core]
     editor = vim
+	excludesfile = /Users/bsturgeon/.global-gitignore
 [alias]
     a = add
     b = branch

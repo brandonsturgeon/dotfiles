@@ -32,7 +32,6 @@
 
 # ZSH
 !.zshrc
-!.iterm2_shell_integration.zsh
 
 # Kitty term
 !.config/
