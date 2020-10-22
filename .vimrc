@@ -107,17 +107,27 @@ nmap <silent> <leader>t :NERDTreeToggle<CR>
 " Toggle spell checking with <leader>s
 nmap <silent> <leader>s :set spell!<CR>
 
-" Open UndoTree with U
-nnoremap U :UndotreeToggle<CR>
-
 " Key combo to:
-" 'So if I type {, delimitMate will insert } after my cursor, then I can
+" 'So if I type {, auto-pairs will insert } after my cursor, then I can
 " execute my binding that will insert a new line in the middle of the two
 " ready to receive some code.'
-imap <C-c> <CR><Esc>O
+" imap <C-c> <CR><Esc>O
+"auto close {
+function! s:CloseBracket()
+    let line = getline('.')
+    if line =~# '^\s*\(struct\|class\|enum\) '
+        return "{\<Enter>};\<Esc>O"
+    elseif searchpair('(', '', ')', 'bmn', '', line('.'))
+        " Probably inside a function call. Close it off.
+        return "{\<Enter>});\<Esc>O"
+    else
+        return "{\<Enter>}\<Esc>O"
+    endif
+endfunction
+inoremap <expr> {<Enter> <SID>CloseBracket()
 
-" vim-ctrlspace fuzzy search with Ctrl-P
-nnoremap <silent><C-p> :CtrlSpace O<CR>
+" fzf Fuzzy search (using ripgrep) with Ctrl-P
+nnoremap <silent><C-p> :Rg<CR>
 
 " Ctrl-w m to maximize current split, Ctrl-w = to revert
 nnoremap <C-W>m :wincmd _<Bar>wincmd <Bar><CR>
@@ -223,13 +233,14 @@ let g:airline#extensions#default#section_truncate_width = {
     \ 'error': 80,
     \ }
 
-" vim-ctrlspace use silver searcher
-if executable("rg")
-  let g:CtrlSpaceGlobCommand = 'rg -l --max-depth 50 test --color never ""'
-  let g:ctrlspace_glob_command = 'rg -l --max-depth 50 test --color never ""'
-endif
-
 " Make gutentags use the .git dir for the tags file
-let g:gutentags_ctags_tagfile = '.git/tags'
+let g:gutentags_ctags_tagfile = 'tags'
+set tags='tags'
+
+let $FZF_DEFAULT_COMMAND='rg -l --max-depth 50 --color always ""'
+
+let g:UltiSnipsExpandTrigger="<c-e>"
+let g:UltiSnipsJumpForwardTrigger="<c-e>"
+let g:UltiSnipsJumpBackwardTrigger="<c-w>"
 
 " ----- END PLUGIN CONFIGURATION ----- "
