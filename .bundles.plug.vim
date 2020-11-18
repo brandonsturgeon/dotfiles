@@ -66,8 +66,7 @@ Plug 'mg979/vim-visual-multi',                  { 'on': [] }                    
 Plug 'ajh17/VimCompletesMe',                    { 'on': [] }                             " Code Completion
 Plug 'SirVer/ultisnips',                        { 'on': [] }                             " Code snippet engine
 Plug 'honza/vim-snippets',                      { 'on': [] }                             " Code snippets
-Plug 'tmsvg/pear-tree',                         { 'on': [] }                             " Auto closer
-
+Plug 'tmsvg/pear-tree',                         { 'on': [] }                             " Bracket auto closer
 
 " Loaded on BufWritePos
 Plug 'tpope/vim-fugitive',                      { 'on': [] }                             " In-vim Git wrapper
