@@ -110,4 +110,14 @@ function f {
     find . -iname "*$1*"
 }
 
+if [[ "$IS_MAC" == true ]]; then
+    function copy {
+        pbcopy < $1
+    }
+
+    function dump {
+        pbpaste > $1
+    }
+fi
+
 ## END CUSTOM FUNCTIONS ##
