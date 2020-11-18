@@ -22,6 +22,7 @@
 
 # Git config
 !.gitconfig
+!.global-gitignore
 
 # IRB config
 !.irbrc
