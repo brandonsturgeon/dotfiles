@@ -1,9 +1,9 @@
 [user]
     name = Brandon Sturgeon
-    email = sturgeonb4@gmail.com
+    email = brandon@brandonsturgeon.com
 [core]
     editor = vim
-	excludesfile = /Users/bsturgeon/.global-gitignore
+    excludesfile = /home/brandon/.global-gitignore
 [alias]
     a = add
     b = branch
@@ -42,6 +42,7 @@
 
     # Push
     ps = "!git push origin $(git branch-name)"
+    pst = "!git push origin --tags"
 
     # Pull
     pl = "!git pull --rebase origin $(git branch-name)"
@@ -54,8 +55,10 @@
 
     # Workflow
     save = stash save
-    pop = stash 
+    pop = stash
 
     # Shell scripting aliases
     branch-name = rev-parse --abbrev-ref HEAD
 
+[commit]
+        gpgsign = true
