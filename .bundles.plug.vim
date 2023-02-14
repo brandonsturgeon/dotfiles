@@ -6,7 +6,7 @@ call plug#begin('~/.vim/plugged')
 " Load plugins on insert
 augroup load_on_insert
     autocmd!
-    autocmd InsertEnter * call plug#load('VimCompletesMe', 'ultisnips', 'vim-snippets', 'pear-tree') | autocmd! load_on_insert
+    autocmd InsertEnter * call plug#load('vim-sleuth') | autocmd! load_on_insert
 augroup END
 
 augroup load_on_write
@@ -16,61 +16,63 @@ augroup END
 
 augroup load_post_read
     autocmd!
-    autocmd BufReadPost * call plug#load('vim-searchindex', 'bufexplorer', 'vim-airline-themes', 'vim-airline', 'tmuxline.vim', 'fzf.vim', 'vim-visual-multi') | autocmd! load_post_read
+    autocmd BufReadPost * call plug#load('vim-searchindex', 'vim-visual-multi') | autocmd! load_post_read
 
     let g:airline#extensions#ale#enabled = 1
     let g:ale_lint_on_save = 0
 augroup END
 
 " ----- BEGIN PLUGINS -----
-Plug 'Yggdroot/indentLine'                      " Visual ASCII lines to show indentation
-Plug 'EinfachToll/DidYouMean'                   " Vim plugin which asks for the right file to open
-Plug 'Valloric/MatchTagAlways'                  " Always highlights the tags that enclose your cursor
-Plug 'tpope/vim-surround'                       " Surround with tags, words, quotes using [c,y]s[i[w,p]]
-Plug 'mtth/scratch.vim'                         " Unobtrusive scratchbuffers. Open with gs
-Plug 'ryanoasis/vim-devicons'                   " Special devicons for various plugins
-Plug 'dense-analysis/ale'                       " Async linting
-Plug 'ludovicchabant/vim-gutentags'             " Tag stuff for auto complete
-Plug 'universal-ctags/ctags'                    " Tag stuff for auto complete
-Plug 'junegunn/fzf',                            { 'do': { -> fzf#install() } }           " Fuzzy finder
+" Plug 'ackyshake/VimCompletesMe',                 " Code Completion
+Plug 'github/copilot.vim', { 'do': 'nvm use 18 &' }
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'ryanoasis/vim-devicons',
+Plug 'nvim-tree/nvim-web-devicons',
+Plug 'EinfachToll/DidYouMean',                   " Vim plugin which asks for the right file to open
+Plug 'Yggdroot/indentLine',                      " Visual ASCII lines to show indentation
+Plug 'Valloric/MatchTagAlways',                  " Always highlights the tags that enclose your cursor
+Plug 'nvim-tree/nvim-tree.lua',
+Plug 'tpope/vim-surround',                       " Surround with tags, words, quotes using [c,y]s[i[w,p]]
+Plug 'mtth/scratch.vim',                         " Unobtrusive scratchbuffers. Open with gs
+Plug 'dense-analysis/ale',                       " Async linting
+Plug 'nvim-lualine/lualine.nvim',
+Plug 'romgrk/barbar.nvim',                       " Bufferline/Tabline
+
+Plug 'nvim-lua/plenary.nvim',
+Plug 'nvim-telescope/telescope.nvim',            { 'tag': '0.1.1' }
+Plug 'nvim-telescope/telescope-fzf-native.nvim', { 'do': 'make' }
+Plug 'nvim-treesitter/nvim-treesitter',          { 'do': ':TSUpdate'}
 
 Plug 'mxw/vim-jsx',                             { 'for': 'javascript' }  " Vim JSX support
 Plug 'pangloss/vim-javascript',                 { 'for': 'javascript' }  " vim-javascript is required for synastic/vim-jsx to work
-Plug 'vim-scripts/JavaScript-Indent',           { 'for': 'javascript' }  " Proper indentation for .js
 Plug 'lfilho/cosco.vim',                        { 'for': 'javascript' }  " Semicolon insertion bliss
-Plug 'othree/javascript-libraries-syntax.vim',  { 'for': 'javascript' }  " Highlighting for more JS libraries
+Plug 'othree/html5.vim',                        { 'for': 'html' }
+Plug 'evanleck/vim-svelte',                     { 'for': ['javascript', 'svelte'], 'branch': 'main' }
+Plug 'hashivim/vim-terraform',                  { 'for': ['terraform', 'tf'] }
+
 Plug 'tpope/vim-markdown',                      { 'for': 'markdown' }    " Forces Markdown highlighting
 Plug 'leafo/moonscript-vim',                    { 'for': 'moonscript' }  " Moonscript Syntax
 Plug 'slim-template/vim-slim',                  { 'for': 'slim' }        " .slim syntax highlighting
+Plug 'fatih/vim-go',                            { 'for': 'go', 'do': ':GoUpdateBinaries' }
 
-Plug 'tpope/vim-endwise',                       { 'for': ['ruby', 'lua'] }               " Automatic adding of ends in various languages
-Plug 'lukaszb/vim-web-indent',                  { 'for': ['javascript', 'html', 'css'] } " Proper indentation for .html .js .css
+Plug 'tpope/vim-endwise',                       { 'for': ['ruby'] }               " Automatic adding of ends in various languages
+" Plug 'lukaszb/vim-web-indent',                  { 'for': ['javascript', 'html', 'css'] } " Proper indentation for .html .js .css
 
-Plug 'scrooloose/nerdtree',                     { 'on': 'NERDTreeToggle' }               " Tree explorer
-Plug 'Xuyuanp/nerdtree-git-plugin',             { 'on': 'NERDTreeToggle' }               " Git status in NerdTree
-Plug 'tiagofumo/vim-nerdtree-syntax-highlight', { 'on': 'NERDTreeToggle' }               " NerdTree icon highlighting
+Plug 'cfc-servers/gluafixer.vim',               { 'for': 'lua' }                         " GMod Lua Linting for ALE
+
 Plug 'metakirby5/codi.vim',                     { 'on': 'Codi' }                         " Interactive scratchpad. Enable with Codi [filetype]
-Plug 'vim-ctrlspace/vim-ctrlspace',             { 'on': 'CtrlSpace' }                    " Vim ctrlspace
 Plug 'mbbill/undotree',                         { 'on': 'UndoTreeToggle' }               " UndoTree
 
 " Loaded on BufReadPost
 Plug 'google/vim-searchindex',                  { 'on': [] }                             " Shows match information at bottom line when searching
-Plug 'jlanzarotta/bufexplorer',                 { 'on': [] }                             " Explore vim buffer with 'be' 'bt' 'bs' and 'bv'
-Plug 'vim-airline/vim-airline',                 { 'on': [] }                             " Nice statusline
-Plug 'vim-airline/vim-airline-themes',          { 'on': [] }                             " Airline themes
-Plug 'edkolev/tmuxline.vim',                    { 'on': [] }                             " Airline for tmux
-Plug 'junegunn/fzf.vim',                        { 'on': [] }                             " Fuzzy Finder vim stuff
 Plug 'mg979/vim-visual-multi',                  { 'on': [] }                             " Multiple cursors
 
 " Loaded on InsertEnter
-Plug 'ajh17/VimCompletesMe',                    { 'on': [] }                             " Code Completion
-Plug 'SirVer/ultisnips',                        { 'on': [] }                             " Code snippet engine
-Plug 'honza/vim-snippets',                      { 'on': [] }                             " Code snippets
-Plug 'tmsvg/pear-tree',                         { 'on': [] }                             " Bracket auto closer
+Plug 'tpope/vim-sleuth',                        { 'on': [] }
 
 " Loaded on BufWritePos
-Plug 'tpope/vim-fugitive',                      { 'on': [] }                             " In-vim Git wrapper
-Plug 'mhinz/vim-signify',                       { 'on': [] }                             " Similar to git gutter
+Plug 'tpope/vim-fugitive',                      { 'on': [] }  " In-vim Git wrapper
+Plug 'mhinz/vim-signify',                       { 'on': [] }  " Similar to git gutter
 
 " -----  END PLUGINS  -----
 

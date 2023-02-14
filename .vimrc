@@ -1,10 +1,10 @@
-" ----- BEGIN BASE CONFIGURATION ----- "
+" ----- BEGIN PRE-PLUGIN CONFIGURATION ----- "
 
-" Load Vundle
-"source ~/.bundles.vim
-
-" Load Plug
+" ----- BEGIN PLUG CONFIGURATION ----- "
 source ~/.bundles.plug.vim
+" ----- END PLUG CONFIGURATION ------- "
+
+" ----- BEGIN BASE CONFIGURATION ----- "
 
 syntax enable
 
@@ -31,10 +31,9 @@ set undolevels=2000 " Lots of undo levels
 set spelllang=en_us " Default language is en_us
 
 set laststatus=2 "Enables statusline everywhere
-
 set showtabline=0 "Turns off tablines
-
 set backspace=2 "Make backspace behave normally
+set encoding=utf-8
 
 let mapleader = "," "Setting map leader
 
@@ -43,22 +42,24 @@ set tabstop=4
 set shiftwidth=4
 set expandtab
 
+set updatetime=300 " Faster completion
+
 " 256 Color
 set t_Co=256
 
-" Folding "
-" ' Then you can toggle folding with za. You can fold everything with zM and
-" unfold everything with zR. zm and zr can be used to get those folds just
-" right. Always remember the almighty help file at “help :folding” if you get stuck. '
-set foldmethod=indent   " Fold based on indent
-set foldnestmax=10      " Deepest fold is 10 levels
-set nofoldenable        " Don't fold by default
-set foldlevel=0
-
-" Set the folded fg/bg color to be less harsh
-hi Folded ctermbg=0
-hi Folded ctermfg=30
-" Alternate fg colors: 6, 8, 10, 12, 14, 30
+" " Folding
+" " ' Then you can toggle folding with za. You can fold everything with zM and
+" " unfold everything with zR. zm and zr can be used to get those folds just
+" " right. Always remember the almighty help file at “help :folding” if you get stuck. '
+" set foldmethod=indent   " Fold based on indent
+" set foldnestmax=10      " Deepest fold is 10 levels
+" set nofoldenable        " Don't fold by default
+" set foldlevel=0
+" 
+" " Set the folded fg/bg color to be less harsh
+" hi Folded ctermbg=0
+" hi Folded ctermfg=30
+" " Alternate fg colors: 6, 8, 10, 12, 14, 30
 
 " Spellcheck design "
 hi clear SpellBad
@@ -78,7 +79,10 @@ if has("persistent_undo")
 endif
 
 "set guifont=FuraCodeNerdFont:h18
-set guifont=FuraMonoNerdFontComplete-Medium:h18
+"set guifont=FuraMonoNerdFontComplete-Medium:h18
+"set guifont=FiraCodeRetina:style=Retina,Regular
+"set guifont=FiraCodeRetina:h18
+"set guifont=Fira\ Code,Fira\ Code\ Retina
 
 " Allow color schemes to do bright colors without forcing bold.
 if &t_Co == 8 && $TERM !~# '^linux\|^Eterm'
@@ -92,46 +96,26 @@ endif
 " <leader><leader> command to turn off search highlighting
 nmap <silent> <leader><leader> :nohlsearch<CR>
 
-" gV to highlight last inserted text
-nnoremap gV `[v`]`
-
-" Key combo to use <Space> to toggle folding
-nnoremap <Space> za
-
-" Press enter to insert newlilne below current
-nnoremap <silent><CR> o<Esc>k
-
-" Open nerdtree with <leader>t
-nmap <silent> <leader>t :NERDTreeToggle<CR>
+" Open nvim tree with <leader>t
+"nmap <silent> <leader>t :NvimTreeToggle<CR>
 
 " Toggle spell checking with <leader>s
 nmap <silent> <leader>s :set spell!<CR>
 
-" Key combo to:
-" 'So if I type {, auto-pairs will insert } after my cursor, then I can
-" execute my binding that will insert a new line in the middle of the two
-" ready to receive some code.'
-" imap <C-c> <CR><Esc>O
-"auto close {
-function! s:CloseBracket()
-    let line = getline('.')
-    if line =~# '^\s*\(struct\|class\|enum\) '
-        return "{\<Enter>};\<Esc>O"
-    elseif searchpair('(', '', ')', 'bmn', '', line('.'))
-        " Probably inside a function call. Close it off.
-        return "{\<Enter>});\<Esc>O"
-    else
-        return "{\<Enter>}\<Esc>O"
-    endif
-endfunction
-inoremap <expr> {<Enter> <SID>CloseBracket()
-
-" fzf Fuzzy search (using ripgrep) with Ctrl-P
-nnoremap <silent><C-p> :Rg<CR>
+" Telescope keybinds
+nnoremap <silent><C-i> :Telescope find_files<CR>
+nnoremap <silent><C-o> :Telescope buffers<CR>
+nnoremap <silent><C-p> :Telescope live_grep<CR>
 
 " Ctrl-w m to maximize current split, Ctrl-w = to revert
 nnoremap <C-W>m :wincmd _<Bar>wincmd <Bar><CR>
 nnoremap <C-W>- :wincmd _<Bar>wincmd <Bar><CR>
+
+" T for End-of-line
+nnoremap T $
+
+" Y for Beginning-of-line
+nnoremap Y ^
 
 " Remove the hyper-annoying Man Pages keybind
 map <S-k> <Nop>
@@ -139,29 +123,56 @@ map <S-k> <Nop>
 " Remedy lazy shift finger
 command W w
 command Q q
+command Qa qa
 command Wa wa
 command Wq wq
 command Wqa wqa
+command WQa wqa
+command WQA wqa
 
-" Next Ale Error
-nmap <silent> <C-k> <Plug>(ale_previous_wrap)
-nmap <silent> <C-j> <Plug>(ale_next_wrap)
+" Split into a new tab
+noremap <C-t> :tabnew split<CR>
+
+" H and L to navigate tabs
+nnoremap H gT
+nnoremap L gt
+
+" Ctrl-j to jump down half a screen
+nnoremap <C-j> <C-d>
+
+" Ctrl-k to jump up half a screen
+nnoremap <C-k> <C-u>
+
+" ( to jump to previous cursor position
+nnoremap ( <C-o>
+
+" ) to jump to next cursor position
+nnoremap ) <C-i>
 
 " ----- END REMAPS ----- "
 
 " ----- BEGIN CUSTOM FUNCTIONS ----- "
 
+" Run a command if it exists
+function! SafeRunCommand(command)
+  if exists(a:command)
+    execute a:command
+  else
+    echo "Error: The command '" . a:command . "' does not exist."
+  endif
+endfunction
+
 " Copy and uncopy commands
 function! DoCopy()
   set nonumber
-  :IndentLinesDisable
-  :SignifyDisable
+  call SafeRunCommand(":IndentLinesDisable")
+  call SafeRunCommand(":SignifyDisable")
 endfunction
 
 function! DoUncopy()
   set number
-  :IndentLinesEnable
-  :SignifyEnable
+  call SafeRunCommand(":IndentLinesEnable")
+  call SafeRunCommand(":SignifyEnable")
 endfunction
 
 " Auto highlight lines that go over 100 characters.
@@ -173,6 +184,9 @@ endfunction
 
 command! -n=? -complete=dir -bar Copy :call DoCopy()
 command! -n=? -complete=dir -bar Uncopy :call DoUncopy()
+
+" Color the popup menu
+hi Pmenu ctermfg=15 ctermbg=0 guifg=#ffffff guibg=#000000
 
 " ----- END CUSTOM FUNCTIONS ----- "
 
@@ -199,48 +213,77 @@ let g:signify_sign_delete            = '-'
 let g:signify_cursorhold_normal = 1
 let g:signify_cursorhold_insert = 1
 
-hi Pmenu ctermfg=15 ctermbg=0 guifg=#ffffff guibg=#000000
+"hi Pmenu ctermfg=15 ctermbg=0 guifg=#ffffff guibg=#000000
 
 " This is for having vim-jsx not require a .jsx extension to function properly
-let g:jsx_ext_required = 0
+autocmd FileType javascript let g:jsx_ext_required = 0
 
 " Web spacing
-autocmd Filetype html       setlocal ts=2 sts=2 sw=2
-autocmd Filetype ruby       setlocal ts=2 sts=2 sw=2
-autocmd Filetype javascript setlocal ts=2 sts=2 sw=2
-autocmd Filetype jsx        setlocal ts=2 sts=2 sw=2
+autocmd FileType html       setlocal ts=2 sts=2 sw=2
+autocmd FileType ruby       setlocal ts=2 sts=2 sw=2
+autocmd FileType javascript setlocal ts=2 sts=2 sw=2
+autocmd FileType jsx        setlocal ts=2 sts=2 sw=2
+autocmd FileType svelte     setlocal ts=2 sts=2 sw=2
 autocmd FileType python     setlocal ts=4 sts=4 sw=4 tw=0
 autocmd FileType css        setlocal ts=2 sts=2 sw=2
 autocmd FileType yaml       setlocal ts=2 sts=2 sw=2 expandtab
 
-" NERDTree configuration
-let NERDTreeIgnore=['\.rbc$', '\.pyc$', '\~$']
-
-" Cosco configuration
-autocmd FileType javascript,css nmap <silent> ; <Plug>(cosco-commaOrSemiColon)
-
-" AirlineTheme configuration
-let g:airline_theme='hybridline'
-let g:airline_powerline_fonts = 1
-let g:airline#extensions#syntastic#stl_format_err = "%E{[%e #%fe]}"
-let g:airline#extensions#syntastic#stl_format_warn = "%W{[%w #%fw]}"
-let g:airline#extensions#default#section_truncate_width = {
-    \ 'b': 150,
-    \ 'x': 150,
-    \ 'y': 88,
-    \ 'z': 45,
-    \ 'warning': 80,
-    \ 'error': 80,
-    \ }
-
-" Make gutentags use the .git dir for the tags file
-let g:gutentags_ctags_tagfile = 'tags'
 set tags='tags'
 
-let $FZF_DEFAULT_COMMAND='rg -l --max-depth 50 --color always ""'
+let g:ale_virtualtext_cursor = 0
 
-let g:UltiSnipsExpandTrigger="<c-e>"
-let g:UltiSnipsJumpForwardTrigger="<c-e>"
-let g:UltiSnipsJumpBackwardTrigger="<c-w>"
+" Use `[g` and `]g` to navigate diagnostics
+" Use `:CocDiagnostics` to get all diagnostics of current buffer in location list
+nmap <silent> [g <Plug>(coc-diagnostic-prev)
+nmap <silent> ]g <Plug>(coc-diagnostic-next)
+
+" GoTo code navigation
+nmap <silent> gd <Plug>(coc-definition)
+nmap <silent> gy <Plug>(coc-type-definition)
+nmap <silent> gi <Plug>(coc-implementation)
+nmap <silent> gr <Plug>(coc-references)
+
+" Formatting selected code
+xmap <leader>f  <Plug>(coc-format-selected)
+nmap <leader>f  <Plug>(coc-format-selected)
+
+" Show all diagnostics
+nnoremap <silent><nowait> <space>a  :<C-u>CocList diagnostics<cr>
+
+" Use K to show documentation in preview window
+nnoremap <silent> K :call ShowDocumentation()<CR>
+
+function! ShowDocumentation()
+  if CocAction('hasProvider', 'hover')
+    call CocActionAsync('doHover')
+  else
+    call feedkeys('K', 'in')
+  endif
+endfunction
+
+" Highlight the symbol and its references when holding the cursor
+autocmd CursorHold * silent call CocActionAsync('highlight')
+
+
+" Use ctrl-space to trigger completion (only useful when completion is not triggered automatically)
+" if has('nvim')
+"   inoremap <silent><expr> <c-space> coc#refresh()
+" endif
+
+" Use enter to confirm completion
+inoremap <expr> <cr> coc#pum#visible() ? coc#pum#confirm() : "\<CR>"
+
+" Use tab to navigate completion menu
+" function! CheckBackSpace() abort
+"   let col = col('.') - 1
+"   return !col || getline('.')[col - 1] =~ '\s'
+" endfunction
+" inoremap <silent><expr> <TAB>
+"       \ coc#pum#visible() ? coc#pum#next(1):
+"       \ exists('b:_copilot.suggestions') ? copilot#Accept("\<CR>") :
+"       \ CheckBackSpace() ? "\<Tab>" :
+"       \ coc#refresh()
+
+" let $FZF_DEFAULT_COMMAND='rg -l --max-depth 50 --color always ""'
 
 " ----- END PLUGIN CONFIGURATION ----- "

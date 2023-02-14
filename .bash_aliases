@@ -32,7 +32,7 @@ alias groot='cd $(git rev-parse --show-cdup)'
 # Git
 alias g="git"
 
-# Vim 
+# Vim
 alias v="vim"
 
 # DF to always use -h flag
@@ -45,6 +45,4 @@ alias zource="source ~/.zshrc"
 alias untar="tar -xvzf"
 
 # Shorter AG output
-alias ags="ag -W 125"
-
 alias rgd="rg -L --max-depth 50"
