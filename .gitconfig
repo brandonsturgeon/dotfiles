@@ -1,9 +1,10 @@
 [user]
     name = Brandon Sturgeon
     email = brandon@brandonsturgeon.com
+	signingKey = C712126B61298BBB09687B67CD49ADA212A5D381
 [core]
-    editor = vim
-    excludesfile = /home/brandon/.global-gitignore
+    editor = nvim
+	excludesfile = /home/brandon/.gitignore
 [alias]
     a = add
     b = branch
@@ -61,4 +62,6 @@
     branch-name = rev-parse --abbrev-ref HEAD
 
 [commit]
-        gpgsign = true
+	gpgsign = true
+[init]
+	defeaultBranch = main
