@@ -37,12 +37,10 @@ source ~/.profile ~/.zshrc
 
 ---
 
-### Node
+### [Node (via. Volta)](https://volta.sh/)
 ```bash
-curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.5/install.sh | bash;
-
-nvm install 18;
-nvm alias default 18;
+curl https://get.volta.sh | bash;
+volta install node@18;
 ```
 
 ---

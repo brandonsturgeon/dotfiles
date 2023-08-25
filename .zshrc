@@ -31,16 +31,15 @@ plugins=(
     git-extras
     command-not-found
     npm
-    nvm
     node
-    zsh-256color
+    #zsh-256color
     colored-man-pages
     docker
     docker-compose
     extract
     ripgrep
     ubuntu
-    vi-mode
+    #vi-mode
 )
 
 export LANG=en_US.UTF-8
@@ -49,7 +48,6 @@ export EDITOR='nvim'
 # Set history size for reverse search
 HISTSIZE=50000 # session history size
 SAVEHIST=10000 # saved history
-
 
 # Start oh-my-zsh
 source $ZSH/oh-my-zsh.sh
@@ -132,10 +130,8 @@ export LS_COLORS="${LS_COLORS}:ow=32;40"
 ## BEGIN PATH MODIFICATION
 export PATH=/opt/local/bin:$PATH
 
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
-
 source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 export PATH="/usr/local/opt/openssl/bin:$PATH"
 export PATH=$PATH:/usr/local/go/bin
+export VOLTA_HOME="$HOME/.volta"
+export PATH="$VOLTA_HOME/bin:$PATH"
