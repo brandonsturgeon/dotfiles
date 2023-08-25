@@ -1,282 +1,177 @@
-# (incomplete) Ubuntu Installation instructions
-Follow in order. Sections are listed in order of requirements (eg: some sections require packages installed in previous sections)
+# Ubuntu Installation instructions
 
 ---
 
-## First things first, update packages
+## Install/Setup Requirements
+
+### ZSH
 ```
- sudo apt-get update;
- sudo apt-get upgrade;
+sudo apt-get install zsh;
+wget https://github.com/robbyrussell/oh-my-zsh/raw/master/tools/install.sh -O - | zsh;
+chsh -s `which zsh`;
+reset;
 ```
 
+---
 
-## Update DNS nameservers
+### Git
 ```
- sudo vi /etc/network/interfaces;
- 
- # Update/add this line under your primary network interface (cloudflare's dns with opendns fallback)
- dns-nameservers 1.1.1.1 1.0.0.1 208.67.222.222 208.67.220.220
- 
- # Restart network interfaces if you're local
- sudo ifconfig <primary network interface> down && sudo ifconfig <primary network interface> up;
- # Or simply restart the machine if remote
- sudo shutdown -r 0;
+ssh-keygen -o -a 100 -t ed25519 -f ~/.ssh/id_ed25519 -C "brandon@brandonsturgeon.comm"
+# Default location, no password
+cat ~/.ssh/id_ed25519.pub;
+# Copy ssh id
+# visit https://github.com/settings/keys, add the new key to profile
 ```
 
-## Guake
+---
+
+### Getting Dotfiles
 ```
- sudo apt-get install guake
-# Open Ubuntu Software Manager, search for Guake.
-# Click "launch"
-# Right click on the Guake icon in the launcher, click "Lock to Launcher"
+git clone --recurse-submodules -j8 git@github.com:brandonsturgeon/dotfiles.git ~/_dotfiles;
+mv ~/_dotfiles/* ~/;
+mv ~/_dotfiles/.* ~/;
+rm -rf ~/_dotfiles;
 
-# Fixing alt-tab lose-focus bug (seriously it's really annoying, do this and keep up with this issue: https://github.com/Guake/guake/issues/45)
- sudo apt-get install compizconfig-settings-manager
- # Open Ubuntu Software Manager, search for Compiz - click on CompizConfigSettingsManager
- # Click "launch"
- # Go to _Ubuntu Unity Plugin_ -> _Switcher tab_ -> Check _Disable Show Desktop in the Switcher_.
- 
-# Hit F12, right click inside of the terminal, click Preferences
-# General
- # - Main Window Height slider to max
-# Shell
- # - Check "Run command as a login shell"
-# Scrolling
- # - Scrollback lines to to 10240
-# Appearance
- # Built-in schemes to "Solarized Dark Higher Contrast"
- # Transparency to ~5-10%
-# Quick Open
- # Enable Quick Open when ctrl-clicking
- # Editor command line: `vim +%(line_numbers) %(file_path)s`
-# Keyboard Shortcuts
- # New Tab: `Ctrl+T`
- # Close Tab: `Ctrl+W`
- # Go to previous tab: `Ctrl+{`
- # Go to next tab: `Ctrl+}`
-
+source ~/.profile ~/.zshrc
 ```
 
-## ZSH
+---
+
+### Node
 ```
- sudo apt-get install zsh;
- wget https://github.com/robbyrussell/oh-my-zsh/raw/master/tools/install.sh -O - | zsh;
- chsh -s `which zsh`;
- sudo shutdown -r 0;
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.5/install.sh | bash;
+
+nvm install 18;
+nvm alias default 18;
 ```
 
-## Git
-```
-  ssh-keygen -t rsa -b 4096 -C "sturgeonb4@gmail.com";
-  # Default location, no password
-  cat ~/.ssh/id_rsa.pub;
-  # Copy ssh id
-  # visit https://github.com/settings/keys, add the new key to profile
-```
+---
 
-## Getting Dotfiles
+### [Docker (Compose)](https://docs.docker.com/engine/install/ubuntu/)
+- It's docker.. what're you gonna do.
 ```
-  git clone --recurse-submodules -j8 git@github.com:brandonsturgeon/dotfiles.git ~/_dotfiles;
-  mv ~/_dotfiles/* ~/;
-  mv ~/_dotfiles/.* ~/;
-  rm -rf ~/_dotfiles;
-  
-  source ~/.profile ~/.zshrc
-```
+for pkg in docker.io docker-doc docker-compose podman-docker containerd runc; do sudo apt-get remove $pkg; done;
 
-## Tmux
-```
-  sudo apt-get install libevent-dev libncurses-dev pkg-config autotools-dev autoconf;
-  autoreconf -fis;
-  git clone https://github.com/tmux/tmux.git ~/.tmp;
-  cd ~/.tmp/tmux
-  sh autogen.sh;
-  ./configure && make;
-  # Below may not be necessary
-  sudo make install;
-  
-  # Tmuxinator (https://github.com/tmuxinator/tmuxinator)
-   gem install tmuxinator;
-```
-
-## Remove LibreOffice
-```
- sudo apt-get remove --purge libreoffice*;
- sudo apt-get clean;
- sudo apt-get autoremove;
-```
-
-## Installing Yarn
-```
- curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key add -;
- echo "deb https://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/sources.list.d/yarn.list;
- sudo apt-get update && sudo apt-get install yarn;
-```
-
-## Python
-```
- sudo apt install python-pip && pip install --upgrade pip;
- sudo -H pip install --upgrade pip;
- sudo apt-get install python-dev python3-dev libxml2-dev libxslt1-dev python-apt python-pycurl python-software-properties;
- sudo apt-get update;
- sudo -H pip install bs4 blessings lxml;
-```
-
-## Ruby
-```
- # RVM
-  sudo apt-get install ruby-dev software-properties-common;
-  sudo apt-add-repository -y ppa:rael-gc/rvm;
-  sudo apt-get update;
-  sudo apt-get install rvm;
-  sudo shutdown -r 0;
- 
- # --enable-shared is required to build vim from source
- rvm install ruby --enable-shared;
- gem install bundler
-```
-
-## Node
-```
- # NVM
-  curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.8/install.sh | bash;
-  export NVM_DIR="$HOME/.nvm";
-  [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh";
-  nvm install node;
-  nvm use node;
-```
-
-## Rails
-```
- sudo apt-get install libgdbm-dev libncurses5-dev automake libtool bison libffi-dev;
- gpg --keyserver hkp://keys.gnupg.net --recv-keys 409B6B1796C275462A1703113804BB82D39DC0E3 7D2BAF1CF37B13E2069D6956105BD0E739499BDB;
- gem install rails -v 5.1.4;
- sudo apt autoremove;
- rails -v;
-```
-
-## PostgreSQL
-```
- sudo sh -c "echo 'deb http://apt.postgresql.org/pub/repos/apt/ xenial-pgdg main' > /etc/apt/sources.list.d/pgdg.list";
- wget --quiet -O - http://apt.postgresql.org/pub/repos/apt/ACCC4CF8.asc | sudo apt-key add -;
- sudo apt-get update;
- sudo apt-get install postgresql-common postgresql-9.5 libpq-dev;
- # Fixes weird permission error when trying to create a new user with postgres
- chmod og+X /home /home/`whoami`
- sudo -u postgres createuser brandon -s
-```
-
-## Vim
-```
- # Building Vim from source
-  sudo apt-get install libncurses5-dev libgnome2-dev libgnomeui-dev libgtk2.0-dev libatk1.0-dev libbonoboui2-dev libcairo2-dev libx11-dev libxpm-dev libxt-dev;
-  sudo apt-get update;
-  sudo apt-get remove vim vim-runtime gvim vim-tiny vim-common vim-gui-common vim-nox;
-  cd ~;
-  git clone https://github.com/vim/vim.git;
-  cd vim;
-  ./configure --with-features=huge \
-            --enable-multibyte \
-            --enable-rubyinterp=yes \
-            --enable-python3interp=yes \
-            --with-python3-config-dir=/usr/lib/python3.5/config \
-            --enable-perlinterp=yes \
-            --enable-luainterp=yes \
-            --enable-gui=gtk2 \
-            --enable-cscope \
-            --prefix=/usr/local;
-  make VIMRUNTIMEDIR=/usr/local/share/vim/vim80;
-  cd ~/vim;
-  sudo make install;
-  sudo update-alternatives --install /usr/bin/editor editor /usr/local/bin/vim 1;
-  sudo update-alternatives --set editor /usr/local/bin/vim;
-  sudo update-alternatives --install /usr/bin/vi vi /usr/local/bin/vim 1;
-  sudo update-alternatives --set vi /usr/local/bin/vim;
-  
-  # Verify that vim installed correctly
-  vim --version;
-  
-  # Remove the install folder
-  rm -rf ~/vim
-  
- # Instaling Vundle
-  git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim;
-  vim +PluginInstall +qall;
- 
- # YouCompleteMe
-  sudo apt-get install build-essential cmake;
-  cd ~/.vim/bundle/YouCompleteMe;
-  ./install.py --tern-completer;
-```
-
-## Silver Searcher
-```
- sudo apt install silversearcher-ag;
-```
-
-## Htop
-```
- sudo apt-get install htop
-```
-
-## Disable CUPS
-```
-systemctl stop cups;
-systemctl stop cups-browsed;
-systemctl disable cups;
-systemctl disable cups-browsed;
-```
-
-## (For servers) Increase security
-```
-
-# Disable Password Authentication and change SSH port
-# NOTE: Ensure you've already added your public key to ~/.ssh/authorized_keys or you'll lock yourself out
-sudo vi /etc/ssh/sshd_config;
-# Update these lines as follows:
-
-Port <use your best judgement, some port numbers are better than others. usually four characters prefixed with 2>
-ChallengeResponseAuthentication no
-PasswordAuthentication no
-UsePAM no
-PermitRootLogin no
-
-# Then run this command:
-sudo /etc/init.d/ssh reload;
-```
-
-## Docker
-```
-sudo apt-get remove docker docker-engine docker.io;
 sudo apt-get update;
-sudo apt-get install apt-transport-https ca-certificates curl software-properties-common;
-curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -;
-sudo apt-key fingerprint 0EBFCD88;
-sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable";
-sudo apt-get update;
-sudo apt-get install docker-ce;
-sudo docker run hello-world;
+sudo apt-get install ca-certificates curl gnupg;
+sudo install -m 0755 -d /etc/apt/keyrings;
+curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /etc/apt/keyrings/docker.gpg;
+sudo chmod a+r /etc/apt/keyrings/docker.gpg;
+echo \
+  "deb [arch="$(dpkg --print-architecture)" signed-by=/etc/apt/keyrings/docker.gpg] https://download.docker.com/linux/ubuntu \
+  "$(. /etc/os-release && echo "$VERSION_CODENAME")" stable" | \
+  sudo tee /etc/apt/sources.list.d/docker.list > /dev/null;
 ```
 
-## Docker Compose
+---
+
+### [Zip](https://manpages.ubuntu.com/manpages/focal/man1/zip.1.html) :zipper_mouth_face:
 ```
-sudo curl -L https://github.com/docker/compose/releases/download/1.21.0/docker-compose-$(uname -s)-$(uname -m) -o /usr/local/bin/docker-compose;
-sudo chmod +x /usr/local/bin/docker-compose;
+sudo apt install zip;
 ```
 
-## Fonts
+
+## Tools
+
+### [Ripgrep](https://github.com/BurntSushi/ripgrep) :mag_right:
+- Absolute necessity for finding stuff easily.
+```
+sudo apt-get install ripgrep
+```
+
+---
+
+### [fzf](https://docs.docker.com/engine/install/ubuntu/) :peach:
+```
+sudo apt install fzf;
+```
+
+---
+
+### [Duf](https://github.com/muesli/duf) :minidisc:
+- Better `df`
+```
+sudo apt install duf;
+```
+
+---
+
+### [Bat](https://github.com/sharkdp/bat) :bat:
+- Better `cat`
+```
+sudo apt install bat;
+sudo ln -s batcat /usr/bin/bat;
+```
+
+---
+
+### [gping](https://github.com/orf/gping) :ping_pong:
+- `ping`, but with a graph
+```
+echo "deb http://packages.azlux.fr/debian/ buster main" | sudo tee /etc/apt/sources.list.d/azlux.list;
+wget -qO - https://azlux.fr/repo.gpg.key | sudo apt-key add -;
+sudo apt update;
+sudo apt install gping;
+```
+
+---
+
+### [dog](https://github.com/ogham/dog) :dog:
+- Better `dig`; a command-line DNS client
+```
+mkdir $HOME/dog_build;
+cd $HOME/dog_build;
+curl -L -o dog.zip https://github.com/ogham/dog/releases/download/v0.1.0/dog-v0.1.0-x86_64-unknown-linux-gnu.zip;
+unzip dog.zip;
+sudo mv bin/dog /usr/local/bin/dog;
+sudo chown root:root /usr/local/bin/dog;
+sudo chmod +x /usr/locla/bin/dog;
+```
+
+---
+
+## [zoxide](https://github.com/ajeetdsouza/zoxide) :mountain:
+- `z` command to easily navigate around
+```
+curl -sS https://raw.githubusercontent.com/ajeetdsouza/zoxide/main/install.sh | bash;
+echo "export PATH=$HOME/.local/bin:$PATH" >> ~/.zshrc
+```
+
+---
+
+### [Bashtop](https://github.com/aristocratos/bashtop) :scroll:
+- A good process monitor for Linux
+```
+sudo add-apt-repository ppa:bashtop-monitor/bashtop;
+sudo apt update;
+sudo apt install bashtop;
+```
+
+---
+
+### [archive-cli](https://github.com/azlux/archive-cli) :card_file_box:
+- [Never have to remember `tar` flags ever again](https://xkcd.com/1168/)
+```
+echo "deb http://packages.azlux.fr/debian/ buster main" | sudo tee /etc/apt/sources.list.d/azlux.list;
+wget -qO - https://azlux.fr/repo.gpg.key | sudo apt-key add -;
+apt update;
+apt install archive-cli;
+```
+
+---
+
+### [httpie](https://httpie.io/cli) :pie:
+- Very good HTTP CLi
+```
+sudo apt install httpie;
+```
+
+---
+
+## Styling, extra setup
+
+### Fonts
 ```
 Preferred font is FuraCode NF Retina (non-mono), size 18, AA, roughly 80-90% horizontal character spacing
 https://github.com/ryanoasis/nerd-fonts/blob/master/patched-fonts/FiraCode/Retina/complete/Fura%20Code%20Retina%20Nerd%20Font%20Complete.otf
 ```
-
-# (incomplete) OSX Installation instructions
-Follow in order. Sections are listed in order of requirements (eg: some sections require packages installed in previous sections)
-
----
-
-## Vim
-```
-brew install --with-client-server --with-lua --with-luajit --with-override-system-vi vim
-```
-

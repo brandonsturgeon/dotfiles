@@ -34,8 +34,6 @@ plugins=(
     nvm
     node
     zsh-256color
-    fancy-ctrl-z
-    z
     colored-man-pages
     docker
     docker-compose
@@ -119,11 +117,17 @@ unset env
 GPG_TTY=$(tty)
 export GPG_TTY
 
+source /usr/share/doc/fzf/examples/key-bindings.zsh
+source /usr/share/doc/fzf/examples/completion.zsh
+
+eval "$(zoxide init zsh)"
+
 ## END CUSTOM CONFIGURATION
 
 
 ## BEGIN PATH MODIFICATION
 export PATH=/opt/local/bin:$PATH
+export PATH=/home/brandon/.local/bin:$PATH
 
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
