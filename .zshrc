@@ -123,6 +123,9 @@ source /usr/share/doc/fzf/examples/completion.zsh
 export PATH=/home/brandon/.local/bin:$PATH
 eval "$(zoxide init zsh)"
 
+# Fix "Directory writable to others, no sticky bit" background colors
+export LS_COLORS="${LS_COLORS}:ow=32;40"
+
 ## END CUSTOM CONFIGURATION
 
 
