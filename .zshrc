@@ -26,17 +26,17 @@ COMPLETION_WAITING_DOTS="true"
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(
-    git
-    gitfast
-    git-extras
-    command-not-found
-    npm
-    node
+    # git
+    # gitfast
+    # git-extras
+    # command-not-found
+    # npm
+    # node
     #zsh-256color
     colored-man-pages
     docker
     docker-compose
-    extract
+    # extract
     ripgrep
     ubuntu
     #vi-mode
