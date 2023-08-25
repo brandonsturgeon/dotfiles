@@ -120,6 +120,7 @@ export GPG_TTY
 source /usr/share/doc/fzf/examples/key-bindings.zsh
 source /usr/share/doc/fzf/examples/completion.zsh
 
+export PATH=/home/brandon/.local/bin:$PATH
 eval "$(zoxide init zsh)"
 
 ## END CUSTOM CONFIGURATION
@@ -127,7 +128,6 @@ eval "$(zoxide init zsh)"
 
 ## BEGIN PATH MODIFICATION
 export PATH=/opt/local/bin:$PATH
-export PATH=/home/brandon/.local/bin:$PATH
 
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm

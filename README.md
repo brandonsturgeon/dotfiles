@@ -126,6 +126,9 @@ unzip dog.zip;
 sudo mv bin/dog /usr/local/bin/dog;
 sudo chown root:root /usr/local/bin/dog;
 sudo chmod +x /usr/locla/bin/dog;
+
+rm -rf $HOME/dog_build;
+cd -;
 ```
 
 ---
