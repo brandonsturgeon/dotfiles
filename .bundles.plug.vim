@@ -24,13 +24,13 @@ augroup END
 
 " ----- BEGIN PLUGINS -----
 " Plug 'ackyshake/VimCompletesMe',                 " Code Completion
-Plug 'github/copilot.vim', { 'do': 'nvm use 18 &' }
+" Plug 'dstein64/vim-startuptime',                 " Startup time
+Plug 'github/copilot.vim'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'ryanoasis/vim-devicons',
 Plug 'nvim-tree/nvim-web-devicons',
 Plug 'EinfachToll/DidYouMean',                   " Vim plugin which asks for the right file to open
 Plug 'Yggdroot/indentLine',                      " Visual ASCII lines to show indentation
-Plug 'Valloric/MatchTagAlways',                  " Always highlights the tags that enclose your cursor
 Plug 'nvim-tree/nvim-tree.lua',
 Plug 'tpope/vim-surround',                       " Surround with tags, words, quotes using [c,y]s[i[w,p]]
 Plug 'mtth/scratch.vim',                         " Unobtrusive scratchbuffers. Open with gs
@@ -54,6 +54,8 @@ Plug 'tpope/vim-markdown',                      { 'for': 'markdown' }    " Force
 Plug 'leafo/moonscript-vim',                    { 'for': 'moonscript' }  " Moonscript Syntax
 Plug 'slim-template/vim-slim',                  { 'for': 'slim' }        " .slim syntax highlighting
 Plug 'fatih/vim-go',                            { 'for': 'go', 'do': ':GoUpdateBinaries' }
+
+Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug']}
 
 Plug 'tpope/vim-endwise',                       { 'for': ['ruby'] }               " Automatic adding of ends in various languages
 " Plug 'lukaszb/vim-web-indent',                  { 'for': ['javascript', 'html', 'css'] } " Proper indentation for .html .js .css

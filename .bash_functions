@@ -22,10 +22,6 @@ function tree {
 function weather {
     curl -4 wttr.in/${1:-92122}
 }
-# In-terminal moon
-function moon {
-    curl -4 wttr.in/moon
-}
 
 # Is it up?
 function check {
@@ -66,8 +62,7 @@ function do_request {
 
 function update_v {
     git clone https://github.com/rupa/v.git $SCRIPTS_DIR/v
-    mv $SCRIPTS_DIR/v/v /usr/local/bin/vv
-    rm -rf $SCRIPTS_DIR/v
+    mv $SCRIPTS_DIR/v/v /usr/local/bin/vv && rm -rfv $SCRIPTS_DIR/v
 }
 
 # Update all scripts in script directory

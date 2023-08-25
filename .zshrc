@@ -26,28 +26,31 @@ COMPLETION_WAITING_DOTS="true"
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(
+    git
     gitfast
     git-extras
-    #rvm
-    #ruby
-    #rails
-    bundler
-    #gem
     command-not-found
-    #npm
-    #node
-    #pip
-    #python
+    npm
+    nvm
+    node
     zsh-256color
     fancy-ctrl-z
+    z
+    colored-man-pages
+    docker
+    docker-compose
+    extract
+    ripgrep
+    ubuntu
+    vi-mode
 )
 
 export LANG=en_US.UTF-8
-export EDITOR='vim'
+export EDITOR='nvim'
 
 # Set history size for reverse search
-HISTSIZE=5000 # session history size
-SAVEHIST=1000 # saved history
+HISTSIZE=50000 # session history size
+SAVEHIST=10000 # saved history
 
 
 # Start oh-my-zsh
@@ -57,11 +60,6 @@ source $ZSH/oh-my-zsh.sh
 
 
 ## BEGIN CUSTOM CONFIGURATION ##
-
-# Where I keep my scripts
-SCRIPTS_DIR=~/_scripts
-# List of scripts
-SCRIPTS=(z zaw)
 
 # Preferred temp directory
 export TEMP=~/.tmp/
@@ -90,63 +88,47 @@ if [ -f ~/.bash_functions ]; then
     . ~/.bash_functions
 fi
 
-# Start Z
-if [ -f $SCRIPTS_DIR/z/z.sh ]; then
-    . $SCRIPTS_DIR/z/z.sh
-fi
-
-# Source zaw / zaw configuration
-# ctrl-e for advanced history
-bindkey '^e' zaw-history
-# if [[ "$IS_MAC" == false ]]; then
-#     bindkey -M filterselect '^r' down-line-or-history
-#     bindkey -M filterselect '^s' up-line-or-history
-#     bindkey -M filterselect '^e' accept-search
-# fi
-zle -N zaw-history
-source $SCRIPTS_DIR/zaw/zaw.zsh
-
-# Fix for zaw
-TRAPWINCH() {
-  zle && { zle reset-prompt; zle -R }
-}
-
-# Initialize V
-if [[ ! -a /usr/local/bin/vv ]]; then
-    echo "[.zshrc] V isn't installed. Installing.."
-    update_v
-fi
-
 # Automatically 'ls -F' after every CD
 [ -z "$PS1" ] && return
 function cd {
     builtin cd "$@" && ls -F
 }
 
-export PATH=/opt/local/bin:$PATH
+env=~/.ssh/agent.env
+
+agent_load_env () { test -f "$env" && source "$env" >| /dev/null }
+
+agent_start () {
+    (umask 077; ssh-agent >| "$env")
+    source "$env" >| /dev/null }
+
+agent_load_env
+
+# agent_run_state: 0=agent running w/ key; 1=agent w/o key; 2=agent not running
+agent_run_state=$(ssh-add -l >| /dev/null 2>&1; echo $?)
+
+if [[ -z $SSH_AUTH_SOCK ]] || [[ $agent_run_state = 2 ]]; then
+    agent_start
+    ssh-add
+elif [[ -n $SSH_AUTH_SOCK ]] && [[ $agent_run_state = 1 ]]; then
+    ssh-add
+fi
+
+unset env
+
+GPG_TTY=$(tty)
+export GPG_TTY
 
 ## END CUSTOM CONFIGURATION
 
 
 ## BEGIN PATH MODIFICATION
+export PATH=/opt/local/bin:$PATH
 
-nvm() {
-    # NVM
-    export NVM_DIR="$HOME/.nvm"
-    [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-    [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
-    nvm "$@"
-}
-
-## END PATH MODIFICATION
-
-#export PATH="$HOME/.rbenv/bin:$PATH"
-#eval "$(rbenv init -)"
-
-export GPG_TTY=$(tty)
 source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
 export PATH="/usr/local/opt/openssl/bin:$PATH"
-export PATH="/usr/local/opt/postgresql@10/bin:$PATH"
-export ASPNETCORE_ENVIRONMENT=development
+export PATH=$PATH:/usr/local/go/bin

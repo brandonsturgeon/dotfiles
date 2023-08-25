@@ -157,8 +157,6 @@ nnoremap ) <C-i>
 function! SafeRunCommand(command)
   if exists(a:command)
     execute a:command
-  else
-    echo "Error: The command '" . a:command . "' does not exist."
   endif
 endfunction
 
@@ -222,6 +220,7 @@ autocmd FileType javascript let g:jsx_ext_required = 0
 autocmd FileType html       setlocal ts=2 sts=2 sw=2
 autocmd FileType ruby       setlocal ts=2 sts=2 sw=2
 autocmd FileType javascript setlocal ts=2 sts=2 sw=2
+autocmd FileType typescript setlocal ts=2 sts=2 sw=2
 autocmd FileType jsx        setlocal ts=2 sts=2 sw=2
 autocmd FileType svelte     setlocal ts=2 sts=2 sw=2
 autocmd FileType python     setlocal ts=4 sts=4 sw=4 tw=0
@@ -244,7 +243,7 @@ nmap <silent> gi <Plug>(coc-implementation)
 nmap <silent> gr <Plug>(coc-references)
 
 " Formatting selected code
-xmap <leader>f  <Plug>(coc-format-selected)
+vmap <leader>f  <Plug>(coc-format-selected)
 nmap <leader>f  <Plug>(coc-format-selected)
 
 " Show all diagnostics
