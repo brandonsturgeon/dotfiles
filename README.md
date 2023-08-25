@@ -5,7 +5,7 @@
 ## Install/Setup Requirements
 
 ### ZSH
-```
+```bash
 sudo apt-get install zsh;
 wget https://github.com/robbyrussell/oh-my-zsh/raw/master/tools/install.sh -O - | zsh;
 chsh -s `which zsh`;
@@ -15,7 +15,7 @@ reset;
 ---
 
 ### Git
-```
+```bash
 ssh-keygen -o -a 100 -t ed25519 -f ~/.ssh/id_ed25519 -C "brandon@brandonsturgeon.comm"
 # Default location, no password
 cat ~/.ssh/id_ed25519.pub;
@@ -26,7 +26,7 @@ cat ~/.ssh/id_ed25519.pub;
 ---
 
 ### Getting Dotfiles
-```
+```bash
 git clone --recurse-submodules -j8 git@github.com:brandonsturgeon/dotfiles.git ~/_dotfiles;
 mv ~/_dotfiles/* ~/;
 mv ~/_dotfiles/.* ~/;
@@ -38,7 +38,7 @@ source ~/.profile ~/.zshrc
 ---
 
 ### Node
-```
+```bash
 curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.5/install.sh | bash;
 
 nvm install 18;
@@ -49,7 +49,7 @@ nvm alias default 18;
 
 ### [Docker (Compose)](https://docs.docker.com/engine/install/ubuntu/)
 - It's docker.. what're you gonna do.
-```
+```bash
 for pkg in docker.io docker-doc docker-compose podman-docker containerd runc; do sudo apt-get remove $pkg; done;
 
 sudo apt-get update;
@@ -66,7 +66,7 @@ echo \
 ---
 
 ### [Zip](https://manpages.ubuntu.com/manpages/focal/man1/zip.1.html) :zipper_mouth_face:
-```
+```bash
 sudo apt install zip;
 ```
 
@@ -75,14 +75,14 @@ sudo apt install zip;
 
 ### [Ripgrep](https://github.com/BurntSushi/ripgrep) :mag_right:
 - Absolute necessity for finding stuff easily.
-```
+```bash
 sudo apt-get install ripgrep
 ```
 
 ---
 
 ### [fzf](https://docs.docker.com/engine/install/ubuntu/) :peach:
-```
+```bash
 sudo apt install fzf;
 ```
 
@@ -90,7 +90,7 @@ sudo apt install fzf;
 
 ### [Duf](https://github.com/muesli/duf) :minidisc:
 - Better `df`
-```
+```bash
 sudo apt install duf;
 ```
 
@@ -98,7 +98,7 @@ sudo apt install duf;
 
 ### [Bat](https://github.com/sharkdp/bat) :bat:
 - Better `cat`
-```
+```bash
 sudo apt install bat;
 sudo ln -s batcat /usr/bin/bat;
 ```
@@ -107,7 +107,7 @@ sudo ln -s batcat /usr/bin/bat;
 
 ### [gping](https://github.com/orf/gping) :ping_pong:
 - `ping`, but with a graph
-```
+```bash
 echo "deb http://packages.azlux.fr/debian/ buster main" | sudo tee /etc/apt/sources.list.d/azlux.list;
 wget -qO - https://azlux.fr/repo.gpg.key | sudo apt-key add -;
 sudo apt update;
@@ -118,7 +118,7 @@ sudo apt install gping;
 
 ### [dog](https://github.com/ogham/dog) :dog:
 - Better `dig`; a command-line DNS client
-```
+```bash
 mkdir $HOME/dog_build;
 cd $HOME/dog_build;
 curl -L -o dog.zip https://github.com/ogham/dog/releases/download/v0.1.0/dog-v0.1.0-x86_64-unknown-linux-gnu.zip;
@@ -132,7 +132,7 @@ sudo chmod +x /usr/locla/bin/dog;
 
 ## [zoxide](https://github.com/ajeetdsouza/zoxide) :mountain:
 - `z` command to easily navigate around
-```
+```bash
 curl -sS https://raw.githubusercontent.com/ajeetdsouza/zoxide/main/install.sh | bash;
 echo "export PATH=$HOME/.local/bin:$PATH" >> ~/.zshrc
 ```
@@ -141,7 +141,7 @@ echo "export PATH=$HOME/.local/bin:$PATH" >> ~/.zshrc
 
 ### [Bashtop](https://github.com/aristocratos/bashtop) :scroll:
 - A good process monitor for Linux
-```
+```bash
 sudo add-apt-repository ppa:bashtop-monitor/bashtop;
 sudo apt update;
 sudo apt install bashtop;
@@ -151,7 +151,7 @@ sudo apt install bashtop;
 
 ### [archive-cli](https://github.com/azlux/archive-cli) :card_file_box:
 - [Never have to remember `tar` flags ever again](https://xkcd.com/1168/)
-```
+```bash
 echo "deb http://packages.azlux.fr/debian/ buster main" | sudo tee /etc/apt/sources.list.d/azlux.list;
 wget -qO - https://azlux.fr/repo.gpg.key | sudo apt-key add -;
 apt update;
@@ -162,7 +162,7 @@ apt install archive-cli;
 
 ### [httpie](https://httpie.io/cli) :pie:
 - Very good HTTP CLi
-```
+```bash
 sudo apt install httpie;
 ```
 
@@ -171,7 +171,6 @@ sudo apt install httpie;
 ## Styling, extra setup
 
 ### Fonts
-```
-Preferred font is FuraCode NF Retina (non-mono), size 18, AA, roughly 80-90% horizontal character spacing
+Preferred font is **FuraCode NF Retina** _(non-mono)_, **size 18**, **AA**, roughly **80-90% horizontal character spacing**
+
 https://github.com/ryanoasis/nerd-fonts/blob/master/patched-fonts/FiraCode/Retina/complete/Fura%20Code%20Retina%20Nerd%20Font%20Complete.otf
-```
