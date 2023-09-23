@@ -45,7 +45,8 @@ alias zource="source ~/.zshrc"
 # Untar a .tar.gz
 alias untar="tar -xvzf"
 
-# Shorter AG output
-alias ags="ag -W 125"
-
+# Deep Ripgrep
 alias rgd="rg -L --max-depth 50"
+
+# Easy tagging script
+alias tagr="$HOME/_scripts/tagger.sh"
