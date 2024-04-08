@@ -18,8 +18,9 @@ end
 vim.opt.rtp:prepend( lazypath )
 
 local plugins = {
-    { "dstein64/vim-startuptime" },
+    -- { "dstein64/vim-startuptime" },
     { "github/copilot.vim" },
+    { "folke/tokyonight.nvim", lazy = false, priority = 1000, opts = {} },
     { "neoclide/coc.nvim", branch = "release" },
     { "ryanoasis/vim-devicons", lazy = true },
     { "nvim-tree/nvim-web-devicons", lazy = true },
@@ -74,13 +75,14 @@ local plugins = {
     { "mxw/vim-jsx",                              ft = "javascript" },
     { "pangloss/vim-javascript",                  ft = "javascript" },
     { "lfilho/cosco.vim",                         ft = "javascript" },
+    { "wuelnerdotexe/vim-astro",                  ft = "astro" },
+    { "yaegassy/coc-astro",                       ft = "astro", build = "yarn install --frozen-lockfile" },
     { "othree/html5.vim",                         ft = "html" },
     { "evanleck/vim-svelte",                      ft = { "javascript", "svelte" }, branch = "main" },
     { "hashivim/vim-terraform",                   ft = { "terraform", "tf" } },
     { "tpope/vim-markdown",                       ft = "markdown" },
     { "leafo/moonscript-vim",                     ft = "moonscript" },
     { "slim-template/vim-slim",                   ft = "slim" },
-    { "fatih/vim-go",                             ft = "go", run = ":GoUpdateBinaries" },
     { "tpope/vim-endwise",                        ft = "ruby" },
     { "cfc-servers/gluafixer.vim",                ft = "lua" },
     { "metakirby5/codi.vim",                      cmd = "Codi" },
@@ -171,22 +173,21 @@ vim.keymap.set( "n", ")", "<C-i>", {} )
 
 -- ---- BEGIN PLUGIN CONFIGURATION ----
 vim.g.indentLine_color_term = 239
+vim.opt.termguicolors = true
 
 -- Styling
 vim.cmd( [[
+colorscheme tokyonight
 hi clear SpellBad
 hi SpellBad cterm=underline ctermfg=9
-hi SignColumn ctermbg=none
+hi SignColumn guibg=none ctermbg=none
 
-hi DiffAdd           cterm=bold ctermbg=none ctermfg=119
-hi DiffDelete        cterm=bold ctermbg=none ctermfg=167
-hi DiffChange        cterm=bold ctermbg=none ctermfg=227
-hi Pmenu ctermfg=15 ctermbg=0 guifg=#ffffff guibg=#000000
+"hi DiffAdd           cterm=bold ctermbg=none ctermfg=119
+"hi DiffDelete        cterm=bold ctermbg=none ctermfg=167
+"hi DiffChange        cterm=bold ctermbg=none ctermfg=227
+"hi Pmenu ctermfg=15 ctermbg=0 guifg=#ffffff guibg=#000000
+hi Normal guibg=NONE ctermbg=NONE
 ]] )
-
--- hi SignifySignAdd    cterm=bold ctermbg=none  ctermfg=119
--- hi SignifySignDelete cterm=bold ctermbg=none  ctermfg=167
--- hi SignifySignChange cterm=bold ctermbg=none  ctermfg=227
 
 vim.g.signify_sign_delete = "-"
 vim.g.signify_cursorhold_normal = 1
@@ -194,7 +195,7 @@ vim.g.signify_cursorhold_insert = 1
 
 local autocmds = {
     { event = "FileType", pattern = "javascript",                                 cmd = "let g:jsx_ext_required = 0" },
-    { event = "FileType", pattern = "html,ruby,javascript,typescript,jsx,svelte", cmd = "setlocal ts=4 sts=4 sw=4" },
+    { event = "FileType", pattern = "html,ruby,javascript,typescript,jsx,svelte", cmd = "setlocal ts=2 sts=2 sw=2" },
     { event = "FileType", pattern = "python",                                     cmd = "setlocal ts=4 sts=4 sw=4 tw=0" },
     { event = "FileType", pattern = "css,yaml",                                   cmd =
     "setlocal ts=2 sts=2 sw=2 expandtab" }
